@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌌 우주 천체 시뮬레이션</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Exo+2:wght@300;400;600;700&display=swap');
+  :root {
+    --bg: #060818; --bg2: #0d1229; --bg3: #131a38;
+    --cyan: #00e5ff; --purple: #a855f7; --gold: #fbbf24;
+    --green: #10b981; --red: #ef4444; --text: #e2e8f0; --muted: #64748b;
+    --border: rgba(0,229,255,0.18);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Exo 2',sans-serif; background:var(--bg); color:var(--text); height:100vh; overflow:hidden; display:flex; }
+  /* SIDEBAR */
+  #sidebar { width:200px; min-width:200px; background:var(--bg2); border-right:1px solid var(--border); display:flex; flex-direction:column; padding:16px 0; }
+  .logo { padding:0 16px 20px; font-family:'Space Mono',monospace; font-size:13px; color:var(--cyan); border-bottom:1px solid var(--border); margin-bottom:12px; }
+  .logo span { display:block; font-size:10px; color:var(--muted); margin-top:4px; }
+  .nav-btn { display:flex; align-items:center; gap:10px; padding:11px 16px; font-size:13px; color:var(--muted); cursor:pointer; border:none; background:none; width:100%; text-align:left; transition:all .2s; border-left:2px solid transparent; font-family:'Exo 2',sans-serif; }
+  .nav-btn:hover { color:var(--text); background:rgba(255,255,255,.03); }
+  .nav-btn.active { color:var(--cyan); background:rgba(0,229,255,.06); border-left-color:var(--cyan); }
+  .nav-icon { font-size:16px; width:20px; text-align:center; }
+  /* MAIN */
+  #main { flex:1; overflow:hidden; position:relative; }
+  .tab { display:none; height:100%; overflow:auto; padding:24px; }
+  .tab.active { display:block; }
+  h2 { font-size:20px; font-weight:700; margin-bottom:20px; color:var(--cyan); font-family:'Space Mono',monospace; letter-spacing:.5px; }
+  /* CARDS */
+  .card { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:16px; }
+  .card-title { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; font-family:'Space Mono',monospace; }
+  /* GRID */
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+  /* STAT */
+  .stat { background:var(--bg3); border-radius:8px; padding:12px; }
+  .stat-val { font-size:22px; font-weight:700; font-family:'Space Mono',monospace; }
+  .stat-lbl { font-size:11px; color:var(--muted); margin-top:3px; }
+  /* BUTTONS */
+  .btn { padding:8px 16px; border-radius:6px; border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer; font-size:13px; font-family:'Exo 2',sans-serif; transition:all .2s; }
+  .btn:hover { background:rgba(255,255,255,.05); }
+  .btn.active, .btn.primary { background:var(--cyan); color:var(--bg); border-color:var(--cyan); font-weight:600; }
+  .btn.danger { background:var(--red); color:#fff; border-color:var(--red); }
+  .btn.success { background:var(--green); color:#fff; border-color:var(--green); }
+  /* RANGE */
+  input[type=range] { width:100%; accent-color:var(--cyan); cursor:pointer; }
+  select { background:var(--bg3); color:var(--text); border:1px solid var(--border); border-radius:6px; padding:8px 12px; font-size:13px; font-family:'Exo 2',sans-serif; cursor:pointer; width:100%; }
+  input[type=number] { background:var(--bg3); color:var(--cyan); border:1px solid var(--border); border-radius:6px; padding:8px 12px; font-size:14px; font-family:'Space Mono',monospace; width:100%; }
+  /* SIZE COMPARE */
+  #size-visual { display:flex; align-items:flex-end; justify-content:center; gap:40px; padding:20px; min-height:260px; background:var(--bg3); border-radius:12px; margin-bottom:16px; position:relative; overflow:hidden; }
+  .body-circle { border-radius:50%; transition:all .4s; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  /* CANVAS */
+  #sim-canvas { background:var(--bg); border-radius:10px; display:block; cursor:crosshair; }
+  /* 3D */
+  #view3d-container { width:100%; height:480px; border-radius:12px; overflow:hidden; position:relative; cursor:grab; }
+  #view3d-container:active { cursor:grabbing; }
+  #info-panel { position:absolute; top:0; right:0; width:260px; height:100%; background:rgba(6,8,24,.85); border-left:1px solid var(--border); padding:16px; overflow:auto; }
+  /* DISTANCE */
+  #dist-svg { width:100%; overflow:visible; }
+  /* FACTS */
+  .fact { padding:7px 0; border-bottom:1px solid rgba(255,255,255,.05); font-size:13px; color:var(--muted); line-height:1.5; }
+  .fact::before { content:'◆ '; color:var(--cyan); font-size:10px; }
+  /* EVENTS */
+  .event-item { padding:6px 10px; background:rgba(239,68,68,.08); border-left:2px solid var(--red); border-radius:4px; font-size:12px; margin-bottom:6px; font-family:'Space Mono',monospace; }
+  /* UNIT CARDS */
+  .unit-card { background:var(--bg3); border-radius:8px; padding:14px; border:1px solid rgba(168,85,247,.2); }
+  .unit-name { font-size:15px; font-weight:600; color:var(--purple); margin-bottom:4px; }
+  .unit-sym { font-size:22px; font-family:'Space Mono',monospace; color:var(--cyan); }
+  .unit-desc { font-size:12px; color:var(--muted); margin-top:6px; line-height:1.5; }
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width:5px; height:5px; }
+  ::-webkit-scrollbar-track { background:var(--bg); }
+  ::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+  /* BADGE */
+  .badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:11px; font-family:'Space Mono',monospace; }
+  .badge-cyan { background:rgba(0,229,255,.12); color:var(--cyan); }
+  .badge-gold { background:rgba(251,191,36,.12); color:var(--gold); }
+  .badge-red { background:rgba(239,68,68,.15); color:var(--red); }
+  /* ROW */
+  .row { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .row-between { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .lbl { font-size:12px; color:var(--muted); }
+  .val { font-size:13px; font-family:'Space Mono',monospace; color:var(--text); }
+  /* STARS BG */
+  #stars { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; overflow:hidden; }
+  #stars::before, #stars::after { content:''; position:absolute; width:2px; height:2px; background:#fff; border-radius:50%; box-shadow: 20px 30px #fff, 80px 120px #fff, 150px 60px #aaf, 220px 180px #fff, 300px 40px #fff, 400px 200px #aaf, 500px 90px #fff, 600px 160px #fff, 700px 30px #aaf, 800px 140px #fff, 900px 80px #fff, 1000px 200px #aaf, 1100px 50px #fff, 1200px 170px #fff, 1300px 100px #aaf, 50px 250px #fff, 140px 320px #aaf, 260px 400px #fff, 380px 280px #fff, 450px 360px #aaf, 550px 440px #fff, 640px 310px #fff, 720px 400px #aaf, 840px 260px #fff, 950px 380px #fff; opacity:.25; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th { text-align:left; padding:8px 10px; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.8px; border-bottom:1px solid var(--border); }
+  td { padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.04); }
+  #collision-log { max-height:120px; overflow:auto; }
+</style>
+</head>
+<body>
+<div id="stars"></div>
+
+<!-- SIDEBAR -->
+<div id="sidebar" style="position:relative;z-index:1">
+  <div class="logo">🌌 COSMOS<span>천체 탐험 시뮬레이터</span></div>
+  <button class="nav-btn active" onclick="showTab('size')" id="nav-size">
+    <span class="nav-icon">⊙</span> 크기 비교
+  </button>
+  <button class="nav-btn" onclick="showTab('distance')" id="nav-distance">
+    <span class="nav-icon">↔</span> 거리 탐색
+  </button>
+  <button class="nav-btn" onclick="showTab('sim')" id="nav-sim">
+    <span class="nav-icon">◎</span> 궤도 시뮬레이션
+  </button>
+  <button class="nav-btn" onclick="showTab('units')" id="nav-units">
+    <span class="nav-icon">≡</span> 단위 설명
+  </button>
+  <button class="nav-btn" onclick="showTab('view3d')" id="nav-view3d">
+    <span class="nav-icon">◈</span> 3D 뷰
+  </button>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main" style="position:relative;z-index:1">
+
+<!-- ===== TAB: SIZE COMPARISON ===== -->
+<div class="tab active" id="tab-size">
+  <h2>⊙ 천체 크기 비교</h2>
+  <div class="row">
+    <span class="lbl">천체 선택:</span>
+    <select id="body-select" onchange="updateSizeView()" style="width:200px">
+    </select>
+    <span class="lbl">단위:</span>
+    <select id="unit-select" onchange="updateSizeView()" style="width:140px">
+      <option value="km">킬로미터 (km)</option>
+      <option value="earth">지구반경 (R⊕)</option>
+      <option value="sun">태양반경 (R☉)</option>
+    </select>
+  </div>
+
+  <div id="size-visual">
+    <div id="circle-selected" class="body-circle"></div>
+    <div id="circle-earth" class="body-circle"></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">선택된 천체</div>
+      <div id="size-name" style="font-size:20px;font-weight:700;margin-bottom:12px"></div>
+      <div class="grid2">
+        <div class="stat"><div class="stat-val" id="size-radius" style="color:var(--cyan);font-size:16px"></div><div class="stat-lbl">반지름</div></div>
+        <div class="stat"><div class="stat-val" id="size-mass" style="color:var(--purple);font-size:14px"></div><div class="stat-lbl">질량 (kg)</div></div>
+        <div class="stat"><div class="stat-val" id="size-density" style="color:var(--gold)"></div><div class="stat-lbl">밀도 g/cm³</div></div>
+        <div class="stat"><div class="stat-val" id="size-temp" style="color:var(--red)"></div><div class="stat-lbl">표면온도 K</div></div>
+      </div>
+      <div style="margin-top:12px"><span class="lbl">구성: </span><span id="size-comp" style="font-size:13px"></span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">🌟 흥미로운 사실</div>
+      <div id="size-facts"></div>
+      <button class="btn primary" style="width:100%;margin-top:14px" onclick="goTo3D()">◈ 3D 뷰로 보기</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB: DISTANCE EXPLORER ===== -->
+<div class="tab" id="tab-distance">
+  <h2>↔ 거리 탐색</h2>
+  <div class="card">
+    <div class="row-between">
+      <span class="lbl">줌 레벨</span>
+      <span id="zoom-label" style="font-family:'Space Mono',monospace;color:var(--cyan);font-size:13px"></span>
+    </div>
+    <input type="range" min="0" max="100" value="45" id="zoom-slider" oninput="updateDistance()">
+    <div style="margin-top:10px" class="row">
+      <span class="lbl">거리 단위:</span>
+      <select id="dist-unit" onchange="updateDistance()" style="width:180px">
+        <option value="m">미터 (m)</option>
+        <option value="km">킬로미터 (km)</option>
+        <option value="au" selected>천문단위 (AU)</option>
+        <option value="ly">광년 (ly)</option>
+        <option value="pc">파섹 (pc)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card" style="overflow-x:auto">
+    <div class="card-title">태양계 거리 시각화</div>
+    <svg id="dist-svg" height="100" viewBox="0 0 900 100">
+      <line x1="0" y1="50" x2="900" y2="50" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="card">
+    <div class="card-title">거리 정보 테이블</div>
+    <table>
+      <thead><tr><th>천체</th><th>태양까지 거리</th><th>km</th></tr></thead>
+      <tbody id="dist-table"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== TAB: SIMULATION ===== -->
+<div class="tab" id="tab-sim">
+  <h2>◎ 궤도 시뮬레이션</h2>
+  <div class="row" style="margin-bottom:12px">
+    <span class="lbl">시나리오:</span>
+    <button class="btn active" id="sc-solar" onclick="loadScenario('solar',this)">태양계</button>
+    <button class="btn" id="sc-em" onclick="loadScenario('earthmoon',this)">지구-달</button>
+    <button class="btn" id="sc-chaos" onclick="loadScenario('chaos',this)">3체 카오스</button>
+    <button class="btn" id="sc-collision" onclick="loadScenario('collision',this)">충돌 실험</button>
+  </div>
+
+  <canvas id="sim-canvas" width="860" height="440" style="width:100%;max-width:860px"></canvas>
+
+  <div class="grid2" style="margin-top:14px">
+    <div class="card">
+      <div class="card-title">시뮬레이션 제어</div>
+      <div class="row" style="margin-bottom:12px">
+        <button class="btn success" id="play-btn" onclick="toggleSim()">▶ 재생</button>
+        <button class="btn" onclick="resetSim()">↺ 리셋</button>
+        <button class="btn" id="trail-btn" onclick="toggleTrail()">● 흔적 ON</button>
+        <button class="btn" id="label-btn" onclick="toggleLabel()">A 레이블 ON</button>
+      </div>
+      <div class="lbl" style="margin-bottom:6px">속도: <span id="speed-val" style="color:var(--cyan);font-family:'Space Mono',monospace">1.0x</span></div>
+      <input type="range" min="0.1" max="20" step="0.1" value="1" id="speed-slider" oninput="updateSpeed()">
+    </div>
+    <div class="card">
+      <div class="card-title">실시간 통계</div>
+      <div class="grid4">
+        <div class="stat"><div class="stat-val" id="stat-bodies" style="color:var(--cyan)">0</div><div class="stat-lbl">천체 수</div></div>
+        <div class="stat"><div class="stat-val" id="stat-col" style="color:var(--red)">0</div><div class="stat-lbl">충돌</div></div>
+        <div class="stat"><div class="stat-val" id="stat-time" style="color:var(--gold);font-size:14px">0d</div><div class="stat-lbl">경과 시간</div></div>
+        <div class="stat"><div class="stat-val" id="stat-fps" style="color:var(--green)">0</div><div class="stat-lbl">FPS</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:4px">
+    <div class="card-title">충돌 이벤트 로그</div>
+    <div id="collision-log" style="max-height:80px;overflow:auto">
+      <div style="color:var(--muted);font-size:12px;font-family:'Space Mono',monospace">충돌 이벤트 없음...</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB: UNITS ===== -->
+<div class="tab" id="tab-units">
+  <h2>≡ 단위 설명 & 변환기</h2>
+  <div class="grid2" style="margin-bottom:16px">
+    <div>
+      <div class="card-title" style="margin-bottom:10px">거리 단위</div>
+      <div style="display:grid;gap:10px">
+        <div class="unit-card">
+          <div class="unit-sym">m</div>
+          <div class="unit-name">미터 (Meter)</div>
+          <div class="unit-desc">SI 기본 거리 단위. 빛이 진공에서 1/299,792,458초 동안 진행하는 거리.</div>
+        </div>
+        <div class="unit-card">
+          <div class="unit-sym">km</div>
+          <div class="unit-name">킬로미터 (Kilometer)</div>
+          <div class="unit-desc">1,000m. 지구 반지름 ≈ 6,371 km. 지구~달 ≈ 384,400 km.</div>
+        </div>
+        <div class="unit-card">
+          <div class="unit-sym">AU</div>
+          <div class="unit-name">천문단위 (Astronomical Unit)</div>
+          <div class="unit-desc">지구~태양 평균 거리. 1 AU = 149,597,870 km. 태양계 내 거리 표준.</div>
+        </div>
+        <div class="unit-card">
+          <div class="unit-sym">ly</div>
+          <div class="unit-name">광년 (Light Year)</div>
+          <div class="unit-desc">빛이 1년 진행 거리. 1 ly = 9.461 × 10¹² km. 별 사이 거리 단위.</div>
+        </div>
+        <div class="unit-card">
+          <div class="unit-sym">pc</div>
+          <div class="unit-name">파섹 (Parsec)</div>
+          <div class="unit-desc">1 pc = 3.0857 × 10¹³ km ≈ 3.26 ly. 시차 1각초에 해당하는 거리.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card-title" style="margin-bottom:10px">크기 단위</div>
+      <div style="display:grid;gap:10px;margin-bottom:16px">
+        <div class="unit-card">
+          <div class="unit-sym">R⊕</div>
+          <div class="unit-name">지구반경 (Earth Radius)</div>
+          <div class="unit-desc">1 R⊕ = 6,371 km. 태양계 행성 크기 비교 기준.</div>
+        </div>
+        <div class="unit-card">
+          <div class="unit-sym">R☉</div>
+          <div class="unit-name">태양반경 (Solar Radius)</div>
+          <div class="unit-desc">1 R☉ = 696,000 km = 109.2 R⊕. 별의 크기 비교 기준.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">⚡ 단위 변환기</div>
+        <div class="row" style="margin-bottom:12px">
+          <input type="number" id="conv-input" value="1" style="flex:1" oninput="convert()">
+          <select id="conv-from" onchange="convert()" style="flex:1">
+            <option value="m">미터 (m)</option>
+            <option value="km">킬로미터 (km)</option>
+            <option value="au">천문단위 (AU)</option>
+            <option value="ly">광년 (ly)</option>
+            <option value="pc">파섹 (pc)</option>
+          </select>
+        </div>
+        <div style="font-size:22px;text-align:center;color:var(--muted);margin-bottom:12px">↓</div>
+        <div id="conv-results" style="display:grid;gap:6px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB: 3D VIEW ===== -->
+<div class="tab" id="tab-view3d">
+  <h2>◈ 3D 천체 뷰</h2>
+  <div class="row" style="margin-bottom:14px">
+    <span class="lbl">천체:</span>
+    <select id="body3d-select" onchange="load3DBody()" style="width:180px"></select>
+    <button class="btn" id="auto-rot-btn" onclick="toggleAutoRot()">⟳ 자동회전 ON</button>
+    <span class="lbl" style="margin-left:10px;font-size:12px">마우스 드래그: 회전 | 휠: 줌</span>
+  </div>
+  <div style="position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
+    <div id="view3d-container"></div>
+    <div id="info-panel">
+      <div id="panel-name" style="font-size:16px;font-weight:700;color:var(--cyan);margin-bottom:12px;font-family:'Space Mono',monospace"></div>
+      <div id="panel-type" style="margin-bottom:14px"></div>
+      <div id="panel-props"></div>
+      <div id="panel-facts" style="margin-top:14px">
+        <div class="card-title" style="margin-bottom:8px">사실</div>
+        <div id="panel-facts-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// ===================== DATA =====================
+const G = 6.674e-11;
+const BODIES = {
+  sun:     { name:'태양', type:'star', r:696000, mass:1.989e30, density:1.41, temp:5778, color:'#FDB813', comp:'수소 73%, 헬륨 25%', orb:0, facts:['태양계 질량의 99.86%','표면 온도 5,778K','매초 6억 톤 수소 → 헬륨','지름은 지구의 109배','약 50억 년 후 적색거성으로 진화'] },
+  mercury: { name:'수성', type:'planet', r:2440, mass:3.301e23, density:5.43, temp:430, color:'#8C7853', comp:'암석, 철', orb:57.9e6, facts:['태양에서 가장 가까운 행성','표면온도 -173°C~427°C','대기가 거의 없음','태양계에서 가장 작은 행성','공전 주기 87.97일'] },
+  venus:   { name:'금성', type:'planet', r:6052, mass:4.867e24, density:5.24, temp:735, color:'#FFC649', comp:'CO₂ 96%, N₂ 3%', orb:108.2e6, facts:['밤하늘에서 가장 밝은 행성','표면 온도 462°C','역방향 자전','대기압이 지구의 92배','가장 더운 행성'] },
+  earth:   { name:'지구', type:'planet', r:6371, mass:5.972e24, density:5.51, temp:288, color:'#4A90E2', comp:'N₂ 78%, O₂ 21%', orb:149.6e6, facts:['유일한 생명 존재 행성','표면 71%가 물','자기장이 방사능 차단','1개의 자연 위성(달)','판구조론이 활발히 작동'] },
+  moon:    { name:'달', type:'moon', r:1737, mass:7.342e22, density:3.34, temp:253, color:'#C0C0C0', comp:'암석, 규산염', orb:0.384e6, facts:['지구에서 38만km','조석 현상을 일으킴','인류가 방문한 유일한 천체','항상 같은 면이 지구를 향함','약 45억 년 전 형성'] },
+  mars:    { name:'화성', type:'planet', r:3390, mass:6.417e23, density:3.93, temp:210, color:'#E27B58', comp:'CO₂ 95%, N₂', orb:227.9e6, facts:['올림푸스 몬스(태양계 최고봉)','2개의 달 포보스·디모스','물의 흔적 발견','붉은색은 산화철 때문','로버 큐리오시티 탐사 중'] },
+  jupiter: { name:'목성', type:'planet', r:69911, mass:1.898e27, density:1.33, temp:165, color:'#C88B3A', comp:'수소 90%, 헬륨 10%', orb:778.5e6, facts:['태양계 최대 행성','대적반: 300년 이상 폭풍','79개 이상의 달','지구의 1,321배 부피','강한 자기장 보유'] },
+  saturn:  { name:'토성', type:'planet', r:58232, mass:5.683e26, density:0.69, temp:134, color:'#F4D79F', comp:'수소 96%, 헬륨 3%', orb:1434e6, facts:['아름다운 고리 시스템','물보다 밀도가 낮음','82개 이상의 달','타이탄: 두꺼운 대기 보유','고리는 얼음과 암석으로 구성'] },
+  uranus:  { name:'천왕성', type:'planet', r:25559, mass:8.681e25, density:1.27, temp:76, color:'#4FD0E7', comp:'메탄, 암모니아, 물', orb:2873e6, facts:['옆으로 누워 자전(97.8°)','27개 이상의 달','희미한 고리 보유','메탄으로 청록색','태양계 세 번째로 먼 행성'] },
+  neptune: { name:'해왕성', type:'planet', r:24764, mass:1.024e26, density:1.64, temp:72, color:'#4165F4', comp:'메탄, 암모니아, 물', orb:4495e6, facts:['가장 먼 행성','165년 공전 주기','초속 2,100km 바람','14개 이상의 달','1989년 보이저2호 탐사'] },
+  sirius:  { name:'시리우스', type:'star', r:1711000, mass:2.02e30, density:0.26, temp:9940, color:'#e0f0ff', comp:'수소, 헬륨', orb:8.6*9.461e12, facts:['가장 밝은 별','지구에서 8.6광년','쌍성계 (A+B)','태양의 약 2배 질량','고대 이집트 달력 기준'] },
+  polaris: { name:'북극성', type:'star', r:4600000, mass:5.4e30, density:0.02, temp:7460, color:'#ffffee', comp:'수소, 헬륨', orb:431*9.461e12, facts:['북반구 방향의 기준','431광년 거리','삼성계','초거성','세페이드 변광성'] },
+};
+
+const UNIT_SCALES = { m:1, km:1e3, au:1.496e11, ly:9.461e12, pc:3.086e13 };
+const UNIT_LABELS = { m:'m', km:'km', au:'AU', ly:'ly', pc:'pc' };
+
+// Populate selects
+function populateSelects() {
+  const opts = Object.entries(BODIES).map(([k,v]) => `<option value="${k}">${v.name} (${v.type})</option>`).join('');
+  document.getElementById('body-select').innerHTML = opts;
+  document.getElementById('body3d-select').innerHTML = opts;
+}
+
+// ===================== TAB NAVIGATION =====================
+function showTab(id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  document.getElementById('nav-' + id).classList.add('active');
+  if (id === 'view3d') load3DBody();
+  if (id === 'distance') updateDistance();
+  if (id === 'units') convert();
+  if (id === 'size') updateSizeView();
+  if (id === 'sim') resizeCanvas();
+}
+
+// ===================== SIZE COMPARISON =====================
+function updateSizeView() {
+  const key = document.getElementById('body-select').value;
+  const unitSel = document.getElementById('unit-select').value;
+  const b = BODIES[key];
+  const earth = BODIES.earth;
+  const sun = BODIES.sun;
+
+  document.getElementById('size-name').textContent = b.name;
+  document.getElementById('size-density').textContent = b.density;
+  document.getElementById('size-temp').textContent = b.temp;
+  document.getElementById('size-comp').textContent = b.comp;
+  document.getElementById('size-mass').textContent = b.mass.toExponential(2);
+
+  let r = b.r, rE = earth.r;
+  let unit = '';
+  if (unitSel === 'km') { unit = 'km'; }
+  else if (unitSel === 'earth') { r = b.r / 6371; rE = 1; unit = 'R⊕'; }
+  else if (unitSel === 'sun') { r = b.r / 696000; rE = earth.r / 696000; unit = 'R☉'; }
+  document.getElementById('size-radius').textContent = r.toFixed(unitSel==='km'?0:3) + ' ' + unit;
+
+  const maxR = Math.max(b.r, earth.r);
+  const maxPx = 200;
+  const sel_px = Math.max(8, (b.r / maxR) * maxPx);
+  const earth_px = Math.max(8, (earth.r / maxR) * maxPx);
+
+  const circ = document.getElementById('circle-selected');
+  circ.style.width = sel_px + 'px';
+  circ.style.height = sel_px + 'px';
+  circ.style.background = b.color;
+  circ.style.boxShadow = `0 0 ${sel_px/3}px ${b.color}88`;
+  circ.title = b.name;
+
+  const circE = document.getElementById('circle-earth');
+  circE.style.width = earth_px + 'px';
+  circE.style.height = earth_px + 'px';
+  circE.style.background = earth.color;
+  circE.style.boxShadow = `0 0 ${earth_px/3}px ${earth.color}88`;
+  circE.title = '지구 (비교)';
+
+  document.getElementById('size-facts').innerHTML = b.facts.map(f =>
+    `<div class="fact">${f}</div>`).join('');
+}
+
+function goTo3D() {
+  const key = document.getElementById('body-select').value;
+  document.getElementById('body3d-select').value = key;
+  showTab('view3d');
+}
+
+// ===================== DISTANCE EXPLORER =====================
+const SOLAR_BODIES_ORDER = ['sun','mercury','venus','earth','moon','mars','jupiter','saturn','uranus','neptune'];
+
+function updateDistance() {
+  const zoom = +document.getElementById('zoom-slider').value;
+  const unit = document.getElementById('dist-unit').value;
+  const scale = 1 * Math.pow(1e18, zoom / 100); // 1m ~ 1e18m (로그 스케일)
+  const scaleKm = scale / 1e3;
+
+  // 현재 스케일 레이블
+  let scLabel = '';
+  if (scale < 1e3) scLabel = scale.toFixed(0) + ' m';
+  else if (scale < 1.496e11) scLabel = (scale/1e3).toFixed(0) + ' km';
+  else if (scale < 9.461e15) scLabel = (scale/1.496e11).toFixed(2) + ' AU';
+  else scLabel = (scale/9.461e15).toFixed(2) + ' ly';
+  document.getElementById('zoom-label').textContent = '1화면 = ' + scLabel;
+
+  // SVG 시각화
+  const svgW = 900;
+  let svgContent = `<line x1="0" y1="50" x2="${svgW}" y2="50" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>`;
+  SOLAR_BODIES_ORDER.forEach(key => {
+    const b = BODIES[key];
+    const orbM = b.orb * 1e3; // km to m
+    const x = Math.min((orbM / scale) * svgW, svgW - 4);
+    const size = Math.max(4, Math.min(18, (b.r / 10000)));
+    svgContent += `<circle cx="${x.toFixed(1)}" cy="50" r="${size}" fill="${b.color}" style="cursor:pointer" onclick="selectBody3D('${key}')"/>`;
+    svgContent += `<text x="${x.toFixed(1)}" y="78" text-anchor="middle" fill="${b.color}" font-size="11" font-family="Exo 2,sans-serif">${b.name}</text>`;
+    // 거리 표시
+    const distInUnit = (orbM / UNIT_SCALES[unit]);
+    const distStr = distInUnit < 1e6 ? distInUnit.toFixed(3) : distInUnit.toExponential(2);
+    svgContent += `<text x="${x.toFixed(1)}" y="36" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="Space Mono,monospace">${distStr}${UNIT_LABELS[unit]}</text>`;
+  });
+  document.getElementById('dist-svg').innerHTML = svgContent;
+
+  // 테이블
+  let tableHTML = '';
+  SOLAR_BODIES_ORDER.forEach(key => {
+    const b = BODIES[key];
+    const orbM = b.orb * 1e3;
+    const distInUnit = orbM / UNIT_SCALES[unit];
+    const distStr = distInUnit < 1e-4 ? '0' : (distInUnit < 1e6 ? distInUnit.toFixed(4) : distInUnit.toExponential(3));
+    tableHTML += `<tr>
+      <td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${b.color};margin-right:8px"></span>${b.name}</td>
+      <td style="font-family:'Space Mono',monospace;color:var(--cyan)">${distStr} ${UNIT_LABELS[unit]}</td>
+      <td style="color:var(--muted)">${b.orb.toLocaleString()}</td>
+    </tr>`;
+  });
+  document.getElementById('dist-table').innerHTML = tableHTML;
+}
+
+function selectBody3D(key) {
+  document.getElementById('body3d-select').value = key;
+  showTab('view3d');
+}
+
+// ===================== PHYSICS SIMULATION =====================
+let simBodies = [];
+let simRunning = false;
+let simTime = 0;
+let collisionCount = 0;
+let showTrail = true;
+let showLabel = true;
+let speedMult = 1;
+let simScenario = 'solar';
+let lastFrameTime = 0;
+let fps = 0;
+let frameCount = 0;
+let fpsTimer = 0;
+let animId = null;
+let canvasScale = 1;
+
+class SimBody {
+  constructor(name, x, y, vx, vy, mass, r, color) {
+    this.name = name; this.x = x; this.y = y;
+    this.vx = vx; this.vy = vy;
+    this.mass = mass; this.r = r; this.color = color;
+    this.trail = []; this.maxTrail = 300;
+    this.ax = 0; this.ay = 0;
+  }
+  addTrail() {
+    this.trail.push({x:this.x,y:this.y});
+    if (this.trail.length > this.maxTrail) this.trail.shift();
+  }
+}
+
+const SCENARIOS = {
+  solar: () => {
+    const SC = 4e11; // 1 sim unit = SC meters
+    const bodies = [];
+    bodies.push(new SimBody('태양',0,0,0,0, 1.989e30, 18, '#FDB813'));
+    const planets = [
+      { name:'수성', orb:57.9e9, m:3.301e23, r:4, c:'#8C7853' },
+      { name:'금성', orb:108.2e9, m:4.867e24, r:6, c:'#FFC649' },
+      { name:'지구', orb:149.6e9, m:5.972e24, r:7, c:'#4A90E2' },
+      { name:'화성', orb:227.9e9, m:6.417e23, r:5, c:'#E27B58' },
+      { name:'목성', orb:778.5e9, m:1.898e27, r:12, c:'#C88B3A' },
+      { name:'토성', orb:1434e9, m:5.683e26, r:11, c:'#F4D79F' },
+    ];
+    planets.forEach(p => {
+      const d = p.orb / SC;
+      const angle = Math.random() * Math.PI * 2;
+      const v = Math.sqrt(G * 1.989e30 / p.orb) / SC * 1;
+      bodies.push(new SimBody(p.name, d*Math.cos(angle), d*Math.sin(angle),
+        -v*Math.sin(angle), v*Math.cos(angle), p.m, p.r, p.c));
+    });
+    return { bodies, SC, dt: 36000 };
+  },
+  earthmoon: () => {
+    const SC = 1e8;
+    const earthM = 5.972e24;
+    const moonOrb = 384400e3;
+    const d = moonOrb / SC;
+    const v = Math.sqrt(G * earthM / moonOrb) / SC;
+    return {
+      bodies: [
+        new SimBody('지구', 0, 0, 0, 0, earthM, 12, '#4A90E2'),
+        new SimBody('달', d, 0, 0, v, 7.342e22, 5, '#C0C0C0'),
+      ],
+      SC, dt: 1800
+    };
+  },
+  chaos: () => {
+    const SC = 5e11;
+    const sunM = 1.989e30;
+    const bodies = [
+      new SimBody('태양', 0, 0, 0, 0.0, sunM, 15, '#FDB813'),
+      new SimBody('별A', 150, 80, -0.002, 0.003, sunM*0.8, 10, '#7af'),
+      new SimBody('별B', -100, -120, 0.003, -0.002, sunM*0.6, 9, '#fa7'),
+    ];
+    return { bodies, SC, dt: 50000 };
+  },
+  collision: () => {
+    const SC = 3e11;
+    const m = 1.989e29;
+    const bodies = [
+      new SimBody('별A', -100, 0, 0.005, 0.001, m*5, 14, '#ff6b6b'),
+      new SimBody('별B',  100, 10, -0.005, -0.001, m*4, 12, '#4A90E2'),
+      new SimBody('소천체', 0, -80, 0.002, 0.008, m*0.1, 6, '#10b981'),
+    ];
+    return { bodies, SC, dt: 10000 };
+  }
+};
+
+let currentSC = 4e11;
+let currentDT = 36000;
+
+function loadScenario(name, btn) {
+  document.querySelectorAll('[id^=sc-]').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  simScenario = name;
+  const s = SCENARIOS[name]();
+  simBodies = s.bodies;
+  currentSC = s.SC; currentDT = s.dt;
+  simRunning = false; simTime = 0; collisionCount = 0;
+  document.getElementById('play-btn').textContent = '▶ 재생';
+  document.getElementById('play-btn').className = 'btn success';
+  document.getElementById('collision-log').innerHTML = '<div style="color:var(--muted);font-size:12px;font-family:\'Space Mono\',monospace">충돌 이벤트 없음...</div>';
+  updateSimStats();
+}
+
+function stepPhysics() {
+  const dt = currentDT * speedMult;
+  const SC = currentSC;
+
+  // 가속도 계산
+  simBodies.forEach(b => { b.ax = 0; b.ay = 0; });
+  for (let i = 0; i < simBodies.length; i++) {
+    for (let j = i+1; j < simBodies.length; j++) {
+      const a = simBodies[i], b = simBodies[j];
+      const dx = (b.x - a.x) * SC;
+      const dy = (b.y - a.y) * SC;
+      const dist2 = dx*dx + dy*dy;
+      const minDist = (a.r + b.r) * SC * 0.5;
+      const dist = Math.max(Math.sqrt(dist2), minDist);
+      const F = G / (dist * dist);
+      const fx = F * dx / dist, fy = F * dy / dist;
+      a.ax += fx * b.mass / SC;
+      a.ay += fy * b.mass / SC;
+      b.ax -= fx * a.mass / SC;
+      b.ay -= fy * a.mass / SC;
+    }
+  }
+
+  // 위치 업데이트
+  simBodies.forEach(b => {
+    b.vx += b.ax * dt; b.vy += b.ay * dt;
+    b.x += b.vx * dt; b.y += b.vy * dt;
+    b.addTrail();
+  });
+
+  // 충돌 감지
+  const toRemove = new Set();
+  for (let i = 0; i < simBodies.length; i++) {
+    for (let j = i+1; j < simBodies.length; j++) {
+      if (toRemove.has(i) || toRemove.has(j)) continue;
+      const a = simBodies[i], b = simBodies[j];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const dist = Math.sqrt(dx*dx+dy*dy);
+      const minD = (a.r + b.r) * 0.9;
+      if (dist < minD) {
+        collisionCount++;
+        const tm = a.mass + b.mass;
+        const nx = (a.mass*a.x + b.mass*b.x)/tm;
+        const ny = (a.mass*a.y + b.mass*b.y)/tm;
+        const nvx = (a.mass*a.vx + b.mass*b.vx)/tm;
+        const nvy = (a.mass*a.vy + b.mass*b.vy)/tm;
+        const nr = Math.cbrt(Math.pow(a.r,3)+Math.pow(b.r,3));
+        const winner = a.mass >= b.mass ? i : j;
+        const loser = winner===i?j:i;
+        simBodies[winner].mass = tm;
+        simBodies[winner].x = nx; simBodies[winner].y = ny;
+        simBodies[winner].vx = nvx; simBodies[winner].vy = nvy;
+        simBodies[winner].r = nr;
+        simBodies[winner].name = a.mass >= b.mass ? a.name : b.name;
+        toRemove.add(loser);
+        logCollision(a.name, b.name, simBodies[winner].name);
+      }
+    }
+  }
+  simBodies = simBodies.filter((_,i) => !toRemove.has(i));
+
+  simTime += dt;
+  frameCount++;
+}
+
+function logCollision(n1, n2, result) {
+  const log = document.getElementById('collision-log');
+  const days = (simTime/86400).toFixed(0);
+  const el = document.createElement('div');
+  el.className = 'event-item';
+  el.textContent = `T+${days}d: ${n1} + ${n2} → ${result}`;
+  log.insertBefore(el, log.firstChild);
+  if (log.children.length > 8) log.removeChild(log.lastChild);
+}
+
+function renderSim() {
+  const canvas = document.getElementById('sim-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const cx = W/2, cy = H/2;
+
+  ctx.fillStyle = '#060818';
+  ctx.fillRect(0,0,W,H);
+
+  // 별 배경
+  ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  for(let i=0;i<60;i++){
+    ctx.fillRect(Math.sin(i*137)*W/2+cx, Math.cos(i*97)*H/2+cy, 1, 1);
+  }
+
+  // 자동 스케일
+  let maxDist = 1;
+  simBodies.forEach(b => { maxDist = Math.max(maxDist, Math.abs(b.x), Math.abs(b.y)); });
+  const zoom = Math.min(cx, cy) * 0.85 / (maxDist + 1);
+
+  simBodies.forEach(b => {
+    const sx = cx + b.x * zoom, sy = cy + b.y * zoom;
+
+    // 흔적
+    if (showTrail && b.trail.length > 2) {
+      ctx.beginPath();
+      ctx.moveTo(cx + b.trail[0].x*zoom, cy + b.trail[0].y*zoom);
+      b.trail.forEach((t,i) => {
+        if(i===0) return;
+        ctx.lineTo(cx + t.x*zoom, cy + t.y*zoom);
+      });
+      ctx.strokeStyle = b.color + '50';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // 천체
+    const r = Math.max(3, b.r);
+    ctx.beginPath();
+    ctx.arc(sx, sy, r, 0, Math.PI*2);
+    const grad = ctx.createRadialGradient(sx-r*0.3, sy-r*0.3, 0, sx, sy, r);
+    grad.addColorStop(0, b.color + 'ff');
+    grad.addColorStop(1, b.color + '80');
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.strokeStyle = b.color + 'aa';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // 레이블
+    if (showLabel) {
+      ctx.fillStyle = 'rgba(255,255,255,0.75)';
+      ctx.font = '11px Exo 2,sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(b.name, sx, sy - r - 5);
+    }
+  });
+}
+
+function updateSimStats() {
+  document.getElementById('stat-bodies').textContent = simBodies.length;
+  document.getElementById('stat-col').textContent = collisionCount;
+  document.getElementById('stat-time').textContent = simTime>86400*365 ?
+    (simTime/86400/365).toFixed(1)+'y' : (simTime/86400).toFixed(1)+'d';
+  document.getElementById('stat-fps').textContent = fps.toFixed(0);
+}
+
+function simLoop(ts) {
+  if (!lastFrameTime) lastFrameTime = ts;
+  const delta = ts - lastFrameTime;
+  lastFrameTime = ts;
+  fpsTimer += delta;
+  if (fpsTimer > 500) { fps = frameCount / (fpsTimer/1000); frameCount=0; fpsTimer=0; }
+
+  if (simRunning) {
+    for(let i=0;i<3;i++) stepPhysics();
+  }
+  renderSim();
+  updateSimStats();
+  animId = requestAnimationFrame(simLoop);
+}
+
+function toggleSim() {
+  simRunning = !simRunning;
+  const btn = document.getElementById('play-btn');
+  btn.textContent = simRunning ? '⏸ 정지' : '▶ 재생';
+  btn.className = simRunning ? 'btn danger' : 'btn success';
+}
+
+function resetSim() {
+  simRunning = false;
+  document.getElementById('play-btn').textContent = '▶ 재생';
+  document.getElementById('play-btn').className = 'btn success';
+  loadScenario(simScenario);
+}
+
+function toggleTrail() {
+  showTrail = !showTrail;
+  const btn = document.getElementById('trail-btn');
+  btn.textContent = (showTrail ? '● 흔적 ON' : '○ 흔적 OFF');
+  btn.className = showTrail ? 'btn active' : 'btn';
+}
+function toggleLabel() {
+  showLabel = !showLabel;
+  const btn = document.getElementById('label-btn');
+  btn.textContent = (showLabel ? 'A 레이블 ON' : 'A 레이블 OFF');
+  btn.className = showLabel ? 'btn active' : 'btn';
+}
+function updateSpeed() {
+  speedMult = +document.getElementById('speed-slider').value;
+  document.getElementById('speed-val').textContent = speedMult.toFixed(1)+'x';
+}
+function resizeCanvas() {
+  const c = document.getElementById('sim-canvas');
+  const parent = c.parentElement;
+  if(parent) {
+    const w = Math.min(parent.clientWidth - 2, 860);
+    c.style.width = w + 'px';
+  }
+}
+
+// ===================== UNITS GUIDE =====================
+function convert() {
+  const val = +document.getElementById('conv-input').value || 0;
+  const from = document.getElementById('conv-from').value;
+  const baseM = val * UNIT_SCALES[from];
+  const units = [
+    { k:'m', n:'미터', s:'m' },
+    { k:'km', n:'킬로미터', s:'km' },
+    { k:'au', n:'천문단위', s:'AU' },
+    { k:'ly', n:'광년', s:'ly' },
+    { k:'pc', n:'파섹', s:'pc' },
+  ];
+  document.getElementById('conv-results').innerHTML = units.map(u => {
+    const v = baseM / UNIT_SCALES[u.k];
+    const str = v === 0 ? '0' : (Math.abs(v) < 1e-6 || Math.abs(v) > 1e10) ?
+      v.toExponential(4) : v.toPrecision(6);
+    const active = u.k === from ? 'border:1px solid var(--cyan)' : '';
+    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--bg3);border-radius:6px;${active}">
+      <span style="color:var(--muted);font-size:12px">${u.n}</span>
+      <span style="font-family:'Space Mono',monospace;color:var(--cyan);font-size:13px">${str} <span style="color:var(--muted)">${u.s}</span></span>
+    </div>`;
+  }).join('');
+}
+
+// ===================== 3D VIEW =====================
+let scene3d, camera3d, renderer3d, mesh3d, autoRotate3d = true;
+let mouseDown3d = false, lastMX = 0, lastMY = 0;
+
+function load3DBody() {
+  const key = document.getElementById('body3d-select').value;
+  const b = BODIES[key];
+  const container = document.getElementById('view3d-container');
+  container.style.height = '480px';
+
+  // 정보 패널 업데이트
+  document.getElementById('panel-name').textContent = b.name;
+  document.getElementById('panel-type').innerHTML = `<span class="badge badge-cyan">${b.type}</span>`;
+  document.getElementById('panel-props').innerHTML = `
+    <table style="font-size:12px">
+      <tr><td style="color:var(--muted);padding:4px 0">반지름</td><td style="font-family:'Space Mono',monospace;color:var(--cyan);text-align:right">${b.r.toLocaleString()} km</td></tr>
+      <tr><td style="color:var(--muted);padding:4px 0">질량</td><td style="font-family:'Space Mono',monospace;color:var(--purple);text-align:right">${b.mass.toExponential(2)} kg</td></tr>
+      <tr><td style="color:var(--muted);padding:4px 0">밀도</td><td style="font-family:'Space Mono',monospace;color:var(--gold);text-align:right">${b.density} g/cm³</td></tr>
+      <tr><td style="color:var(--muted);padding:4px 0">온도</td><td style="font-family:'Space Mono',monospace;color:var(--red);text-align:right">${b.temp} K</td></tr>
+      <tr><td style="color:var(--muted);padding:4px 0">구성</td><td style="font-size:11px;color:var(--text);text-align:right">${b.comp}</td></tr>
+    </table>`;
+  document.getElementById('panel-facts-list').innerHTML = b.facts.map(f => `<div class="fact">${f}</div>`).join('');
+
+  // Three.js 초기화/재초기화
+  if (renderer3d) {
+    renderer3d.dispose();
+    container.innerHTML = '<div id="info-panel"></div>';
+    // 정보 패널 다시 채우기
+    document.getElementById('panel-name').textContent = b.name;
+  } else {
+    container.innerHTML = '<div id="info-panel"></div>';
+  }
+
+  const W = container.clientWidth - 260;
+  const H = container.clientHeight || 480;
+
+  scene3d = new THREE.Scene();
+  scene3d.background = new THREE.Color(0x060818);
+
+  camera3d = new THREE.PerspectiveCamera(60, W/H, 0.1, 10000);
+  camera3d.position.z = 3;
+
+  renderer3d = new THREE.WebGLRenderer({ antialias: true });
+  renderer3d.setSize(W, H);
+  renderer3d.setPixelRatio(window.devicePixelRatio);
+  container.insertBefore(renderer3d.domElement, container.firstChild);
+
+  // 조명
+  const ambient = new THREE.AmbientLight(0xffffff, 0.4);
+  scene3d.add(ambient);
+  const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+  dirLight.position.set(5, 3, 5);
+  scene3d.add(dirLight);
+  const backLight = new THREE.DirectionalLight(0x4488ff, 0.3);
+  backLight.position.set(-5, -3, -5);
+  scene3d.add(backLight);
+
+  // 별 배경
+  const starGeo = new THREE.BufferGeometry();
+  const starVerts = [];
+  for(let i=0;i<2000;i++) {
+    starVerts.push((Math.random()-0.5)*200, (Math.random()-0.5)*200, (Math.random()-0.5)*200);
+  }
+  starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starVerts, 3));
+  const starMat = new THREE.PointsMaterial({color:0xffffff, size:0.15});
+  scene3d.add(new THREE.Points(starGeo, starMat));
+
+  // 천체 구
+  const geo = new THREE.SphereGeometry(1, 64, 64);
+  const col = new THREE.Color(b.color);
+
+  // 자체 발광 (별인 경우)
+  const isStar = b.type === 'star';
+  const mat = new THREE.MeshPhongMaterial({
+    color: col,
+    shininess: isStar ? 5 : 40,
+    emissive: isStar ? col : new THREE.Color(0x000000),
+    emissiveIntensity: isStar ? 0.3 : 0,
+    specular: new THREE.Color(0x333333),
+  });
+  mesh3d = new THREE.Mesh(geo, mat);
+  scene3d.add(mesh3d);
+
+  // 토성 링 (토성일 때만)
+  if (key === 'saturn') {
+    const ringGeo = new THREE.RingGeometry(1.5, 2.4, 64);
+    const ringMat = new THREE.MeshBasicMaterial({
+      color: 0xc8a96a, side: THREE.DoubleSide, transparent: true, opacity: 0.6
+    });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.rotation.x = Math.PI / 2.5;
+    scene3d.add(ring);
+  }
+
+  // 이벤트
+  renderer3d.domElement.addEventListener('mousedown', e => { mouseDown3d=true; lastMX=e.clientX; lastMY=e.clientY; });
+  renderer3d.domElement.addEventListener('mousemove', e => {
+    if (!mouseDown3d) return;
+    mesh3d.rotation.y += (e.clientX - lastMX) * 0.01;
+    mesh3d.rotation.x += (e.clientY - lastMY) * 0.01;
+    lastMX = e.clientX; lastMY = e.clientY;
+  });
+  window.addEventListener('mouseup', () => mouseDown3d = false);
+  renderer3d.domElement.addEventListener('wheel', e => {
+    e.preventDefault();
+    camera3d.position.z *= e.deltaY > 0 ? 1.1 : 0.9;
+    camera3d.position.z = Math.max(1.2, Math.min(10, camera3d.position.z));
+  });
+
+  // 터치 이벤트
+  let lastTouchX = 0, lastTouchY = 0;
+  renderer3d.domElement.addEventListener('touchstart', e => { lastTouchX=e.touches[0].clientX; lastTouchY=e.touches[0].clientY; });
+  renderer3d.domElement.addEventListener('touchmove', e => {
+    e.preventDefault();
+    mesh3d.rotation.y += (e.touches[0].clientX - lastTouchX) * 0.01;
+    mesh3d.rotation.x += (e.touches[0].clientY - lastTouchY) * 0.01;
+    lastTouchX=e.touches[0].clientX; lastTouchY=e.touches[0].clientY;
+  }, {passive:false});
+
+  animate3D();
+
+  // 정보패널 다시 채우기 (innerHTML 초기화 후)
+  document.getElementById('panel-name').textContent = b.name;
+  document.getElementById('panel-type').innerHTML = `<span class="badge badge-cyan">${b.type}</span>`;
+  document.getElementById('panel-props').innerHTML = `
+    <table style="font-size:12px">
+      <tr><td style="color:var(--muted);padding:4px 0">반지름</td><td style="font-family:'Space Mono',monospace;color:var(--cyan);text-align:right">${b.r.toLocaleString()} km</td></tr>
+      <tr><td style="color:var(--muted);padding:4px 0">질량</td><td style="font-family:'Space Mono',monospace;color:var(--purple);text-align:right">${b.mass.toExponential(2)} kg</td></tr>
+      <tr><td style="color:var(--muted);padding:4px 0">밀도</td><td style="font-family:'Space Mono',monospace;color:var(--gold);text-align:right">${b.density} g/cm³</td></tr>
+      <tr><td style="color:var(--muted);padding:4px 0">온도</td><td style="font-family:'Space Mono',monospace;color:var(--red);text-align:right">${b.temp} K</td></tr>
+      <tr><td style="color:var(--muted);padding:4px 0">구성</td><td style="font-size:11px;color:var(--text);text-align:right">${b.comp}</td></tr>
+    </table>`;
+  document.getElementById('panel-facts-list').innerHTML = b.facts.map(f => `<div class="fact">${f}</div>`).join('');
+}
+
+let animating3d = false;
+function animate3D() {
+  animating3d = true;
+  const loop = () => {
+    if (!document.getElementById('tab-view3d').classList.contains('active')) { animating3d=false; return; }
+    requestAnimationFrame(loop);
+    if (autoRotate3d && mesh3d) mesh3d.rotation.y += 0.005;
+    if (renderer3d && scene3d && camera3d) renderer3d.render(scene3d, camera3d);
+  };
+  requestAnimationFrame(loop);
+}
+
+function toggleAutoRot() {
+  autoRotate3d = !autoRotate3d;
+  const btn = document.getElementById('auto-rot-btn');
+  btn.textContent = autoRotate3d ? '⟳ 자동회전 ON' : '⟳ 자동회전 OFF';
+  btn.className = autoRotate3d ? 'btn active' : 'btn';
+}
+
+// ===================== INIT =====================
+populateSelects();
+updateSizeView();
+loadScenario('solar');
+requestAnimationFrame(simLoop);
+convert();
+
+// 초기 탭 버튼 상태
+document.getElementById('trail-btn').className = 'btn active';
+document.getElementById('label-btn').className = 'btn active';
+</script>
+</body>
+</html>
