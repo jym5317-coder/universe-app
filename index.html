@@ -90,6 +90,87 @@
   th { text-align:left; padding:8px 10px; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.8px; border-bottom:1px solid var(--border); }
   td { padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.04); }
   #collision-log { max-height:120px; overflow:auto; }
+  /* CATALOG TAB */
+  .cat-group { margin-bottom:18px; }
+  .cat-header { display:flex; align-items:center; gap:8px; padding:8px 12px; background:var(--bg3); border-radius:8px; cursor:pointer; font-size:13px; font-weight:600; color:var(--text); border:1px solid var(--border); user-select:none; transition:all .2s; }
+  .cat-header:hover { border-color:var(--cyan); color:var(--cyan); }
+  .cat-header .cat-count { margin-left:auto; font-size:11px; color:var(--muted); font-family:'Space Mono',monospace; }
+  .cat-header .cat-arrow { font-size:10px; color:var(--muted); transition:transform .2s; }
+  .cat-header.open .cat-arrow { transform:rotate(90deg); }
+  .cat-body { display:none; padding:6px 0 0 0; }
+  .cat-body.open { display:block; }
+  .cat-item { display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:8px; cursor:pointer; transition:all .2s; margin-bottom:3px; border:1px solid transparent; }
+  .cat-item:hover { background:rgba(255,255,255,.04); border-color:var(--border); }
+  .cat-item.selected { background:rgba(0,229,255,.08); border-color:rgba(0,229,255,.3); }
+  .cat-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+  .cat-item-name { font-size:13px; flex:1; }
+  .cat-item-sub { font-size:11px; color:var(--muted); }
+  #catalog-search { width:100%; background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:9px 14px; font-size:13px; color:var(--text); font-family:'Exo 2',sans-serif; margin-bottom:14px; }
+  #catalog-search:focus { outline:none; border-color:var(--cyan); }
+  .moon-badge { display:inline-block; padding:4px 10px; border-radius:12px; font-size:11px; cursor:pointer; border:1px solid rgba(255,255,255,.1); background:var(--bg3); color:var(--muted); transition:all .2s; margin:3px; }
+  .moon-badge:hover { border-color:var(--cyan); color:var(--cyan); }
+  .detail-hero { display:flex; align-items:center; gap:16px; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid var(--border); }
+  .cat-nebula .cat-header { border-color:rgba(255,150,80,.3); }
+  .cat-nebula .cat-header:hover,.cat-nebula .cat-header.open { color:#ff9050; border-color:#ff9050; }
+  .cat-cluster .cat-header { border-color:rgba(128,192,255,.3); }
+  .cat-cluster .cat-header:hover,.cat-cluster .cat-header.open { color:#80c0ff; border-color:#80c0ff; }
+  .cat-galaxy .cat-header { border-color:rgba(200,200,255,.3); }
+  .cat-galaxy .cat-header:hover,.cat-galaxy .cat-header.open { color:#c0c0ff; border-color:#c0c0ff; }
+  .cat-cosmicstructure .cat-header { border-color:rgba(96,160,192,.3); }
+  .cat-cosmicstructure .cat-header:hover,.cat-cosmicstructure .cat-header.open { color:#60a0c0; border-color:#60a0c0; }
+  .cat-exoplanet .cat-header { border-color:rgba(48,192,96,.3); }
+  .cat-exoplanet .cat-header:hover,.cat-exoplanet .cat-header.open { color:#30c060; border-color:#30c060; }
+  /* PHYSICS TAB */
+  .particle-card { background:var(--bg3); border-radius:8px; padding:12px; border:1px solid var(--border); cursor:pointer; transition:all .2s; }
+  .particle-card:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,.4); }
+  .p-symbol { font-size:22px; font-weight:700; font-family:'Space Mono',monospace; margin-bottom:4px; }
+  .p-name { font-size:12px; font-weight:600; margin-bottom:3px; }
+  .p-mass { font-size:11px; color:var(--muted); font-family:'Space Mono',monospace; }
+  .p-desc { font-size:11px; color:var(--muted); margin-top:4px; line-height:1.4; }
+  .p-gen { font-size:9px; padding:1px 5px; border-radius:3px; display:inline-block; margin-bottom:4px; }
+  .evidence-item { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.05); }
+  .evidence-icon { font-size:22px; flex-shrink:0; width:32px; text-align:center; }
+  .dm-candidate { background:var(--bg3); border-radius:10px; padding:14px; border:1px solid var(--border); }
+  .dm-candidate-name { font-size:14px; font-weight:700; margin-bottom:6px; }
+  .dm-prob { display:inline-block; padding:2px 8px; border-radius:8px; font-size:10px; font-family:'Space Mono',monospace; margin-bottom:8px; }
+  .de-theory { background:var(--bg3); border-radius:10px; padding:16px; border-left:3px solid; margin-bottom:12px; }
+  .fate-card { background:var(--bg3); border-radius:12px; padding:18px; margin-bottom:12px; border:1px solid var(--border); position:relative; overflow:hidden; }
+  .fate-title { font-size:16px; font-weight:700; margin-bottom:8px; }
+  .fate-timeline { font-size:11px; font-family:'Space Mono',monospace; padding:3px 8px; border-radius:4px; display:inline-block; margin-bottom:10px; }
+  .timeline-bar { height:4px; border-radius:2px; margin:8px 0; background:linear-gradient(to right, var(--cyan), var(--purple)); }
+  .force-card { background:var(--bg3); border-radius:8px; padding:12px; border:1px solid var(--border); }
+  .force-name { font-size:13px; font-weight:700; margin-bottom:6px; }
+  .force-carrier { font-size:11px; color:var(--muted); margin-bottom:4px; }
+  .force-range { font-size:11px; font-family:'Space Mono',monospace; }
+  /* TIMELINE */
+  .tl-wrap { position:relative; padding-left:28px; }
+  .tl-wrap::before { content:''; position:absolute; left:10px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--cyan),var(--purple),#ef4444); }
+  .tl-item { position:relative; margin-bottom:6px; }
+  .tl-dot { position:absolute; left:-23px; top:14px; width:12px; height:12px; border-radius:50%; border:2px solid; flex-shrink:0; }
+  .tl-card { border-radius:10px; padding:14px; border:1px solid var(--border); background:var(--bg2); cursor:pointer; transition:all .2s; }
+  .tl-card:hover { border-color:var(--cyan); background:rgba(0,229,255,.04); }
+  .tl-card.expanded { border-color:var(--cyan); }
+  .tl-era { font-size:11px; font-family:'Space Mono',monospace; margin-bottom:4px; }
+  .tl-title { font-size:14px; font-weight:700; margin-bottom:4px; }
+  .tl-detail { font-size:12px; color:var(--muted); line-height:1.6; display:none; margin-top:8px; padding-top:8px; border-top:1px solid var(--border); }
+  .tl-card.expanded .tl-detail { display:block; }
+  /* BLACKHOLE */
+  .bh-hero { background:radial-gradient(circle at 30% 50%, #1a0a2e 0%, #060818 60%); border-radius:12px; padding:24px; margin-bottom:16px; position:relative; overflow:hidden; border:1px solid rgba(168,85,247,.3); }
+  .bh-visual { width:100px; height:100px; border-radius:50%; background:radial-gradient(circle,#000 0%,#000 40%,#3d1a6e 55%,#ff6600 65%,#ffaa00 72%,transparent 80%); position:relative; flex-shrink:0; box-shadow:0 0 40px rgba(255,100,0,.4); }
+  .bh-ring { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotateX(75deg); width:160px; height:160px; border-radius:50%; border:3px solid #ff8800; opacity:.6; box-shadow:0 0 20px #ff8800; }
+  .bh-type-card { background:var(--bg3); border-radius:10px; padding:14px; border:1px solid var(--border); transition:all .2s; cursor:pointer; }
+  .bh-type-card:hover { border-color:var(--purple); transform:translateY(-2px); }
+  .bh-mass { font-size:11px; font-family:'Space Mono',monospace; color:var(--gold); }
+  .bh-section { margin-bottom:16px; }
+  .concept-card { background:var(--bg3); border-radius:10px; padding:14px; border-left:3px solid; margin-bottom:10px; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  /* PHOTO VIEWER */
+  #photo-container { cursor:zoom-in; }
+  #photo-container.fullscreen-mode { position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;border-radius:0;cursor:zoom-out; }
+  #photo-container.fullscreen-mode #celestial-photo { max-height:100vh; }
+  #photo-container.fullscreen-mode #fullscreen-btn { top:20px;right:20px; }
+  #photo-container.fullscreen-mode #photo-credit { bottom:20px;right:20px; }
+  .esc-hint { position:fixed;top:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);color:#fff;padding:8px 16px;border-radius:8px;font-size:13px;z-index:10000;pointer-events:none; }
 </style>
 </head>
 <body>
@@ -113,6 +194,18 @@
   <button class="nav-btn" onclick="showTab('view3d')" id="nav-view3d">
     <span class="nav-icon">◈</span> 3D 뷰
   </button>
+  <button class="nav-btn" onclick="showTab('catalog')" id="nav-catalog">
+    <span class="nav-icon">☰</span> 천체 목록
+  </button>
+  <button class="nav-btn" onclick="showTab('physics')" id="nav-physics">
+    <span class="nav-icon">⚛</span> 입자·암흑우주
+  </button>
+  <button class="nav-btn" onclick="showTab('timeline')" id="nav-timeline">
+    <span class="nav-icon">⏳</span> 우주 역사
+  </button>
+  <button class="nav-btn" onclick="showTab('blackhole')" id="nav-blackhole">
+    <span class="nav-icon">⚫</span> 블랙홀
+  </button>
 </div>
 
 <!-- MAIN CONTENT -->
@@ -133,6 +226,7 @@
     </select>
   </div>
 
+  <div style="margin-bottom:12px"><span class="lbl">비교 대상: </span><select id="body-compare-select" onchange="updateSizeView()" style="width:180px"><option value="earth">지구 (기본)</option></select></div>
   <div id="size-visual">
     <div id="circle-selected" class="body-circle"></div>
     <div id="circle-earth" class="body-circle"></div>
@@ -206,7 +300,8 @@
     <button class="btn" id="sc-collision" onclick="loadScenario('collision',this)">충돌 실험</button>
   </div>
 
-  <canvas id="sim-canvas" width="860" height="440" style="width:100%;max-width:860px"></canvas>
+  <div style="font-size:11px;color:var(--muted);margin-bottom:6px;text-align:right">💡 더블클릭으로 새 천체 추가</div>
+  <canvas id="sim-canvas" width="860" height="440" style="width:100%;max-width:860px" ondblclick="addBodyAtClick(event)" title="더블클릭으로 새 천체 추가"></canvas>
 
   <div class="grid2" style="margin-top:14px">
     <div class="card">
@@ -306,27 +401,400 @@
   </div>
 </div>
 
-<!-- ===== TAB: 3D VIEW ===== -->
+<!-- ===== TAB: 3D VIEW (실제 사진) ===== -->
 <div class="tab" id="tab-view3d">
-  <h2>◈ 3D 천체 뷰</h2>
-  <div class="row" style="margin-bottom:14px">
-    <span class="lbl">천체:</span>
-    <select id="body3d-select" onchange="load3DBody()" style="width:180px"></select>
-    <button class="btn" id="auto-rot-btn" onclick="toggleAutoRot()">⟳ 자동회전 ON</button>
-    <span class="lbl" style="margin-left:10px;font-size:12px">마우스 드래그: 회전 | 휠: 줌</span>
+  <h2>◈ 천체 실제 사진</h2>
+  <div class="row" style="margin-bottom:14px;flex-wrap:wrap;gap:10px">
+    <span class="lbl">천체 선택:</span>
+    <select id="body3d-select" onchange="loadPhotoBody()" style="width:200px"></select>
+    <input id="photo-search" placeholder="🔍 검색..." style="width:160px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:7px 12px;font-size:13px;color:var(--text)" oninput="filterPhotoSelect(this.value)">
   </div>
-  <div style="position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
-    <div id="view3d-container"></div>
-    <div id="info-panel">
-      <div id="panel-name" style="font-size:16px;font-weight:700;color:var(--cyan);margin-bottom:12px;font-family:'Space Mono',monospace"></div>
-      <div id="panel-type" style="margin-bottom:14px"></div>
+
+  <!-- 메인 뷰 -->
+  <div style="display:grid;grid-template-columns:1fr 300px;gap:16px;height:calc(100vh - 160px)">
+
+    <!-- 사진 영역 -->
+    <div style="position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#000;display:flex;align-items:center;justify-content:center;min-height:400px" id="photo-container">
+      <div id="photo-loading" style="color:var(--muted);font-size:14px;text-align:center">
+        <div style="font-size:48px;margin-bottom:12px">🌌</div>
+        천체를 선택하면 실제 사진을 볼 수 있습니다
+      </div>
+      <img id="celestial-photo" src="" alt="" style="display:none;max-width:100%;max-height:100%;object-fit:contain;border-radius:8px" onerror="handlePhotoError()" onload="handlePhotoLoad()">
+      <!-- 사진 크레딧 -->
+      <div id="photo-credit" style="display:none;position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,.7);padding:4px 10px;border-radius:6px;font-size:11px;color:rgba(255,255,255,.7);font-family:'Space Mono',monospace"></div>
+      <!-- 전체화면 버튼 -->
+      <button id="fullscreen-btn" onclick="toggleFullscreen()" style="display:none;position:absolute;top:12px;right:12px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:12px">⛶ 전체화면</button>
+      <!-- 로딩 스피너 -->
+      <div id="photo-spinner" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">
+        <div style="width:40px;height:40px;border:3px solid rgba(0,229,255,.3);border-top-color:var(--cyan);border-radius:50%;animation:spin 1s linear infinite"></div>
+      </div>
+    </div>
+
+    <!-- 정보 패널 -->
+    <div id="info-panel" style="overflow:auto;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px">
+      <div id="panel-name" style="font-size:16px;font-weight:700;color:var(--cyan);margin-bottom:8px;font-family:'Space Mono',monospace">천체를 선택하세요</div>
+      <div id="panel-type" style="margin-bottom:12px"></div>
       <div id="panel-props"></div>
-      <div id="panel-facts" style="margin-top:14px">
+      <div style="margin-top:12px">
         <div class="card-title" style="margin-bottom:8px">사실</div>
         <div id="panel-facts-list"></div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- ===== TAB: CATALOG ===== -->
+<div class="tab" id="tab-catalog">
+  <h2>☰ 천체 목록</h2>
+  <div style="display:grid;grid-template-columns:320px 1fr;gap:16px;height:calc(100vh - 100px)">
+
+    <!-- 왼쪽: 목록 -->
+    <div style="overflow:auto;padding-right:4px">
+      <input id="catalog-search" placeholder="🔍  천체 이름 검색..." oninput="filterCatalog(this.value)">
+
+      <!-- 검색 결과 -->
+      <div id="catalog-search-results" style="display:none;margin-bottom:12px"></div>
+
+      <!-- 카테고리 그룹들 -->
+      <div id="catalog-groups"></div>
+    </div>
+
+    <!-- 오른쪽: 상세 정보 -->
+    <div id="catalog-detail" style="overflow:auto">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--muted);text-align:center">
+        <div style="font-size:48px;margin-bottom:16px">🌌</div>
+        <div style="font-size:16px;margin-bottom:8px">천체를 선택하세요</div>
+        <div style="font-size:13px">왼쪽 목록에서 천체를 클릭하면<br>상세 정보를 볼 수 있습니다</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== TAB: PHYSICS ===== -->
+<div class="tab" id="tab-physics">
+  <h2>⚛ 입자물리 & 암흑우주</h2>
+
+  <!-- 서브탭 -->
+  <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
+    <button class="btn active" id="phys-btn-standard" onclick="showPhysTab('standard',this)">⚛ 표준모형</button>
+    <button class="btn" id="phys-btn-darkmatter" onclick="showPhysTab('darkmatter',this)">🌑 암흑물질</button>
+    <button class="btn" id="phys-btn-darkenergy" onclick="showPhysTab('darkenergy',this)">💨 암흑에너지</button>
+    <button class="btn" id="phys-btn-fate" onclick="showPhysTab('fate',this)">🔮 우주의 운명</button>
+    <button class="btn" id="phys-btn-debate" onclick="showPhysTab('debate',this)">🔬 우주론 논쟁</button>
+  </div>
+
+  <!-- 표준모형 -->
+  <div id="phys-standard">
+    <div class="card" style="margin-bottom:16px;border-color:rgba(0,229,255,.4)">
+      <div style="font-size:15px;font-weight:700;color:var(--cyan);margin-bottom:8px">표준모형 (Standard Model)</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">
+        우주를 구성하는 기본 입자와 힘을 설명하는 이론. 1970년대 완성되어 현재까지 실험으로 검증된 가장 정밀한 물리 이론.
+        물질 입자(페르미온)와 힘을 전달하는 입자(보손)로 구성됨.
+      </div>
+    </div>
+
+    <!-- 쿼크 -->
+    <div style="margin-bottom:16px">
+      <div class="card-title" style="margin-bottom:10px;font-size:13px">🔴 쿼크 (Quarks) — 6종 · 강한 핵력을 받는 기본 입자</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px" id="quark-grid"></div>
+    </div>
+
+    <!-- 렙톤 -->
+    <div style="margin-bottom:16px">
+      <div class="card-title" style="margin-bottom:10px;font-size:13px">🟢 렙톤 (Leptons) — 6종 · 강한 핵력을 받지 않는 기본 입자</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px" id="lepton-grid"></div>
+    </div>
+
+    <!-- 보손 -->
+    <div style="margin-bottom:16px">
+      <div class="card-title" style="margin-bottom:10px;font-size:13px">🔵 게이지 보손 (Gauge Bosons) — 힘을 전달하는 입자</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px" id="boson-grid"></div>
+    </div>
+
+    <!-- 힉스 -->
+    <div style="margin-bottom:16px">
+      <div class="card-title" style="margin-bottom:10px;font-size:13px">⭐ 힉스 보손 — 질량의 기원</div>
+      <div id="higgs-grid"></div>
+    </div>
+
+    <!-- 4가지 기본 힘 -->
+    <div class="card" style="border-color:rgba(168,85,247,.4)">
+      <div style="font-size:14px;font-weight:700;color:var(--purple);margin-bottom:12px">⚡ 자연의 4가지 기본 힘</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" id="forces-grid"></div>
+    </div>
+  </div>
+
+  <!-- 암흑물질 -->
+  <div id="phys-darkmatter" style="display:none">
+    <div class="card" style="margin-bottom:16px;border-color:rgba(100,100,200,.4)">
+      <div style="font-size:15px;font-weight:700;color:#8080ff;margin-bottom:8px">암흑물질 (Dark Matter)</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px">
+        빛을 내지도, 반사하지도 않아 직접 관측이 불가능하지만 중력 효과로 존재가 확인된 물질.
+        우주 전체 질량-에너지의 <span style="color:var(--cyan);font-weight:700">약 27%</span>를 차지.
+        일반 물질(바리온)은 고작 <span style="color:var(--gold);font-weight:700">5%</span>에 불과.
+      </div>
+      <!-- 우주 구성 파이차트 (CSS) -->
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+        <div style="position:relative;width:120px;height:120px;flex-shrink:0">
+          <svg viewBox="0 0 36 36" style="width:120px;height:120px;transform:rotate(-90deg)">
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#1a1f3a" stroke-width="3.5"/>
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#3060c0" stroke-width="3.5"
+              stroke-dasharray="68 32" stroke-dashoffset="0"/>
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#6040a0" stroke-width="3.5"
+              stroke-dasharray="27 73" stroke-dashoffset="-68"/>
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#00e5ff" stroke-width="3.5"
+              stroke-dasharray="5 95" stroke-dashoffset="-95"/>
+          </svg>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-size:9px;color:var(--muted)">우주<br>구성</div>
+        </div>
+        <div style="display:grid;gap:6px">
+          <div style="display:flex;align-items:center;gap:8px"><div style="width:12px;height:12px;background:#3060c0;border-radius:2px"></div><span style="font-size:13px">암흑에너지 <b style="color:#3060c0">68%</b></span></div>
+          <div style="display:flex;align-items:center;gap:8px"><div style="width:12px;height:12px;background:#6040a0;border-radius:2px"></div><span style="font-size:13px">암흑물질 <b style="color:#a080ff">27%</b></span></div>
+          <div style="display:flex;align-items:center;gap:8px"><div style="width:12px;height:12px;background:#00e5ff;border-radius:2px"></div><span style="font-size:13px">일반물질 <b style="color:var(--cyan)">5%</b></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 존재 증거 -->
+    <div class="card" style="margin-bottom:16px;border-color:rgba(100,100,200,.3)">
+      <div style="font-size:14px;font-weight:700;color:#a080ff;margin-bottom:12px">🔬 암흑물질 존재 증거</div>
+      <div id="dm-evidence"></div>
+    </div>
+
+    <!-- 후보 입자 -->
+    <div>
+      <div class="card-title" style="margin-bottom:10px;font-size:13px">🔍 암흑물질 후보 입자</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" id="dm-candidates"></div>
+    </div>
+  </div>
+
+  <!-- 암흑에너지 -->
+  <div id="phys-darkenergy" style="display:none">
+    <div class="card" style="margin-bottom:16px;border-color:rgba(48,96,200,.4)">
+      <div style="font-size:15px;font-weight:700;color:#6090ff;margin-bottom:8px">암흑에너지 (Dark Energy)</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">
+        우주의 가속 팽창을 일으키는 정체불명의 에너지. 우주 전체 에너지의
+        <span style="color:#6090ff;font-weight:700">약 68%</span>를 차지하지만 그 본질은 아직 미스터리.
+        중력과 반대로 작용하는 척력(반발력)을 가짐.
+      </div>
+    </div>
+    <div id="de-content"></div>
+  </div>
+
+  <!-- 우주론 논쟁 -->
+  <div id="phys-debate" style="display:none">
+
+    <!-- 헤더 -->
+    <div class="card" style="margin-bottom:16px;border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.04)">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+        <span style="font-size:28px">🔬</span>
+        <div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">현대 우주론의 균열</div>
+          <div style="font-size:12px;color:var(--muted)">표준 우주론 ΛCDM에 도전하는 최신 논쟁들</div>
+        </div>
+      </div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">
+        2011년 노벨 물리학상을 받은 암흑에너지 발견의 핵심 근거인 Ia형 초신성 표준촛불 이론부터,
+        허블 상수 불일치, 제임스 웹 망원경의 충격적 발견까지 — 현재 우주론이 직면한 가장 뜨거운 논쟁들을 정리합니다.
+      </div>
+    </div>
+
+    <!-- 논쟁 목록 서브탭 -->
+    <div style="display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap">
+      <button class="btn active" id="deb-btn-candle" onclick="showDebateTab('candle',this)" style="font-size:12px;padding:6px 12px">🕯 표준촛불 논쟁</button>
+      <button class="btn" id="deb-btn-hubble" onclick="showDebateTab('hubble',this)" style="font-size:12px;padding:6px 12px">📏 허블 텐션</button>
+      <button class="btn" id="deb-btn-jwst" onclick="showDebateTab('jwst',this)" style="font-size:12px;padding:6px 12px">🔭 JWST 충격</button>
+      <button class="btn" id="deb-btn-isotropy" onclick="showDebateTab('isotropy',this)" style="font-size:12px;padding:6px 12px">🌐 우주 등방성</button>
+    </div>
+
+    <!-- 표준촛불 논쟁 -->
+    <div id="deb-candle">
+
+      <!-- 이영욱 교수 프로필 -->
+      <div class="card" style="margin-bottom:14px;border-color:rgba(0,229,255,.4);background:rgba(0,229,255,.03)">
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#00e5ff,#a855f7);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0">👨‍🔬</div>
+          <div>
+            <div style="font-size:16px;font-weight:700;margin-bottom:3px">이영욱 교수</div>
+            <div style="font-size:12px;color:var(--cyan);margin-bottom:6px">연세대학교 천문우주학과 · 항성 진화 및 우주론 전문가</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6">
+              국제천문연맹(IAU) 위원회 위원장 역임. 항성 종족(Stellar Population) 연구 세계 최고 권위자 중 한 명.
+              허블 우주망원경 관측 시간을 다수 배정받은 세계적 천문학자.
+              2020년부터 Ia형 초신성의 표준촛불 신뢰성에 대한 논문을 연속 발표하며 학계에 큰 파장을 일으킴.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 기존 이론 설명 -->
+      <div class="card" style="margin-bottom:14px;border-color:rgba(96,160,255,.3)">
+        <div style="font-size:14px;font-weight:700;color:#6090ff;margin-bottom:10px">📚 기존 이론: Ia형 초신성 = 완벽한 표준촛불</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          <div style="background:var(--bg3);border-radius:8px;padding:12px">
+            <div style="font-size:12px;font-weight:600;color:var(--cyan);margin-bottom:6px">표준촛불이란?</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6">절대 밝기(광도)를 알고 있는 천체. 멀리 있을수록 어둡게 보이는 원리를 이용해 거리를 정밀 측정하는 기준 천체.</div>
+          </div>
+          <div style="background:var(--bg3);border-radius:8px;padding:12px">
+            <div style="font-size:12px;font-weight:600;color:var(--cyan);margin-bottom:6px">Ia형 초신성이 표준촛불인 이유</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6">백색왜성이 동반성에서 물질을 흡수해 찬드라세카르 한계(태양질량 1.4배)에서 폭발 → 항상 같은 밝기로 폭발한다고 가정.</div>
+          </div>
+        </div>
+        <div style="background:rgba(96,160,255,.08);border-radius:8px;padding:12px;border-left:3px solid #6090ff">
+          <div style="font-size:12px;font-weight:600;color:#6090ff;margin-bottom:6px">1998년 노벨상 수상 발견</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6">
+            솔 펄머터, 브라이언 슈밋, 애덤 리스 팀이 Ia형 초신성 관측 결과,
+            먼 은하의 초신성이 예상보다 <span style="color:#ff8080">약 25% 어둡게</span> 보임을 발견.
+            결론: 우주 팽창이 <span style="color:#ff8080">가속</span>되고 있다 → 암흑에너지 존재 제안 → 2011년 노벨 물리학상.
+          </div>
+        </div>
+      </div>
+
+      <!-- 이영욱 교수 주장 핵심 -->
+      <div class="card" style="margin-bottom:14px;border-color:rgba(251,191,36,.5);background:rgba(251,191,36,.04)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <span style="font-size:18px">⚡</span>
+          <div style="font-size:14px;font-weight:700;color:var(--gold)">이영욱 교수의 핵심 주장 (2020~2024)</div>
+        </div>
+
+        <!-- 주장 1 -->
+        <div style="background:rgba(251,191,36,.08);border-radius:10px;padding:14px;margin-bottom:10px;border:1px solid rgba(251,191,36,.2)">
+          <div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:8px">주장 ① 초신성 밝기는 별의 나이에 따라 다르다</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:8px">
+            Ia형 초신성이 <span style="color:#fff">젊은 항성 종족(Young Population)</span>에서 폭발할 때와
+            <span style="color:#fff">늙은 항성 종족(Old Population)</span>에서 폭발할 때 밝기가 다름을
+            허블 우주망원경 관측 데이터로 확인.
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div style="background:rgba(255,100,100,.1);border-radius:6px;padding:8px;border:1px solid rgba(255,100,100,.2)">
+              <div style="font-size:11px;font-weight:600;color:#ff8080;margin-bottom:4px">늙은 별에서 나온 Ia형 초신성</div>
+              <div style="font-size:11px;color:var(--muted)">더 어둡게 보임 → 더 먼 거리로 오해</div>
+            </div>
+            <div style="background:rgba(100,200,100,.1);border-radius:6px;padding:8px;border:1px solid rgba(100,200,100,.2)">
+              <div style="font-size:11px;font-weight:600;color:#80ff80;margin-bottom:4px">젊은 별에서 나온 Ia형 초신성</div>
+              <div style="font-size:11px;color:var(--muted)">더 밝게 보임 → 더 가까운 거리로 측정</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 주장 2 -->
+        <div style="background:rgba(251,191,36,.08);border-radius:10px;padding:14px;margin-bottom:10px;border:1px solid rgba(251,191,36,.2)">
+          <div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:8px">주장 ② 먼 은하일수록 늙은 별이 더 많다</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7">
+            우주론적으로 먼 은하(과거 우주)와 가까운 은하(현재 우주)는
+            항성 종족 구성이 다름. 먼 은하에는 상대적으로 늙은 별이 더 많음.
+            이 차이를 보정하지 않으면 <span style="color:#ffd700">체계적 오류(Systematic Bias)</span>가 발생.
+          </div>
+        </div>
+
+        <!-- 주장 3 핵심 -->
+        <div style="background:rgba(255,80,80,.08);border-radius:10px;padding:14px;border:1px solid rgba(255,80,80,.25)">
+          <div style="font-size:13px;font-weight:700;color:#ff8060;margin-bottom:8px">주장 ③ 핵심 결론: 암흑에너지 증거가 재검토되어야 한다</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:10px">
+            1998년 관측에서 먼 초신성이 어둡게 보인 것이 우주 가속 팽창 때문이 아니라,
+            먼 은하의 늙은 별 환경에서 나온 초신성이 본질적으로 더 어둡기 때문일 수 있음.
+            즉, <span style="color:#ff8060;font-weight:600">암흑에너지의 주요 관측 증거 자체가 체계적 오류를 포함할 수 있다</span>는 주장.
+          </div>
+          <div style="background:rgba(255,80,80,.12);border-radius:6px;padding:10px;border-left:3px solid #ff8060">
+            <div style="font-size:12px;color:#ffaaaa;line-height:1.6">
+              "우주 가속 팽창의 증거로 사용된 Ia형 초신성 데이터는 항성 종족 효과(Stellar Population Effect)를
+              제대로 보정하지 않았다. 이를 보정하면 우주 가속 팽창의 통계적 유의미성이 크게 줄어든다."
+              <div style="margin-top:6px;font-style:italic;color:var(--muted)">— 이영욱 외, The Astrophysical Journal Letters, 2020~2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 관련 논문 타임라인 -->
+      <div class="card" style="margin-bottom:14px;border-color:rgba(168,85,247,.3)">
+        <div style="font-size:14px;font-weight:700;color:var(--purple);margin-bottom:12px">📄 이영욱 교수팀 주요 논문 타임라인</div>
+        <div id="paper-timeline"></div>
+      </div>
+
+      <!-- 학계 반응 -->
+      <div class="card" style="margin-bottom:14px;border-color:rgba(16,185,129,.3)">
+        <div style="font-size:14px;font-weight:700;color:var(--green);margin-bottom:12px">🌍 학계 반응 및 반론</div>
+        <div id="counter-arguments"></div>
+      </div>
+
+      <!-- 현재 상황 -->
+      <div class="card" style="border-color:rgba(0,229,255,.3)">
+        <div style="font-size:14px;font-weight:700;color:var(--cyan);margin-bottom:12px">📊 현재 상황 및 의의</div>
+        <div id="current-status"></div>
+      </div>
+
+    </div>
+
+    <!-- 허블 텐션 -->
+    <div id="deb-hubble" style="display:none"></div>
+
+    <!-- JWST 충격 -->
+    <div id="deb-jwst" style="display:none"></div>
+
+    <!-- 우주 등방성 -->
+    <div id="deb-isotropy" style="display:none"></div>
+
+  </div>
+
+  <!-- 우주의 운명 -->
+  <div id="phys-fate" style="display:none">
+    <div class="card" style="margin-bottom:16px;border-color:rgba(255,100,60,.4)">
+      <div style="font-size:15px;font-weight:700;color:#ff8060;margin-bottom:8px">🔮 우주의 운명</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">
+        암흑에너지의 성질에 따라 우주의 최후가 결정됨. 현재 관측으로는 우주가 영원히 팽창을 계속할 가능성이 높음.
+      </div>
+    </div>
+    <div id="fate-content"></div>
+  </div>
+</div>
+
+<!-- ===== TAB: TIMELINE ===== -->
+<div class="tab" id="tab-timeline">
+  <h2>⏳ 우주 역사 타임라인</h2>
+  <div class="card" style="margin-bottom:16px;border-color:rgba(0,229,255,.3)">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+      <div style="font-size:13px;color:var(--muted)">빅뱅부터 현재, 그리고 미래까지 — 클릭하면 상세 내용을 볼 수 있습니다</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap" id="tl-filter"></div>
+    </div>
+  </div>
+  <div class="tl-wrap" id="tl-container"></div>
+</div>
+
+<!-- ===== TAB: BLACKHOLE ===== -->
+<div class="tab" id="tab-blackhole">
+  <h2>⚫ 블랙홀</h2>
+
+  <!-- 히어로 -->
+  <div class="bh-hero">
+    <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+      <div style="position:relative;width:120px;height:120px;flex-shrink:0">
+        <div class="bh-visual"></div>
+        <div class="bh-ring"></div>
+      </div>
+      <div>
+        <div style="font-size:20px;font-weight:700;margin-bottom:8px">블랙홀 (Black Hole)</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7;max-width:500px">
+          중력이 너무 강해 빛조차 탈출할 수 없는 시공간의 영역.
+          일반상대성이론이 예측하고, 2019년 사건 지평선 망원경(EHT)이 사진을 촬영해 직접 확인한 우주의 가장 극단적인 천체.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 서브탭 -->
+  <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+    <button class="btn active" id="bh-btn-types" onclick="showBHTab('types',this)">📊 종류</button>
+    <button class="btn" id="bh-btn-concepts" onclick="showBHTab('concepts',this)">🧠 핵심 개념</button>
+    <button class="btn" id="bh-btn-realworld" onclick="showBHTab('realworld',this)">🔭 실제 블랙홀</button>
+    <button class="btn" id="bh-btn-gravity" onclick="showBHTab('gravity',this)">🌊 중력파</button>
+    <button class="btn" id="bh-btn-exotic" onclick="showBHTab('exotic',this)">✨ 특수 천체</button>
+  </div>
+
+  <div id="bh-types"></div>
+  <div id="bh-concepts" style="display:none"></div>
+  <div id="bh-realworld" style="display:none"></div>
+  <div id="bh-gravity" style="display:none"></div>
+  <div id="bh-exotic" style="display:none"></div>
 </div>
 
 </div><!-- /main -->
@@ -352,11 +820,279 @@ const BODIES = {
 const UNIT_SCALES = { m:1, km:1e3, au:1.496e11, ly:9.461e12, pc:3.086e13 };
 const UNIT_LABELS = { m:'m', km:'km', au:'AU', ly:'ly', pc:'pc' };
 
+// ===================== 확장 천체 카탈로그 데이터 =====================
+const CATALOG = {
+  // ── 항성 ──
+  star: {
+    label:'☀️ 항성', icon:'☀️',
+    items:[
+      { key:'sun', name:'태양', sub:'G형 주계열성', color:'#FDB813', r:696000, mass:1.989e30, density:1.41, temp:5778, dist:0, comp:'수소 73%, 헬륨 25%', moons:[], ring:false,
+        facts:['태양계 질량의 99.86% 차지','표면 온도 5,778 K (코로나는 100만 K)','매초 6억 톤의 수소가 헬륨으로 핵융합','지름은 지구의 109배, 부피는 130만 배','약 46억 년 전 성운에서 형성','태양풍: 초속 400~800km의 입자 방출','흑점: 강한 자기장으로 생기는 어두운 영역','홍염: 수천 km 솟아오르는 플라즈마 기둥','태양 플레어: 강력한 방사선 폭발 현상','약 50억 년 후 적색거성 → 백색왜성으로 진화'] },
+    ]
+  },
+  // ── 행성 ──
+  planet: {
+    label:'🪐 행성', icon:'🪐',
+    items:[
+      { key:'mercury', name:'수성', sub:'내행성', color:'#8C7853', r:2440, mass:3.301e23, density:5.43, temp:430, dist:57.9e6, comp:'암석, 철핵', ring:false, moons:[],
+        facts:['태양에서 가장 가까운 행성 (0.387 AU)','태양계에서 가장 작은 행성 (달보다 약간 큼)','표면 온도 -173°C ~ 427°C 극단적 변화','대기가 거의 없어 열 보존 불가','공전 주기 87.97일, 자전 주기 58.6일 (3:2 공명)','태양 중력으로 세차운동이 매우 큼','표면은 달처럼 크레이터로 뒤덮임','칼로리스 분지: 지름 1,550km의 거대 충돌 구덩이','내부는 거대한 철 핵이 전체 부피의 85%','메신저 탐사선이 2004~2015년 탐사'] },
+      { key:'venus', name:'금성', sub:'내행성', color:'#FFC649', r:6052, mass:4.867e24, density:5.24, temp:735, dist:108.2e6, comp:'CO₂ 96.5%, N₂ 3.5%', ring:false, moons:[],
+        facts:['밤하늘에서 달 다음으로 가장 밝은 천체','표면 온도 462°C — 수성보다 더 뜨거움','극심한 온실효과로 열이 빠져나가지 못함','시계 반대 방향으로 자전 (역자전)','자전 주기 243일 > 공전 주기 225일 (하루가 1년보다 길다)','대기압이 지구의 92배 (수심 900m 수압)','황산 구름이 행성 전체를 뒤덮음','마아트 몬스: 활화산 가능성 있는 8km 높이 화산','마젤란 탐사선이 레이더로 지형 전체 지도화','수십만 개의 화산이 표면 전체에 분포'] },
+      { key:'earth', name:'지구', sub:'내행성', color:'#4A90E2', r:6371, mass:5.972e24, density:5.51, temp:288, dist:149.6e6, comp:'N₂ 78%, O₂ 21%, Ar 0.9%', ring:false,
+        moons:[
+          { name:'달', color:'#C0C0C0', r:1737, dist:384400, facts:['지구의 유일한 자연위성','인류가 유일하게 발을 디딘 외계 천체 (아폴로 11호, 1969)','조석력으로 지구 자전 속도를 조금씩 늦춤','약 45억 년 전 화성 크기 천체 충돌로 형성 (대충돌 가설)','항상 같은 면이 지구를 향하는 동주기 자전','달의 중력이 지구 자전축 기울기를 안정시킴','표면 온도 -173°C ~ 127°C','달 표면에 물 얼음이 극지방 분화구에 존재 확인','아폴로 임무로 382kg의 월석 채취','미래 달 기지 및 화성 탐사 중간 기지로 주목'] }
+        ],
+        facts:['생명이 존재하는 유일하게 확인된 행성','표면의 71%가 물로 덮인 유일한 행성','강한 자기장이 태양풍과 방사선으로부터 생명 보호','판구조론이 활발히 작동 — 대륙이 이동 중','오존층이 자외선 차단','대기권 5개 층: 대류권, 성층권, 중간권, 열권, 외기권','지구 내부: 지각 → 맨틀 → 외핵(액체) → 내핵(고체)','달의 인력으로 조석 현상 발생','생물다양성: 870만 종 이상 생물 서식','적도 반지름 6,378km, 극반지름 6,357km (약간 납작한 구)'] },
+      { key:'mars', name:'화성', sub:'외행성', color:'#E27B58', r:3390, mass:6.417e23, density:3.93, temp:210, dist:227.9e6, comp:'CO₂ 95.3%, N₂ 2.7%, Ar 1.6%', ring:false,
+        moons:[
+          { name:'포보스', color:'#9a8070', r:11, dist:9376, facts:['화성 표면에서 불과 6,000km 상공 공전','태양계에서 가장 낮은 궤도의 위성','공전 주기 7.7시간 — 화성 자전보다 빠름','약 5천만 년 후 화성 중력에 의해 분열 또는 충돌','감자 모양의 불규칙 천체 (27×22×18 km)','스티크니 크레이터: 포보스 반지름의 절반 크기','표면이 먼지와 잔해로 덮임','화성에서 보면 서쪽에서 떠서 동쪽으로 짐','포획된 소행성으로 추정','마르스 익스프레스가 근접 촬영'] },
+          { name:'데이모스', color:'#b09080', r:6, dist:23460, facts:['포보스보다 훨씬 작고 멀리 있음 (23,460km)','공전 주기 30.3시간','표면이 먼지로 덮여 포보스보다 매끄러움','탈출 속도가 매우 낮아 점프로 탈출 가능','11×12×8 km 크기의 불규칙 천체','2개의 주요 크레이터: 스위프트, 볼테르','화성 하늘에서 별처럼 보임','소행성에서 포획된 것으로 추정','2008년 마르스 리코네상스 오비터 촬영','미래 화성 탐사의 중간 기지 후보'] }
+        ],
+        facts:['올림푸스 몬스: 태양계 최고봉 (21.9km, 에베레스트의 2.5배)','발레스 마리네리스: 길이 4,000km, 깊이 7km의 거대 협곡','물이 흘렀던 명확한 지형 증거 (강바닥, 삼각주)','붉은 색은 표면의 산화철(적철광) 때문','대기압은 지구의 0.6%에 불과 (0.6 kPa)','모래폭풍이 행성 전체를 뒤덮는 전구적 폭풍 발생','지하 빙하와 극지방 드라이아이스 존재','퍼서비어런스 로버가 산소 생성 실험 성공 (MOXIE)','인지뉴이티 헬리콥터: 최초의 다른 행성 동력 비행','2030년대 유인 탐사 목표'] },
+      { key:'jupiter', name:'목성', sub:'가스 거인', color:'#C88B3A', r:69911, mass:1.898e27, density:1.33, temp:165, dist:778.5e6, comp:'수소 89%, 헬륨 10%, 메탄·암모니아 1%', ring:true,
+        moons:[
+          { name:'이오', color:'#e8c840', r:1822, dist:421600, facts:['태양계에서 화산 활동이 가장 활발한 천체','400개 이상의 활화산 — 항상 어딘가서 분출 중','유황과 이산화황으로 덮인 노란색 표면','목성의 강한 조석력으로 내부가 마찰열로 가열','용암 호수와 용암 분수가 수백 km 높이 분출','표면 온도 -143°C (평균) ~ 1,600°C (용암 근처)','갈릴레이 갈릴레오가 1610년 발견한 갈릴레이 위성','갈릴레오 탐사선이 근접 비행 수십 회','화산 라우오키가 200km 높이 분출','대기: 이산화황, 클로린 가스'] },
+          { name:'유로파', color:'#c8d8e8', r:1561, dist:670900, facts:['표면 전체가 두꺼운 얼음 껍질로 뒤덮임 (10~30km)','얼음 아래 깊이 100km의 거대한 액체 바다 존재','지구 전체 바다의 2배 이상의 물 보유량','조석 가열로 액체 바다 유지','표면에 붉은 줄무늬 — 소금물이 얼면서 생긴 균열','생명체 존재 가능성이 가장 높은 천체 중 하나','NASA 유로파 클리퍼 탐사선 2024년 발사','마그네슘 황산염과 염분이 바다에 녹아 있을 것','약한 산소 대기층 보유','목성의 방사선 환경이 표면 생명 가능성을 낮춤'] },
+          { name:'가니메데', color:'#a0a8b0', r:2634, dist:1070400, facts:['태양계에서 가장 큰 위성 — 수성보다 더 큼','지름 5,268km (수성 4,880km보다 크다)','태양계 위성 중 유일하게 자체 자기장 보유','표면은 어두운 고대 지형과 밝은 홈 지형으로 나뉨','얼음과 암석이 50:50으로 혼합된 구조','내부에 액체 바다가 존재할 가능성','ESA 주스 탐사선이 2034년 가니메데 궤도 진입 예정','허블 우주망원경이 자기장 오로라 관측','갈릴레오가 1610년 발견','명왕성보다 훨씬 크다'] },
+          { name:'칼리스토', color:'#706860', r:2410, dist:1882700, facts:['태양계에서 크레이터 밀도가 가장 높은 천체','약 40억 년간 지질 활동이 거의 없었음','발할라 분지: 지름 3,800km의 거대 충돌 구조','목성의 방사선 벨트 바깥을 돌아 방사선 피폭 적음','미래 목성계 탐사 기지 후보','얼음과 암석 혼합, 내부 구조가 분화되지 않음','묽은 이산화탄소 대기 보유','표면 아래 액체 바다 존재 가능성','갈릴레오 탐사선이 8회 근접 비행','지름 4,820km — 태양계 세 번째로 큰 위성'] },
+          { name:'아말테아', color:'#c04020', r:83, dist:181365, facts:['목성의 다섯 번째 위성 (갈릴레이 위성 안쪽)','불규칙한 감자 모양 (250×146×128 km)','태양계에서 가장 붉은 천체 중 하나','목성 고리의 일부 물질을 공급','표면 온도가 예상보다 높음 — 내부 열원 존재 가능','아말테아 고시머 링 형성에 기여','1892년 에드워드 바너드 발견 — 마지막 육안 발견 위성','목성에 매우 가깝게 공전 (목성 표면에서 112,000km)','보이저 1호가 1979년 촬영','나사의 갈릴레오 탐사선이 상세 관측'] },
+          { name:'히말리아', color:'#806050', r:69, dist:11480000, facts:['목성의 불규칙 위성 중 가장 큼','지름 약 138km','1904년 찰스 퍼린이 발견','목성에서 약 1,148만 km 거리','히말리아 그룹의 대표 위성','공전 주기 약 251일','기원: 소행성 포획으로 추정','표면 조성: C형 소행성과 유사','매우 어두운 표면 (반사율 0.04)','뉴호라이즌스가 2007년 목성 통과 시 촬영'] },
+        ],
+        facts:['태양계에서 가장 큰 행성 — 나머지 모든 행성을 합친 것보다 2.5배 무거움','지름 142,984km — 지구의 11배, 태양의 1/10','대적반: 적어도 350년 이상 지속 중인 거대 폭풍 (최근 축소 중)','79개 이상의 알려진 위성 보유','목성의 하루는 9시간 56분 — 태양계에서 가장 빠른 자전','강력한 자기장: 지구의 14배 (태양 다음으로 강함)','목성이 없었다면 소행성이 지구에 더 많이 충돌했을 것 (방패 역할)','파이오니어 10호, 보이저, 갈릴레오, 주노 탐사선 방문','주노 탐사선이 현재 목성 궤도 탐사 중 (2016~)','내부에 수소가 금속 상태로 존재 (금속 수소) — 자기장의 원천'] },
+      { key:'saturn', name:'토성', sub:'가스 거인', color:'#F4D79F', r:58232, mass:5.683e26, density:0.69, temp:134, dist:1434e6, comp:'수소 96%, 헬륨 3%, 메탄 0.4%', ring:true,
+        moons:[
+          { name:'타이탄', color:'#e8a840', r:2575, dist:1221900, facts:['태양계에서 두 번째로 큰 위성 (가니메데 다음)','두꺼운 질소 대기 보유 — 지구 대기압의 1.5배','액체 메탄과 에탄 호수가 북극 지역에 존재','크라켄 마레: 타이탄 최대 메탄 호수 (카스피해 크기)','탄화수소 비가 내리는 메탄 순환 시스템','ESA 하위헌스 탐사선 2005년 착륙 — 최초 외행성계 위성 착륙','표면 온도 -179°C','NASA 드래곤플라이 탐사선 2028년 발사 예정','생명의 기원 연구에 중요한 화학 반응 관측','유기 분자가 대기에 가득 — 원시 지구와 유사한 환경'] },
+          { name:'엔켈라두스', color:'#f0f0ff', r:252, dist:238100, facts:['표면 전체가 신선한 눈과 얼음으로 덮인 태양계 최고 반사율 천체','남극에서 시속 1,400km로 수증기 간헐천 분출','간헐천 물질이 토성의 E 고리를 형성','지하에 거대한 액체 바다 존재 확인 (카시니 탐사)','분출 물질에 수소, 유기물, 실리카 입자 발견','열수 분출공 존재 가능성 — 생명체 가능 환경','지름 500km의 작은 천체임에도 강한 지질 활동','카시니 탐사선이 간헐천을 직접 통과하며 샘플 채취','내부 조석 가열로 액체 바다 유지','생명체 존재 가능성 탑 5 천체 중 하나'] },
+          { name:'미마스', color:'#c8c8c0', r:198, dist:185500, facts:['허셜 크레이터: 지름 139km — 미마스 반지름의 1/3','허셜 크레이터의 모습이 영화 스타워즈 데스 스타와 흡사','충돌로 거의 부서질 뻔한 흔적','표면이 충돌 크레이터로 가득 찬 고대 지형','내부가 의외로 균일하지 않아 내부 바다 가능성 제기','토성의 B 링에서 키르크우드 간격 형성 (궤도 공명)','지름 396km의 작은 얼음 천체','토성 위성 중 가장 안쪽에 위치한 주요 위성','1789년 윌리엄 허셜 발견','보이저 1호가 1980년 근접 촬영'] },
+          { name:'레아', color:'#d0c8b8', r:764, dist:527100, facts:['토성에서 두 번째로 큰 위성','표면이 크레이터가 많은 고대 얼음 지형','묽은 산소와 이산화탄소 대기 보유','먼지 링이 있을 가능성 — 최초 위성 고리 후보','카시니 탐사선이 5회 근접 비행','지름 1,528km','70% 얼음 30% 암석으로 구성','티리아와 이다 크레이터가 대표적','표면 온도 -174°C','1672년 카시니가 발견'] },
+          { name:'이아페투스', color:'#a09070', r:736, dist:3561300, facts:['앞면은 칠흑처럼 검고 뒷면은 눈처럼 흰 극단적 이색 지형','검은 면: 카시니 레지오 (반사율 0.03~0.05)','흰 면: 론세보 테라 (반사율 0.5~0.6)','적도를 따라 20km 높이의 산맥이 존재 — 기원 미스터리','토성에서 가장 멀리 있는 주요 위성 (356만 km)','공전 주기 79.3일','1671년 조반니 카시니 발견','검은 부분은 다른 위성 물질이 충돌로 퇴적된 것으로 추정','동주기 자전으로 한쪽 면만 앞을 향함','지름 1,470km'] },
+          { name:'디오네', color:'#d8d0c8', r:561, dist:377400, facts:['표면에 밝은 선 무늬 — 얼음 절벽','지형: 크레이터, 협곡, 얼음 절벽 혼재','묽은 산소 대기 존재','카시니 탐사선이 5회 근접 비행','지름 1,122km','65% 얼음 35% 암석','1684년 카시니 발견','리네아: 밝은 선 지형의 명칭','트로이 궤도에 헬레네와 폴리데우세스 공유','내부 바다 가능성 연구 중'] },
+          { name:'테티스', color:'#e0e0e8', r:531, dist:294700, facts:['이타카 협곡: 지름의 3/4을 감싸는 거대 협곡','오디세우스 크레이터: 지름 450km (테티스의 2/5)','거의 순수한 얼음으로 구성 (반사율 80%)','표면 밀도가 매우 낮음 — 내부가 거의 얼음','1684년 카시니 발견','지름 1,062km','텔레스토, 칼립소가 트로이 궤도 공유','카시니 탐사선이 4회 근접 비행','표면 온도 -187°C','토성의 E 링 외부에 위치'] },
+          { name:'히페리온', color:'#c0a070', r:135, dist:1481100, facts:['태양계에서 가장 불규칙한 자전을 하는 천체','스펀지나 해면처럼 생긴 독특한 구멍 표면','카오스적 자전: 방향과 속도가 무작위로 변함','충돌로 산산조각 난 더 큰 천체의 잔해로 추정','360×280×226 km의 불규칙한 형태','밀도가 매우 낮아 내부가 비어있을 가능성 (0.54 g/cm³)','카시니 탐사선이 2005년 근접 촬영','표면의 크레이터 안에 붉은 유기물 퇴적','타이탄과 4:3 궤도 공명','1848년 발견'] },
+        ],
+        facts:['아름다운 고리 시스템으로 태양계 최고 명물','고리는 수천 개의 얇은 링으로 구성 (두께 10~100m, 폭 7만 km)','고리 물질: 물 얼음 93%, 암석·먼지 7%','물보다 밀도가 낮아 물에 넣으면 뜸 (밀도 0.69 g/cm³)','82개 이상의 확인된 위성 — 태양계 최다','하루가 10시간 33분 — 빠른 자전으로 적도가 불룩','고리는 약 1억 년 전 형성, 먼 미래엔 사라질 것','카시니 탐사선이 2004~2017년 13년간 탐사','카시니가 2017년 토성 대기로 의도적 추락 (오염 방지)','적도 지름 120,536km — 지구의 9.5배'] },
+      { key:'uranus', name:'천왕성', sub:'얼음 거인', color:'#4FD0E7', r:25559, mass:8.681e25, density:1.27, temp:76, dist:2873e6, comp:'수소 83%, 헬륨 15%, 메탄 2.3%', ring:true,
+        moons:[
+          { name:'미란다', color:'#c0b8a0', r:236, dist:129900, facts:['태양계에서 가장 험준한 지형 중 하나','베로나 루페스: 높이 20km의 수직 절벽 — 태양계 최고 절벽','체스보드처럼 다양한 지형이 뒤섞인 혼란스러운 표면','충돌, 내부 활동, 재결합 등 복잡한 역사를 가진 것으로 추정','지름 472km의 작은 위성','보이저 2호가 1986년 유일하게 근접 촬영','표면 온도 -187°C','5개 천왕성 주요 위성 중 가장 안쪽에 위치','알론소, 오버론 등 셰익스피어 작품에서 이름 유래','태양계에서 가장 기괴한 지형을 가진 천체 중 하나'] },
+          { name:'아리엘', color:'#c8d0c0', r:579, dist:190900, facts:['천왕성 위성 중 표면이 가장 밝고 젊음','협곡과 계곡이 풍부한 지형','균열과 단층 지형 발달','지질 활동이 최근까지 있었던 흔적','지름 1,158km','68% 얼음 32% 암석','1851년 라셀 발견','보이저 2호가 1986년 촬영','표면 온도 -213°C','물 얼음, 이산화탄소, 암모니아 얼음 혼합'] },
+          { name:'움브리엘', color:'#706870', r:585, dist:266000, facts:['천왕성 주요 위성 중 가장 어두운 표면','대부분이 고대 크레이터로 덮인 어두운 지형','우나 크레이터의 밝은 테두리가 미스터리','탄소질 물질로 덮인 것으로 추정','지름 1,170km','1851년 라셀 발견','보이저 2호가 1986년 촬영','표면 온도 -209°C','50% 얼음 50% 암석','이름은 알렉산더 포프의 시에서 유래'] },
+          { name:'티타니아', color:'#b8b0a0', r:789, dist:436300, facts:['천왕성의 가장 큰 위성','메시나 협곡: 길이 1,500km의 거대한 균열 지형','충돌 크레이터와 단층 지형 혼재','얼음과 암석의 혼합 구성','지름 1,578km — 태양계 8번째로 큰 위성','1787년 윌리엄 허셜 발견','보이저 2호가 1986년 촬영','표면 온도 -203°C','물 얼음, 이산화탄소, 암석 혼합','미래 탐사 우선 목표 위성'] },
+          { name:'오베론', color:'#a09888', r:761, dist:583500, facts:['천왕성의 두 번째로 큰 위성','어두운 크레이터 바닥 — 탄소질 물질 퇴적','모이드레드 크레이터 중앙에 산 존재','지름 1,522km','1787년 윌리엄 허셜 발견 (티타니아와 같은 날)','보이저 2호가 1986년 촬영','50% 얼음 50% 암석','표면 온도 -198°C','이름은 셰익스피어 한여름밤의 꿈에서 유래','천왕성에서 가장 멀리 있는 주요 위성'] },
+        ],
+        facts:['자전축이 98°기울어져 사실상 옆으로 굴러가며 공전','메탄 가스가 적색광을 흡수해 청록색으로 보임','태양계에서 가장 차가운 행성 (최저 -224°C)','내부는 물, 메탄, 암모니아 얼음으로 된 거대한 슬러시 구조','희미한 고리 13개 보유 (비교적 최근 발견)','27개의 알려진 위성 — 모두 셰익스피어 및 포프 작품에서 이름 유래','보이저 2호만 유일하게 방문 (1986년)','태양을 한 바퀴 도는 데 84년 소요','태양에서 19.2 AU 거리','내부 열 방출이 거의 없는 특이한 행성'] },
+      { key:'neptune', name:'해왕성', sub:'얼음 거인', color:'#4165F4', r:24764, mass:1.024e26, density:1.64, temp:72, dist:4495e6, comp:'수소 80%, 헬륨 19%, 메탄 1.5%', ring:true,
+        moons:[
+          { name:'트리톤', color:'#c0e0d0', r:1353, dist:354760, facts:['역행 궤도: 행성 자전 반대 방향으로 공전 — 포획된 천체 증거','카이퍼 벨트 천체에서 포획된 것으로 강력히 추정','질소 간헐천이 표면에서 8km 높이까지 분출','표면 온도 -235°C — 태양계에서 가장 차가운 곳 중 하나','표면: 질소 얼음, 일산화탄소, 이산화탄소, 메탄 얼음 혼합','약 36억 년 후 해왕성 조석력으로 분열 또는 충돌 예정','해왕성 발견 후 17일 만에 윌리엄 라셀 발견 (1846)','보이저 2호가 1989년 유일하게 근접 촬영','지름 2,706km — 태양계 7번째로 큰 위성','멜론 껍질 지형: 얼어붙은 용암 흐름과 같은 지형'] },
+          { name:'네레이드', color:'#8090a0', r:170, dist:5513400, facts:['태양계에서 가장 이심률이 큰 위성 궤도 (0.75)','최소 거리 137만 km ~ 최대 거리 970만 km로 변동','공전 주기 360일 (지구의 1년과 비슷)','밝기가 크게 변해 표면 구성이 불균일함을 시사','1949년 헤라드 카이퍼 발견 (트리톤 이후 두 번째)','불규칙한 궤도: 트리톤이 포획될 때 교란된 것으로 추정','지름 약 340km','보이저 2호가 1989년 멀리서만 촬영','표면: 회색빛 암석질','카이퍼 벨트 천체와 비슷한 특성'] },
+          { name:'프로테우스', color:'#707880', r:210, dist:117647, facts:['해왕성의 두 번째로 큰 위성 (트리톤 다음)','1989년 보이저 2호가 발견 — 지구 망원경으로 관측 불가능','불규칙한 다각형 형태','파로스 크레이터: 지름 255km — 거의 프로테우스 크기','매우 어두운 표면 (반사율 0.096)','해왕성에서 117,647 km 거리','공전 주기 26.9시간','내부 구조는 거의 알려지지 않음','표면 온도 -220°C','지름 420km'] },
+        ],
+        facts:['태양계에서 가장 멀리 있는 행성 (30.07 AU)','초속 600m(시속 2,160km)의 강력한 바람 — 태양계 최강 바람','메탄이 붉은 빛을 흡수해 선명한 파란색','태양을 한 바퀴 도는 데 164.8년 소요 — 발견 후 아직 두 바퀴도 못 돌았다','대흑점: 목성 대적반과 유사한 거대 폭풍 (현재는 소멸)','14개의 알려진 위성','보이저 2호만 유일하게 방문 (1989년)','수학적 계산으로 위치 예측 후 발견한 첫 번째 행성 (1846)','내부 열을 태양 에너지의 2.6배나 방출 — 내부 열원 존재','지름 49,528km — 지구의 3.9배'] },
+    ]
+  },
+  // ── 왜행성 ──
+  dwarf: {
+    label:'⚫ 왜행성', icon:'⚫',
+    items:[
+      { key:'pluto', name:'명왕성', sub:'카이퍼 벨트', color:'#c8a880', r:1188, mass:1.303e22, density:1.87, temp:44, dist:5906e6, comp:'질소 얼음 98%, 메탄, CO', ring:false,
+        moons:[
+          { name:'카론', color:'#909090', r:606, dist:19600, facts:['명왕성 반지름의 51% — 상대적으로 태양계 최대 크기 위성','두 천체가 공통 무게중심을 기준으로 서로 공전하는 이중왜행성','명왕성과 항상 같은 면을 보임 (쌍방 동주기)','표면이 물 얼음으로 덮임 (명왕성과 다른 조성)','북극의 모르도르 마쿨라: 붉은 유기물 침전 지역','뉴허라이즌스가 2015년 고해상도 촬영','지름 1,212km','명왕성~카론 거리 19,600km — 달~지구의 1/20','공전 주기 6.4일','1978년 제임스 크리스티 발견'] }
+        ],
+        facts:['1930년 발견 후 76년간 행성, 2006년 왜행성으로 재분류','하트 모양 톰보 지역(Tombaugh Regio)이 유명 — 질소 빙하','표면: 질소 얼음 평원, 산악 지형, 크레이터 혼재','스푸트니크 평원: 800×1,300km의 거대한 질소 빙하 평원','힐러리 몬테스: 높이 3,500m의 얼음 산맥','표면 온도 -233°C ~ -223°C','희박한 질소 대기 — 근일점엔 두꺼워지고 원일점엔 얼어붙음','5개의 위성: 카론, 스틱스, 닉스, 케르베로스, 히드라','뉴허라이즌스 탐사선 2015년 7월 근접 비행 성공','궤도가 해왕성 궤도와 교차 — 248년 공전 주기'] },
+      { key:'eris', name:'에리스', sub:'산란 원반', color:'#d8d0c0', r:1163, mass:1.66e22, density:2.52, temp:30, dist:10166e6, comp:'메탄 얼음, 질소 얼음, 암석', ring:false,
+        moons:[{ name:'디스노미아', color:'#808080', r:350, dist:37370, facts:['에리스의 유일한 알려진 위성','에리스보다 훨씬 어두운 표면 (반사율 차이 큼)','공전 주기 약 15.8일','2005년 허블 우주망원경으로 발견','발견 당시 별명 가브리엘','지름 약 700km (불확실)','에리스의 질량 측정에 활용','표면 조성 불명확','궤도 이심률 0.013 (거의 원형)','이름: 그리스 신화 불화의 여신 에리스의 딸'] }],
+        facts:['명왕성 재분류의 직접적인 원인 천체','발견 당시 10번째 행성으로 불릴 뻔 했음','명왕성보다 약간 작지만 질량은 27% 더 무거움','태양에서 38.3 ~ 97.7 AU 범위의 긴 타원 궤도','표면이 메탄 얼음으로 덮여 매우 밝음 (반사율 96%)','태양계에서 가장 먼 알려진 왜행성','발견자 마이클 브라운이 명왕성 학살자(Pluto Killer)로 불림','559년 공전 주기','표면 온도 -243°C ~ -217°C','1개의 위성 디스노미아 보유'] },
+      { key:'ceres', name:'세레스', sub:'소행성대', color:'#a8a090', r:473, mass:9.393e20, density:2.16, temp:167, dist:413.7e6, comp:'암석, 얼음, 탄소질', ring:false, moons:[],
+        facts:['소행성대에서 유일한 왜행성 (소행성대 질량의 약 1/3)','1801년 피아치 발견 — 처음엔 행성으로 분류','오케이터 크레이터의 밝은 점 — 소금 침전물 (탄산나트륨)','여러 크레이터에 얼음 화산(크리오화산) 활동 흔적','표면 아래 액체 소금물 저수지 존재 가능성','NASA 새벽(Dawn) 탐사선 2015~2018년 궤도 탐사','아후나 몬스: 높이 4km의 얼음 화산','표면 온도 -106°C ~ 4°C (적도 낮)','자전 주기 9.07시간','미래 우주 정거장 자원 공급 기지 후보'] },
+      { key:'makemake', name:'마케마케', sub:'카이퍼 벨트', color:'#d09060', r:715, mass:3.1e21, density:1.7, temp:32, dist:6850e6, comp:'메탄 얼음, 에탄, 질소 얼음', ring:false,
+        moons:[{ name:'MK2', color:'#404040', r:87, dist:21000, facts:['2016년 허블 우주망원경으로 발견','매우 어두운 표면 (반사율 4% — 마케마케의 77%와 대조적)','공전 주기 약 12.4일 (추정)','정식 이름 미정 (현재 MK2로 호칭)','크기 추정 불확실 (직경 100~300km)','매우 어두운 이유: 위성이 얼음 없이 암석만으로 구성?','궤도 이심률 불명확','발견 당시 마케마케의 예상 질량 수정에 기여','탐사선 방문 계획 없음','마케마케 연구에 중요한 자료'] }],
+        facts:['이스터 섬(라파누이) 신화의 창조 신 이름에서 유래','2005년 부활절에 발견되어 처음엔 부활절 토끼로 불림','표면에 메탄·에탄 얼음이 풍부 (명왕성과 유사)','태양계에서 두 번째로 밝은 카이퍼 벨트 천체','309년의 공전 주기','대기가 거의 없거나 매우 희박','표면 온도 약 -243°C','아직 탐사선이 방문하지 않은 가장 큰 왜행성 중 하나','1개의 위성 MK2 보유','지름 1,430km (명왕성의 약 2/3)'] },
+      { key:'haumea', name:'하우메아', sub:'카이퍼 벨트', color:'#e8d0b0', r:816, mass:4.006e21, density:2.6, temp:32, dist:6484e6, comp:'순수 암석, 물 얼음', ring:false,
+        moons:[
+          { name:'히이아카', color:'#b0b0b0', r:160, dist:49500, facts:['하우메아의 큰 위성','하와이 신화 하우메아의 딸 이름','공전 주기 49.12일','얼음 표면 (물 얼음)','2005년 동시 발견','지름 320km','이심률이 낮은 거의 원형 궤도','하우메아의 자전 충돌 기원 증거','스펙트럼: 순수 물 얼음 특성','탐사선 방문 없음'] },
+          { name:'나마카', color:'#909090', r:85, dist:25700, facts:['하우메아의 작은 위성','하와이 신화 하우메아의 딸 이름','공전 주기 18.28일','타원형 궤도 (이심률 0.25)','2005년 발견','지름 약 170km','히이아카보다 하우메아에 훨씬 가깝게 공전','스펙트럼: 물 얼음 특성','하우메아와 궤도 공명 가능성','미래 연구 필요'] }
+        ],
+        facts:['럭비공(타원체)처럼 찌그러진 독특한 형태 — 자전 원심력 때문','태양계에서 가장 빠른 자전: 3.9시간 (자전으로 인해 형태 변형)','얇은 고리 보유 (2017년 발견) — 카이퍼 벨트 천체 최초 고리','순수 암석 핵에 물 얼음 껍질로 구성','2개의 위성 보유: 히이아카, 나마카','284년의 공전 주기','표면 온도 약 -241°C','하와이 창조 여신 이름','2005년 캘리포니아공대 팀 발견','충돌로 분리된 위성들이 같은 궤도 평면 공유'] },
+    ]
+  },
+  // ── 소행성 ──
+  asteroid: {
+    label:'🪨 소행성', icon:'🪨',
+    items:[
+      { key:'vesta', name:'베스타', sub:'소행성대', color:'#c0b090', r:262, mass:2.59e20, density:3.46, temp:188, dist:353.4e6, comp:'현무암, 규산염, 철-니켈', ring:false, moons:[],
+        facts:['소행성대에서 두 번째로 큰 천체 (지름 525km)','NASA 새벽 탐사선이 2011~2012년 탐사','레아실비아 분지: 지름 505km, 깊이 19km의 거대 충돌 구덩이','레아실비아 중앙 산: 높이 22km — 태양계에서 가장 높은 산 후보','분화된 내부 구조: 철-니켈 핵, 맨틀, 지각','HED 운석: 지구에서 발견되는 운석의 5%가 베스타 출신','자전 주기 5.34시간','표면 온도 -80°C ~ -20°C','밝기가 변해 가끔 육안으로도 볼 수 있음','소행성대 내 베스타족 소행성 그룹의 근원'] },
+      { key:'pallas', name:'팔라스', sub:'소행성대', color:'#a09880', r:256, mass:2.04e20, density:2.89, temp:164, dist:414.7e6, comp:'규산염, 탄소, 수화 광물', ring:false, moons:[],
+        facts:['소행성대에서 세 번째로 큰 천체 (지름 511km)','1802년 3월 28일 하인리히 올베르스 발견 — 두 번째 발견 소행성','황도면에서 34.8° 기울어진 독특한 궤도','B형 소행성 — 원시적 탄소질 조성','표면에 수화 광물 존재 가능성','탐사선 방문 없음 — 기울어진 궤도로 접근 비용 높음','표면이 다양한 크레이터로 덮임','자전 주기 7.81시간','태양계 초기 물질을 보존한 원시적 천체','2017년 허블이 고해상도 이미지 촬영'] },
+      { key:'itokawa', name:'이토카와', sub:'근지구 소행성', color:'#b0a080', r:0.268, mass:3.51e10, density:1.9, temp:200, dist:273.1e6, comp:'콘드라이트 암석, 자갈', ring:false, moons:[],
+        facts:['JAXA 하야부사 탐사선이 2005년 착륙 및 시료 채취','땅콩 모양: 두 개의 천체가 합쳐진 접촉 이중체','내부가 암석 파편으로 채워진 잡석더미 구조 (rubble pile)','표면 자갈과 먼지가 의외로 적고 바위가 많음','일본 로켓 과학자 이토카와 히데오 이름 유래','크기: 535×294×209 m','하야부사가 2010년 미량의 시료를 지구로 귀환 성공','아폴로군 소행성 — 지구 궤도와 교차','자전 주기 12.1시간','태양계 형성 초기 물질 연구에 중요한 자료 제공'] },
+      { key:'ryugu', name:'류구', sub:'근지구 소행성', color:'#404040', r:0.448, mass:4.5e11, density:1.19, temp:300, dist:340e6, comp:'탄소질 콘드라이트, 유기물, 물', ring:false, moons:[],
+        facts:['JAXA 하야부사2 탐사선이 2018~2019년 탐사 및 시료 채취','팽이 모양 — 고속 자전 후 적도 부분이 부풀어 오름','탄소질 콘드라이트 조성 — 태양계 초기 원시 물질 보존','아미노산, 유기물 풍부 발견 — 생명 기원 연구에 중요','물과 유기물이 결합된 수화 광물 발견','내부가 빈 공간이 많은 잡석더미 구조 (공극률 50%)','크기: 약 900m × 900m × 800m','하야부사2가 인공 크레이터 생성 실험 성공','2020년 5.4g 시료 지구 귀환 성공 — 역대 최대 소행성 시료','류구는 일본어로 용궁'] },
+      { key:'bennu', name:'베누', sub:'근지구 소행성', color:'#504030', r:0.245, mass:7.33e10, density:1.19, temp:350, dist:317.8e6, comp:'탄소질, 유기물, 수화 광물', ring:false, moons:[],
+        facts:['NASA OSIRIS-REx 탐사선이 2018~2021년 탐사','팽이 모양 — 류구와 유사한 자전 변형','2135년 9월 25일 지구 근접 통과 예정 (충돌 가능성 0.057%)','탄소질 소행성 — 태양계 초기 물질 풍부','표면에 예상보다 훨씬 많은 큰 바위들이 돌출','착륙 순간 표면이 유체처럼 반응 — 잡석더미 구조 확인','2023년 60g 시료 지구 귀환 성공','야르코프스키 효과로 궤도가 서서히 변화 중','이집트 신화 피닉스 새 베누에서 이름 유래','OSIRIS-APEX가 소행성 아포피스로 임무 변경 중'] },
+      { key:'apophis', name:'아포피스', sub:'근지구 소행성', color:'#806040', r:0.17, mass:2.7e10, density:1.29, temp:350, dist:363e6, comp:'S형 암석질 소행성', ring:false, moons:[],
+        facts:['2029년 4월 13일 지구에서 31,000km 이내 근접 통과 예정','2029년 접근 시 육안으로 볼 수 있는 드문 기회','2004년 발견 당시 2029년, 2036년 충돌 가능성 경보','이집트 혼돈의 신 아포피스에서 이름 유래','크기: 약 340×250 m','S형 암석질 소행성','2029년 접근 때 조석 변형이 일어날 것으로 예상','여러 탐사선이 2029년 접근 관측 계획','지구 중력으로 궤도 변경될 예정','OSIRIS-APEX가 2029년 아포피스 탐사 계획'] },
+    ]
+  },
+  // ── 혜성 ──
+  comet: {
+    label:'☄️ 혜성', icon:'☄️',
+    items:[
+      { key:'halley', name:'핼리 혜성', sub:'단주기 혜성', color:'#90c0e0', r:5.5, mass:2.2e14, density:0.6, temp:170, dist:2667.7e6, comp:'물 얼음 80%, 일산화탄소, 먼지, 유기물', ring:false, moons:[],
+        facts:['75~76년 주기로 지구 접근하는 가장 유명한 혜성','기원전 240년부터 역사 기록에 등장','1910년과 1986년 지구 방문, 다음은 2061년 예정','1986년 지오토, 베가, 스이세이 탐사선들이 관측','핵 크기 15×8km, 감자 모양','핵 밀도 매우 낮음 (0.6 g/cm³) — 내부 공간 많음','제트 분출: 핵 표면 10% 미만에서만 가스 분출','지구와 혜성 꼬리가 교차할 때 유성우 발생 (에타 물병자리, 오리온자리)','뉴턴과 핼리가 1705년 주기를 계산해 동일 혜성임을 증명','바이외 태피스트리에 1066년 방문이 그림으로 기록됨'] },
+      { key:'hale_bopp', name:'헤일-밥 혜성', sub:'장주기 혜성', color:'#c0d8f0', r:30, mass:1.3e16, density:0.5, temp:120, dist:50000e6, comp:'물 얼음, 일산화탄소, 먼지, 유기물', ring:false, moons:[],
+        facts:['1997년 3~4월 18개월간 육안 관측 가능 — 20세기 최장 육안 혜성','20세기에서 가장 밝은 혜성 중 하나','핵 지름 약 60km — 핼리 혜성의 4배','두 개의 꼬리: 파란 이온 꼬리, 흰 먼지 꼬리','세 번째 나트륨 꼬리도 처음 발견','공전 주기 약 2,530년','약 4,200년 전 목성에 의해 현재 궤도로 진입','1995년 7월 22~23일 동시에 두 사람이 독립 발견','혜성 중 가장 많이 관측된 혜성 (스피처, 허블 등)','알루미늄 산화물 먼지 — 태양계 초기 물질 증거'] },
+      { key:'churyumov', name:'추류모프-게라시멘코', sub:'단주기 혜성', color:'#806040', r:2, mass:9.982e12, density:0.53, temp:205, dist:856.5e6, comp:'물 얼음, 유기물, 먼지, 암석', ring:false, moons:[],
+        facts:['ESA 로제타 탐사선이 2014~2016년 2년간 동반 탐사','필레 착륙선 2014년 11월 최초로 혜성 표면 착륙','오리(또는 러버덕) 모양의 독특한 이중엽 구조','유기 분자 16종 이상 발견 — 생명 기원 연구에 중요','산소 분자(O₂) 혜성에서 최초 발견 — 충격적 발견','공전 주기 6.45년','핵 크기 4.1×3.3×1.8 km','밀도 0.53 g/cm³ — 내부가 80% 빈 공간','2014년 6월 67P 방문 당시 역사적인 혜성 가스 채취','로제타 임무 완료 후 2016년 혜성 표면에 착륙'] },
+      { key:'neowise', name:'니오와이즈 혜성', sub:'장주기 혜성', color:'#f0e0a0', r:5, mass:1e14, density:0.5, temp:150, dist:800e6, comp:'얼음, 먼지, 유기물', ring:false, moons:[],
+        facts:['2020년 7월 북반구에서 육안으로 선명하게 관측','NEOWISE 적외선 우주망원경이 2020년 3월 27일 발견','21세기 들어 북반구에서 가장 밝게 보인 혜성','붉은색 먼지 꼬리와 파란색 이온 꼬리 동시 관측','핵 지름 약 5km','공전 주기 약 6,800년 — 다음 방문은 서기 8820년경','근일점 통과 시 수성 궤도보다 태양에 더 가깝게 접근','소셜미디어에서 대대적 관측 붐 일으킴','코로나19 봉쇄 중 전 세계 사람들이 함께 관측','혜성의 나트륨 꼬리도 일부 관측됨'] },
+      { key:'comet_encke', name:'엔케 혜성', sub:'단주기 혜성', color:'#80a0c0', r:2.4, mass:1e13, density:0.6, temp:180, dist:600e6, comp:'물 얼음, 먼지, 유기물', ring:false, moons:[],
+        facts:['태양계에서 공전 주기가 가장 짧은 혜성 (3.3년)','황소자리 유성우의 모혜성','19세기 초 처음 주기 혜성으로 확인 (두 번째)','수십 차례 근일점 통과 관측 기록 보유','자전 주기 약 11시간','핵 지름 약 4.8km','매 근일점 통과 때마다 약 5mm씩 핵이 줄어드는 것으로 추정','태양계 안쪽 행성계를 계속 통과하며 물질 공급','비구름 유성우(황소자리): 매년 10~11월 지구와 교차','STEREO 위성이 여러 차례 근접 관측'] },
+    ]
+  },
+  // ── 외계행성 ──
+  exoplanet: {
+    label:'🌍 외계행성', icon:'🌍',
+    items:[
+      { key:'51peg_b', name:'51 페가시 b', sub:'핫 목성', color:'#ff9040', r:95000, mass:4.2e27, density:0.5, temp:1200, dist:47.9*9.461e12, comp:'수소, 헬륨 (가스 거인)', ring:false, moons:[],
+        facts:['최초로 발견된 태양형 항성의 외계행성 (1995년)','마요르·쿠엘로가 발견 — 2019년 노벨 물리학상 수상','중심별에서 불과 0.052 AU 거리 (수성 궤도의 1/8)','표면 온도 약 1,200K — 극도로 뜨거운 가스 거인','공전 주기 단 4.23일','핫 목성의 대표 사례 — 거대 가스 행성이 별 가까이 있는 이유가 미스터리','별 빛의 스펙트럼 변화(도플러 방법)로 처음 검출','지구에서 50.9광년 거리','기조력으로 자전과 공전이 동기화 (타이달 록킹) 추정','외계행성학 역사에서 가장 중요한 발견 중 하나'] },
+      { key:'hd209458_b', name:'HD 209458 b (오시리스)', sub:'핫 목성', color:'#ff6030', r:98000, mass:1.33e27, density:0.34, temp:1320, dist:150*9.461e12, comp:'수소, 헬륨, 산소, 탄소', ring:false, moons:[],
+        facts:['최초로 통과(트랜짓) 방법으로 확인된 외계행성 (1999년)','대기가 있는 외계행성 최초 확인 — 대기권 검출','수소 대기가 별의 복사압에 의해 증발 중 (혜성처럼 꼬리 형성)','오시리스라는 별명을 가진 이유: 별에 의해 지속적으로 물질 잃음','지구에서 150광년 거리 (페가수스자리)','공전 주기 3.52일','질량은 목성의 0.69배이나 크기는 1.38배 — 부풀어 오른 구조','물, 이산화탄소, 메탄 대기 성분 스펙트럼 검출','타이달 록킹으로 한쪽 면은 낮, 반대는 영원한 밤','외계행성 대기 연구의 기준점이 된 천체'] },
+      { key:'kepler22b', name:'케플러-22b', sub:'슈퍼지구', color:'#4090ff', r:15000, mass:1.0e26, density:0.6, temp:295, dist:620*9.461e12, comp:'미상 (물, 암석, 가스 가능)', ring:false, moons:[],
+        facts:['케플러 우주망원경이 발견한 첫 번째 생명체 거주 가능 행성 (2011년)','모항성 생명체 거주 가능 영역(골디락스 존) 중심부에 위치','지구 반지름의 2.4배 크기 — 슈퍼지구 또는 미니 해왕성','모항성은 태양과 유사한 G형 별 (케플러-22)','공전 주기 289.9일 (지구와 유사)','지구에서 약 620광년 거리 (백조자리)','표면 온도 약 22°C (액체 물 존재 가능 조건)','내부 조성 불명: 암석, 물, 가스 행성 중 하나로 추정','질량이 정확히 측정되지 않아 밀도 미상','외계 생명체 탐색(SETI)의 주요 목표 중 하나'] },
+      { key:'proxima_b', name:'프록시마 b', sub:'지구형 외계행성', color:'#30c060', r:7500, mass:1.27e25, density:5.5, temp:234, dist:4.24*9.461e12, comp:'암석질 추정 (지구 유사)', ring:false, moons:[],
+        facts:['태양계에서 가장 가까운 외계행성 (4.24광년)','프록시마 켄타우리 — 태양계에서 가장 가까운 별의 행성','생명체 거주 가능 영역(골디락스 존) 내에 위치','지구 질량의 1.07~1.17배 — 거의 지구 크기','2016년 ESO 망원경이 도플러 방법으로 발견','공전 주기 11.2일 (별과 매우 가까움)','모항성이 적색왜성 — 강력한 자외선, X선 폭발 빈번','타이달 록킹으로 한쪽 면이 항상 항성을 향할 가능성','강한 항성풍으로 대기가 사라졌을 가능성 높음','스타샷 프로젝트: 이 행성을 향한 레이저 나노우주선 계획'] },
+      { key:'trappist1e', name:'트라피스트-1e', sub:'지구형 외계행성', color:'#20d080', r:5700, mass:1.69e25, density:5.65, temp:251, dist:39.5*9.461e12, comp:'암석질, 물 가능', ring:false, moons:[],
+        facts:['트라피스트-1 항성계의 7개 행성 중 생명 가능성 가장 높은 행성','지구와 가장 유사한 조건 — 에너지 입사량이 지구의 0.66배','지구 반지름 0.92배, 질량 0.77배 — 거의 지구 크기','생명체 거주 가능 지수(ESI) 0.85 — 태양계 외 최고 수준','지구에서 39.5광년 거리 (물병자리)','공전 주기 6.1일 (별이 어두운 적색왜성이라 가능)','2017년 NASA/ESA 공동 발표 — 전 세계 대대적 관심','제임스 웹 우주망원경이 대기 관측 시도 중','타이달 록킹 가능성 — 영원한 낮과 밤의 경계 지역에 생명 가능','물 존재 여부 JWST 관측으로 확인 시도 중'] },
+      { key:'trappist1f', name:'트라피스트-1f', sub:'지구형 외계행성', color:'#18b870', r:6600, mass:2.12e25, density:5.0, temp:219, dist:39.5*9.461e12, comp:'암석질, 얼음 가능', ring:false, moons:[],
+        facts:['트라피스트-1 시스템에서 생명 가능 영역 바깥쪽 경계에 위치','지구보다 약간 차갑고 (마치 화성 환경)','지구 반지름 1.04배, 질량 0.93배','공전 주기 9.2일','높은 반사율의 표면 (눈/얼음 덮임 가능)','지구에서 39.5광년 거리','TRAPPIST 망원경과 스피처 우주망원경으로 발견','제임스 웹 우주망원경 관측 대상','대기 존재 여부 불명','트라피스트-1 시스템 7개 행성 모두 지구 크기와 유사'] },
+      { key:'gj667cc', name:'글리제 667Cc', sub:'슈퍼지구', color:'#e05020', r:9700, mass:2.54e25, density:4.0, temp:277, dist:23.6*9.461e12, comp:'암석질 추정', ring:false, moons:[],
+        facts:['생명 가능 영역에 위치한 슈퍼지구 (2012년 발견)','지구 질량의 약 3.8배 — 슈퍼지구 범주','모항성: 글리제 667C (삼중성계의 셋째 별)','지구에서 23.6광년 거리 (전갈자리)','공전 주기 28.1일','모항성이 적색왜성이라 가까이 있어도 생명 가능 영역','타이달 록킹 가능성 높음','ESI(지구유사지수) 0.84 — 높은 지구 유사성','에너지 입사량이 지구의 0.88배 — 온화한 환경 가능','삼중성계에 속해 밤하늘에 3개의 태양이 뜰 수 있음'] },
+      { key:'55cnc_e', name:'55 캔크리 e', sub:'슈퍼지구 (극한)', color:'#ff4000', r:11000, mass:4.08e25, density:4.5, temp:2700, dist:41*9.461e12, comp:'규산염, 탄소, 초고온 용암', ring:false, moons:[],
+        facts:['표면 온도 약 2,700K — 표면이 용암으로 이루어진 마그마 행성','다이아몬드 행성으로 불림 — 탄소 압력이 다이아몬드 형성 조건','별에서 불과 0.0154 AU 거리 — 수성~태양 거리의 1/25','공전 주기 불과 17.7시간','지구에서 41광년 거리 (게자리)','지구 반지름의 1.95배, 질량의 8.7배','허블과 스피처가 대기 성분 연구: 이산화탄소, 황 화합물','타이달 록킹 — 한쪽은 영원히 용암, 반대쪽은 매우 차가움','2024년 제임스 웹이 최초로 외계행성 대기 지도 작성','모항성 55 캔크리 A (이중성)'] },
+      { key:'wasp12b', name:'WASP-12b', sub:'핫 목성 (극한)', color:'#ff2000', r:130000, mass:2.8e27, density:0.4, temp:2500, dist:1400*9.461e12, comp:'수소, 헬륨, 탄소 (가스)', ring:false, moons:[],
+        facts:['태양계 외에서 가장 뜨겁고 팽창된 행성 중 하나','별에 의한 조석 파괴로 물질이 지속적으로 별로 빨려 들어감','달걀 모양으로 변형될 만큼 조석력을 받고 있음','공전 주기 1.09일 — 1.09일마다 별을 한 바퀴','수십만 년 내에 별에 완전히 흡수될 예정','대기에 탄소가 산소보다 많은 최초 확인 외계행성','표면 온도 2,500K — 일부 금속이 기화','가시광을 거의 흡수해 매우 어두운 행성 (반사율 0.06)','지구에서 1,400광년 거리 (마차부자리)','허블 우주망원경이 대기에서 마그네슘, 티타늄 산화물 검출'] },
+      { key:'kepler452b', name:'케플러-452b', sub:'슈퍼지구 (지구 사촌)', color:'#60a0ff', r:8800, mass:3.0e25, density:3.5, temp:265, dist:1400*9.461e12, comp:'암석질 추정', ring:false, moons:[],
+        facts:['지구 사촌(Earth Cousin)이라 불리는 외계행성','태양과 매우 유사한 G형 별 주위 생명 가능 영역','공전 주기 385일 — 지구의 1년과 거의 같음','지구 반지름의 1.6배 — 슈퍼지구 또는 작은 가스 행성','모항성은 태양보다 약 15억 년 더 나이 든 G2형 별','지구에서 1,400광년 거리 (백조자리)','2015년 케플러 우주망원경이 발견 — NASA가 지구의 더 나이 든 큰형으로 소개','ESI 0.83 — 높은 지구 유사성','조성(암석/가스)은 현재 기술로 확인 불가','만약 생명이 있다면 지구보다 더 오래 진화했을 것으로 추정'] },
+    ]
+  },
+
+  // BODIES에 카탈로그 데이터 병합 (3D 뷰 select용)
+
+  // ── 성운 ──
+  nebula: {
+    label:'🌌 성운', icon:'🌌',
+    items:[
+      { key:'orion_nebula', name:'오리온 성운', sub:'방출 성운 / M42', color:'#ff9050', r:12e16, mass:2e33, density:0, temp:10000, dist:1344*9.461e12, comp:'수소 73%, 헬륨 25%, 산소·질소 소량', ring:false, moons:[],
+        facts:['지구에서 1,344광년 거리 — 가장 가깝고 유명한 성운','육안으로도 희미하게 보이는 유일한 성운 (오리온자리 허리띠 아래)','지름 약 24광년의 거대한 별 형성 지역','트라페지움: 성운 중심의 4개 젊은 별 집단','수천 개의 원시별과 원시행성계 원반 포함','허블 우주망원경이 가장 많이 촬영한 천체 중 하나','성운 내부에서 현재도 새 별이 탄생 중','나이 약 300만 년 — 매우 젊은 별 형성 지역','적외선으로 보면 수백 개의 숨겨진 별 발견','제임스 웹 우주망원경이 2022년 역대 가장 선명한 이미지 촬영'] },
+      { key:'eagle_nebula', name:'독수리 성운', sub:'방출 성운 / M16', color:'#40c080', r:20e16, mass:8e33, density:0, temp:8000, dist:7000*9.461e12, comp:'수소, 헬륨, 이온화 가스', ring:false, moons:[],
+        facts:['창조의 기둥(Pillars of Creation)으로 유명 — 허블의 가장 상징적인 이미지','지구에서 약 7,000광년 거리 (뱀자리)','창조의 기둥: 높이 4~5광년의 거대한 가스 먼지 기둥','기둥 내부에서 새로운 별이 탄생 중','1995년 허블이 촬영 후 전 세계적으로 유명해짐','2014년 허블이 적외선으로 재촬영 — 기둥 속 구조 공개','2022년 제임스 웹이 적외선으로 역대 가장 선명하게 촬영','성단 NGC 6611과 함께 존재','지름 약 70×55광년','일부 기둥은 초신성 충격파에 의해 이미 파괴됐을 가능성'] },
+      { key:'carina_nebula', name:'카리나 성운', sub:'방출 성운', color:'#ff6080', r:30e16, mass:1.4e35, density:0, temp:9000, dist:8500*9.461e12, comp:'수소, 헬륨, 이온화 가스, 먼지', ring:false, moons:[],
+        facts:['오리온 성운보다 4배나 큰 거대 별 형성 지역','에타 카리나: 성운 내 태양의 100배 이상 질량의 초거성','에타 카리나는 언제든 초신성 폭발 가능한 불안정한 별','지구에서 8,500광년 거리 (용골자리)','지름 약 300광년','수천 개의 별이 탄생하고 있는 활발한 별 형성 지역','남반구에서만 볼 수 있는 성운','1752년 라카유가 발견','허블과 제임스 웹이 상세 촬영','NGC 3372로도 알려짐'] },
+      { key:'horsehead_nebula', name:'말머리 성운', sub:'암흑 성운', color:'#4040a0', r:3.5e16, mass:3e32, density:0, temp:15, dist:1375*9.461e12, comp:'수소 분자, 먼지, CO', ring:false, moons:[],
+        facts:['말의 머리를 닮은 독특한 암흑 성운','배경의 밝은 방출 성운(IC 434) 앞에 실루엣으로 보임','지구에서 약 1,375광년 거리 (오리온자리)','지름 약 3.5광년','1888년 윌리암 플레밍이 사진 건판에서 발견','내부에서 새로운 별이 형성 중','말머리의 어두운 부분은 성간 먼지 구름','망원경으로도 관측 어려운 암흑 성운 중 하나','허블이 2013년 적외선으로 촬영하여 내부 구조 공개','옆에 불꽃 성운(Flame Nebula)도 위치'] },
+      { key:'cats_eye_nebula', name:'고양이눈 성운', sub:'행성상 성운', color:'#00e0ff', r:0.4e16, mass:1e30, density:0, temp:8000, dist:3262*9.461e12, comp:'질소, 수소, 산소, 탄소', ring:false, moons:[],
+        facts:['행성상 성운 중 가장 복잡한 구조를 가진 성운','중심에 백색왜성이 위치 — 태양 같은 별의 최후','여러 겹의 껍질과 고리가 중첩된 정교한 구조','지구에서 약 3,262광년 거리 (용자리)','1786년 윌리엄 허셜 발견 — 최초로 발견된 행성상 성운 중 하나','중심별 온도 약 80,000K','지름 약 0.4광년','NGC 6543으로도 알려짐','허블이 구조를 상세 분석 — 11개 이상의 동심원 껍질 발견','약 1,000년 전 형성 시작'] },
+      { key:'ring_nebula', name:'고리 성운', sub:'행성상 성운 / M57', color:'#80ff80', r:0.9e16, mass:1.2e30, density:0, temp:20000, dist:2567*9.461e12, comp:'수소, 헬륨, 산소, 질소', ring:false, moons:[],
+        facts:['도넛 모양의 행성상 성운 — 실제론 원통형 구조','중심의 희미한 백색왜성이 수소 껍질을 팽창시킨 결과','지구에서 약 2,567광년 거리 (거문고자리)','1779년 앙투안 다르키에 드 펠르푸아 발견','지름 약 1광년','중심별 온도 약 125,000K — 매우 뜨거운 백색왜성','아마추어 망원경으로도 관측 가능한 행성상 성운','내부: 뜨거운 이온화 가스, 외부: 차가운 중성 가스','약 4,000년 전 형성 시작','허블이 고해상도로 여러 층의 구조 촬영'] },
+      { key:'crab_nebula', name:'게 성운', sub:'초신성 잔해 / M1', color:'#ffa040', r:5.5e16, mass:1e31, density:0, temp:30000, dist:6523*9.461e12, comp:'수소, 헬륨, 탄소, 산소, 질소, 철', ring:false, moons:[],
+        facts:['1054년 7월 4일 중국·아랍 천문학자들이 기록한 초신성 폭발 잔해','23일간 대낮에도 보이고 653일간 육안 관측 가능했던 초신성','중심에 펄사(중성자별) 존재 — 초당 30회 자전','게 성운 펄사: 초당 30번 깜빡이는 강력한 전자기파 방출','지구에서 약 6,523광년 거리 (황소자리)','현재도 초당 1,500km 속도로 팽창 중','지름 약 11광년','허블, 찬드라 X선 망원경으로 상세 관측','제임스 웹이 2023년 적외선으로 내부 실 구조 공개','M1으로도 알려짐 — 메시에 목록의 첫 번째 천체'] },
+      { key:'veil_nebula', name:'베일 성운', sub:'초신성 잔해', color:'#c060ff', r:50e16, mass:1e31, density:0, temp:30000, dist:2100*9.461e12, comp:'수소, 황, 산소, 이온화 가스', ring:false, moons:[],
+        facts:['약 10,000~20,000년 전 초신성 폭발의 잔해','지구에서 약 2,100광년 거리 (백조자리)','NGC 6960, NGC 6992 등 여러 부분으로 나뉨','전체 지름 약 110광년 — 실제론 보름달의 6배 크기로 보임','얇고 투명한 베일처럼 보여 베일 성운으로 명명','충격파가 주변 성간 매질과 충돌하며 빛남','1784년 윌리엄 허셜 발견 (일부)','허블이 필라멘트 구조를 상세 촬영','적색: 수소, 청색: 산소 이중 이온화 가스의 빛','시그너스 루프라고도 불림'] },
+      { key:'pillars_of_creation', name:'창조의 기둥', sub:'방출 성운 내부 구조', color:'#c08040', r:5e16, mass:5e32, density:0, temp:10000, dist:6500*9.461e12, comp:'수소, 헬륨, 먼지', ring:false, moons:[],
+        facts:['독수리 성운(M16) 내부의 거대한 가스·먼지 기둥','1995년 허블 우주망원경이 촬영해 전 세계적으로 유명해짐','가장 큰 기둥 높이 약 4~5광년','내부에서 현재 새로운 별이 형성 중','2014년 허블이 적외선 버전 촬영 — 내부의 숨겨진 별들 공개','2022년 제임스 웹이 역대 가장 선명한 이미지 촬영','기둥 끝부분: 별 형성으로 인한 뜨거운 가스 분출','기둥 구조는 강한 항성풍에 의해 조각됨','일부 기둥은 이미 파괴됐지만 빛이 아직 도달 중','인류 역사상 가장 유명한 천문학 이미지 중 하나'] },
+    ]
+  },
+  // ── 성단 ──
+  cluster: {
+    label:'🔮 성단', icon:'🔮',
+    items:[
+      { key:'pleiades', name:'플레이아데스', sub:'산개성단 / M45', color:'#80c0ff', r:4e16, mass:8e32, density:0, temp:20000, dist:444*9.461e12, comp:'주로 B형 청색 주계열성', ring:false, moons:[],
+        facts:['칠형제별 또는 좀생이별로 불리는 친숙한 성단','지구에서 444광년 거리 (황소자리)','육안으로 6~7개 별이 보이지만 실제 1,000개 이상의 별로 구성','가장 밝은 별들: 알시오네, 아틀라스, 엘렉트라 등 7자매 이름','나이 약 1억 년 — 비교적 젊은 성단','파란색 반사 성운에 둘러싸여 있음','그리스 신화: 아틀라스와 플레이오네의 7딸','전 세계 다양한 문화권에서 달력의 기준으로 사용','성단 지름 약 43광년','향후 수억 년 내에 흩어질 예정'] },
+      { key:'hyades', name:'히아데스', sub:'산개성단', color:'#ffc060', r:3e16, mass:4e32, density:0, temp:6000, dist:153*9.461e12, comp:'K형 주황색 별, G형 노란별', ring:false, moons:[],
+        facts:['지구에서 가장 가까운 산개성단 (153광년)','육안으로 V자 모양으로 보임 — 황소자리의 황소 얼굴','약 200개의 별로 구성','나이 약 6억 2,500만 년','알데바란(황소자리 눈)은 배경별로 성단 구성원이 아님','태양이 약 4,000년 후 이 성단을 통과할 예정','그리스 신화: 아틀라스의 딸들 (플레이아데스의 자매)','성단 중심까지 거리 측정의 기준점으로 사용됨','허블이 별의 시차를 측정해 정확한 거리 확정','향후 3억 년 내 은하 조석력으로 흩어질 예정'] },
+      { key:'butterfly_cluster', name:'나비 성단', sub:'산개성단 / M6', color:'#ffff40', r:6e16, mass:3e32, density:0, temp:15000, dist:1600*9.461e12, comp:'B형·A형 주계열성, 오렌지 거성', ring:false, moons:[],
+        facts:['나비 날개처럼 보이는 별들의 배열','지구에서 약 1,600광년 거리 (전갈자리)','약 80개의 별로 구성','나이 약 5,100만 년','가장 밝은 별 BM 전갈자리 — 오렌지 밝은 거성','1654년 호디에르나가 발견','지름 약 12광년','청색 B형 별이 주를 이루는 젊은 성단','맨눈으로 흐릿하게 보임','인근 M7 나비 성단과 자주 묶어 관측'] },
+      { key:'omega_centauri', name:'오메가 센타우리', sub:'구상성단 / NGC 5139', color:'#ffe080', r:86e16, mass:4e36, density:0, temp:5000, dist:17000*9.461e12, comp:'수백만 개의 별 (노란색, 오렌지색)', ring:false, moons:[],
+        facts:['우리은하에서 가장 크고 무거운 구상성단','별 1,000만 개 이상 포함 — 일반 구상성단의 10배','지름 약 150광년','지구에서 약 17,000광년 거리 (센타우루스자리)','나이 약 120억 년 — 우주에서 가장 오래된 천체 중 하나','우리은하에 합병된 왜소 은하의 핵심일 가능성','맨눈으로 별처럼 보이지만 실제 거대한 성단','중심에 중간 질량 블랙홀 존재 가능성 연구 중','다양한 금속 함량의 별들이 혼재 — 복잡한 형성 역사','여러 세대에 걸쳐 별 형성이 일어난 증거'] },
+      { key:'m13', name:'M13 헤라클레스 성단', sub:'구상성단', color:'#ffcc60', r:56e16, mass:6e35, density:0, temp:5500, dist:25000*9.461e12, comp:'수십만 개의 별', ring:false, moons:[],
+        facts:['북반구에서 가장 유명한 구상성단','별 30만 개 이상 포함','지름 약 145광년','지구에서 약 25,000광년 거리 (헤라클레스자리)','1716년 핼리 발견, 1764년 메시에가 목록에 추가','1974년 아레시보 전파망원경이 외계 문명에 메시지 송신 대상','맨눈으로는 희미한 빛, 망원경으로 선명한 별들','나이 약 140억 년 — 우주 나이와 비슷','여름철 북반구 관측의 필수 목표','중심 밀도가 매우 높아 별 충돌 가능'] },
+      { key:'47_tucanae', name:'47 투카나에', sub:'구상성단 / NGC 104', color:'#ffa040', r:74e16, mass:7e35, density:0, temp:5000, dist:15000*9.461e12, comp:'수백만 개의 별', ring:false, moons:[],
+        facts:['하늘에서 오메가 센타우리 다음으로 밝은 구상성단','별 100만 개 이상 포함','지름 약 120광년','지구에서 약 15,000광년 거리 (왜가리자리)','소마젤란 성운 앞에 위치해 찍힐 때 같이 촬영됨','나이 약 116억 년','허블이 외계 행성 탐색했지만 발견 못함 — 성단 내 별 거리 너무 가까움','밀리초 펄사 25개 이상 포함 — 최다 기록 중 하나','남반구에서 육안으로 잘 보임','X선 이중성 시스템 다수 발견'] },
+    ]
+  },
+  // ── 은하 ──
+  galaxy: {
+    label:'💫 은하', icon:'💫',
+    items:[
+      { key:'milky_way', name:'우리은하 (은하수)', sub:'막대나선은하 / SBbc형', color:'#ffffc0', r:5.2e18, mass:1.5e42, density:0, temp:0, dist:0, comp:'별 2,000~4,000억 개, 암흑물질', ring:false, moons:[],
+        facts:['우리 태양계가 속한 은하 — 나선팔 오리온 팔에 위치','지름 약 10만 광년, 두께 약 1,000광년 (중심부 1만 광년)','별 2,000억~4,000억 개 추정','중심에 궁수자리 A* — 태양 질량 400만 배의 초대질량 블랙홀','나이 약 136억 년 — 빅뱅 후 거의 바로 형성 시작','태양은 은하 중심에서 약 26,000광년 거리','태양이 은하 중심을 한 바퀴 도는데 약 2억 2,500만 년 (은하년)','암흑물질이 은하 총 질량의 약 85% 차지','마젤란 성운 2개와 여러 왜소은하를 위성으로 거느림','2022년 사건 지평선 망원경(EHT)이 궁수자리 A* 블랙홀 사진 촬영 성공'] },
+      { key:'andromeda', name:'안드로메다 은하', sub:'나선은하 / M31', color:'#c0c0ff', r:7.3e18, mass:2e42, density:0, temp:0, dist:2537000*9.461e12, comp:'별 1조 개, 암흑물질', ring:false, moons:[],
+        facts:['육안으로 볼 수 있는 가장 먼 천체 (250만 광년)','우리은하와 가장 가까운 대형 은하','지름 약 22만 광년 — 우리은하보다 2배 이상 큼','별 약 1조 개 포함 — 우리은하의 2~3배','약 37억 년 후 우리은하와 충돌 합병 예정','충돌 시 두 은하 중심 블랙홀도 합병 가능성','충돌 후 새 은하 이름: 밀코메다(Milkomeda)로 불릴 것','M32, M110 등 2개의 위성은하 동반','중심에 1억 태양질량 초대질량 블랙홀','페르세우스자리-물고기자리 초은하단에 속함'] },
+      { key:'triangulum', name:'삼각형 은하', sub:'나선은하 / M33', color:'#80a0ff', r:3e18, mass:5e40, density:0, temp:0, dist:2730000*9.461e12, comp:'별 400억 개, 가스, 먼지', ring:false, moons:[],
+        facts:['국부은하군에서 세 번째로 큰 은하','지구에서 약 273만 광년 거리 (삼각형자리)','지름 약 6만 광년','별 약 400억 개','육안으로 볼 수 있는 가장 멀고 희미한 천체 중 하나','NGC 604: 삼각형 은하 내 오리온 성운의 100배 크기 성운','안드로메다 은하의 위성은하일 가능성','나선 구조가 느슨해 플로키(flocculent) 나선은하로 분류','우리은하보다 금속 함량이 낮음 — 더 원시적 구성','허블이 상세 구조 지도 작성'] },
+      { key:'large_magellanic', name:'대마젤란 성운', sub:'불규칙 왜소은하 / LMC', color:'#ffc080', r:1.4e18, mass:1e41, density:0, temp:0, dist:163000*9.461e12, comp:'별 300억 개, 성간 가스', ring:false, moons:[],
+        facts:['우리은하의 가장 가까운 위성은하 (163,000광년)','남반구 하늘에서 육안으로 구름처럼 보임','지름 약 14,000광년','별 약 300억 개','타란툴라 성운(30 도라두스): LMC 내 거대 별 형성 지역','1987A 초신성: 1987년 폭발한 역사적 초신성 (육안 관측)','포르투갈 항해자 마젤란이 1519년 서구에 소개','사실 훨씬 전부터 남반구 원주민에게 알려진 천체','우리은하와 중력적으로 연결 — 마젤란 흐름 형성','약 20억 년 후 우리은하에 합병될 것으로 추정'] },
+      { key:'small_magellanic', name:'소마젤란 성운', sub:'불규칙 왜소은하 / SMC', color:'#e0c0a0', r:0.7e18, mass:7e39, density:0, temp:0, dist:200000*9.461e12, comp:'별 30억 개, 성간 가스', ring:false, moons:[],
+        facts:['우리은하의 두 번째 가까운 위성은하 (200,000광년)','지름 약 7,000광년 — 대마젤란 성운의 절반','별 약 30억 개','대마젤란 성운과 함께 남반구 밤하늘의 상징','마젤란 흐름: LMC, SMC, 우리은하를 잇는 가스 띠','NGC 346: SMC 내 가장 활발한 별 형성 지역','허블이 정밀 측정: 속도가 빠르면 우리은하 탈출 가능성','금속 함량이 LMC보다 더 낮음 — 더 원시적','X선 이중성 시스템 다수 발견','제임스 웹이 2022년 NGC 346 내부 촬영 — 수천 개 별 공개'] },
+      { key:'whirlpool', name:'소용돌이 은하', sub:'나선은하 / M51', color:'#60c0ff', r:3.7e18, mass:1.6e41, density:0, temp:0, dist:23000000*9.461e12, comp:'별 수천억 개, 가스, 먼지', ring:false, moons:[],
+        facts:['교과서에 가장 많이 등장하는 나선은하','지구에서 약 2,300만 광년 거리 (사냥개자리)','동반 은하 NGC 5195와 중력적으로 상호작용 중','동반 은하가 뒤에서 통과하며 나선팔 강화시킴','1773년 메시에 발견, 1845년 로스 경이 나선 구조 최초 확인','나선 구조가 처음으로 확인된 역대 두 번째 은하','중심에 초대질량 블랙홀 존재','아마추어 망원경으로도 나선팔 관측 가능','2005년과 2011년 초신성 폭발 관측됨','허블이 수십 년간 가장 많이 촬영한 은하 중 하나'] },
+      { key:'sombrero', name:'솜브레로 은하', sub:'나선은하 / M104', color:'#d0c080', r:2.9e18, mass:8e41, density:0, temp:0, dist:29000000*9.461e12, comp:'별 수천억 개, 먼지 띠', ring:false, moons:[],
+        facts:['중앙 팽대부와 먼지 띠가 챙 넓은 멕시칸 모자처럼 보임','지구에서 약 2,900만 광년 거리 (처녀자리)','지름 약 5만 광년','중심에 10억 태양질량의 초대질량 블랙홀 — 은하 크기 대비 매우 큰 편','은하 외곽에 2,000개 이상의 구상성단이 분포','적외선으로 보면 이중 나선 구조 드러남','1781년 메시에 목록에서 제외됐다가 나중에 재발견','허블이 상세 구조 촬영','처녀자리 은하단 남쪽 가장자리에 위치','아마추어 망원경으로도 관측 가능한 인기 대상'] },
+      { key:'centaurus_a', name:'켄타우루스 A', sub:'타원은하 / NGC 5128', color:'#c06040', r:3e18, mass:1e42, density:0, temp:0, dist:13000000*9.461e12, comp:'별 수천억 개, 먼지 띠, 상호작용 가스', ring:false, moons:[],
+        facts:['지구에서 가장 가까운 활동 은하 (1,300만 광년)','중심에 태양 질량 550만 배의 초대질량 블랙홀','은하 중심에서 두 개의 상대론적 제트가 분출 중','제트 길이: 약 1만 광년','과거 두 은하(나선+타원)의 합병으로 형성된 것으로 추정','중심부를 가로지르는 두꺼운 먼지 띠 — 합병 흔적','강력한 전파와 X선 방출원','1826년 제임스 던롭 발견','찬드라 X선, 허블, 스피처 등 다양한 망원경으로 관측','남반구에서 육안으로 흐릿하게 보임'] },
+      { key:'antennae', name:'안테나 은하', sub:'충돌 은하쌍 / NGC 4038/4039', color:'#ff8040', r:3.2e18, mass:2e41, density:0, temp:0, dist:45000000*9.461e12, comp:'별, 충돌 가스, 별 형성 지역', ring:false, moons:[],
+        facts:['두 나선은하가 충돌 중인 대표적 상호작용 은하쌍','충돌로 뻗어나온 긴 별·가스 꼬리가 안테나처럼 보임','지구에서 약 4,500만 광년 거리 (까마귀자리)','충돌로 인한 격렬한 별 형성 진행 중 — 슈퍼별 형성 지역','수천 개의 젊고 밝은 성단이 충돌 과정에서 탄생','약 12억 년 후 하나의 타원은하로 합병 완료 예정','안드로메다-우리은하 충돌의 미래 모습 미리 볼 수 있는 천체','허블이 다양한 파장으로 상세 촬영','찬드라 X선이 초대질량 블랙홀 2개 관측','우리은하-안드로메다 미래 합병의 비교 연구 대상'] },
+      { key:'bodes_galaxy', name:'보데 은하', sub:'나선은하 / M81', color:'#80d0a0', r:3.6e18, mass:1e42, density:0, temp:0, dist:11800000*9.461e12, comp:'별 수천억 개', ring:false, moons:[],
+        facts:['북반구에서 가장 유명한 나선은하 중 하나','지구에서 약 1,180만 광년 거리 (큰곰자리)','지름 약 9만 광년','중심에 7,000만 태양질량의 초대질량 블랙홀','M82(시가 은하)와 중력적 상호작용 중','1774년 요한 엘레르트 보데 발견','나선팔 구조가 매우 뚜렷하고 아름다움','M81 그룹의 중심 은하 — 주변 30여 개 은하 지배','아마추어 망원경으로 나선 구조 관측 가능','허블이 세페이드 변광성으로 거리 정밀 측정'] },
+    ]
+  },
+  // ── 은하단/우주 구조 ──
+  cosmicstructure: {
+    label:'🌐 은하단 & 우주구조', icon:'🌐',
+    items:[
+      { key:'virgo_cluster', name:'처녀자리 은하단', sub:'은하단', color:'#a0a0ff', r:5.8e20, mass:1.2e45, density:0, temp:0, dist:53500000*9.461e12, comp:'은하 1,300개 이상, 고온 가스, 암흑물질', ring:false, moons:[],
+        facts:['우리은하가 속한 국부은하군에서 가장 가까운 대형 은하단','지구에서 약 5,350만 광년 거리 (처녀자리)','은하 1,300개 이상 포함 (일부 추정 2,000개 이상)','M87: 은하단 중심의 거대 타원은하 — 블랙홀 사진 최초 촬영 장소','2019년 사건 지평선 망원경이 M87 블랙홀 이미지 최초 공개','은하단 내 고온 가스 온도 약 3,000만 K','처녀자리 초은하단의 중심','우리 국부은하군이 처녀자리 은하단 방향으로 끌려가고 있음 (처녀자리 인력)','암흑물질이 은하단 총 질량의 약 80% 차지','X선 관측으로 고온 가스 분포 지도 작성'] },
+      { key:'coma_cluster', name:'코마 은하단', sub:'은하단', color:'#8080d0', r:1.4e21, mass:7e44, density:0, temp:0, dist:321000000*9.461e12, comp:'은하 1,000개 이상, 고온 가스, 암흑물질', ring:false, moons:[],
+        facts:['암흑물질 존재를 처음 제안하게 된 역사적 은하단','1933년 프리츠 츠비키가 은하 운동 관측으로 암흑물질 처음 제안','지구에서 약 3억 2,100만 광년 거리 (머리털자리)','은하 1,000개 이상 포함','NGC 4889: 은하단 내 가장 큰 타원은하 — 210억 태양질량 블랙홀','은하단 내 고온 가스 온도 약 9,000만 K','코마 초은하단의 중심','가시 물질만으로는 은하 운동 설명 불가 — 암흑물질 최초 증거','찬드라 X선 망원경이 고온 가스 상세 관측','두 개의 중심 은하(NGC 4874, NGC 4889)가 지배'] },
+      { key:'laniakea', name:'라니아케아 초은하단', sub:'초은하단', color:'#60a0c0', r:2.4e23, mass:1e47, density:0, temp:0, dist:0, comp:'은하 10만 개 이상, 암흑물질', ring:false, moons:[],
+        facts:['우리은하가 속한 초은하단 — 하와이어로 측량할 수 없는 하늘','2014년 브렌트 툴리 팀이 은하 흐름 분석으로 경계 확정','지름 약 5억 2,000만 광년','질량 약 10^47 kg — 태양 5×10^17개 질량','은하 10만 개 이상 포함','처녀자리 은하단이 중심 허브 역할','그레이트 어트랙터: 라니아케아 내 우리은하를 끌어당기는 거대 중력 집중 지역','우리은하는 라니아케아의 외곽 오리온 팔에 위치','현재 우리은하는 그레이트 어트랙터 방향으로 이동 중 (초속 약 600km)','라니아케아 자체도 더 큰 구조 페르세우스-물고기자리 초은하단의 일부'] },
+      { key:'great_wall', name:'슬론 장성 (슬론 그레이트 월)', sub:'우주 거대구조', color:'#a0c060', r:1.9e24, mass:1e48, density:0, temp:0, dist:1000000000*9.461e12, comp:'은하 필라멘트, 은하단, 공동', ring:false, moons:[],
+        facts:['슬론 디지털 하늘 탐사(SDSS)로 발견된 은하 초대형 장벽','길이 약 14억 광년 — 관측 가능한 우주의 1/14','지구에서 약 10억 광년 거리','우주 거대구조의 대표 사례 — 은하가 필라멘트처럼 배열','우주 원리(등방성·균질성)에 도전하는 거대 구조','은하들이 비어있는 공동(보이드)과 필라멘트를 이루며 분포','거대 구조 내에 수백만 개의 은하 포함','2003년 발견 발표 — 당시 알려진 최대 우주 구조','우주 거미줄(Cosmic Web) 구조의 일부','암흑물질이 이 구조의 뼈대를 형성'] },
+      { key:'hercules_corona', name:'헤르쿨레스-북왕관 장성', sub:'우주 거대구조 (최대)', color:'#ff8060', r:4.7e24, mass:1e49, density:0, temp:0, dist:10000000000*9.461e12, comp:'은하 슈퍼클러스터 복합체', ring:false, moons:[],
+        facts:['현재까지 발견된 우주 최대 구조물','길이 약 100억 광년 — 관측 가능한 우주 지름의 1/10','지구에서 약 100억 광년 거리','2013~2015년 감마선 폭발 분포 분석으로 발견','우주 등방성 원리를 위협하는 논란의 구조','이 크기의 구조는 현재 우주론으로는 존재하기 어려움','수백만 개의 은하 포함으로 추정','관측 방법의 한계로 구조 실재 여부 논쟁 중','빅뱅 이후 우주 구조 형성 이론에 도전','우주의 거대 규모 균질성에 의문 제기'] },
+      { key:'observable_universe', name:'관측 가능한 우주', sub:'우주 전체 범위', color:'#304060', r:4.4e26, mass:1e53, density:0, temp:2.7, dist:0, comp:'은하 2조 개, 암흑물질 27%, 암흑에너지 68%', ring:false, moons:[],
+        facts:['관측 가능한 우주의 반지름: 약 465억 광년 (우주 팽창 고려)','우주 나이 138억 년 — 빅뱅으로 시작','은하 약 2조 개 이상 포함 (2016년 허블 연구 결과)','현재 우주 온도: 2.725K (우주배경복사 온도)','우주 구성: 암흑에너지 68%, 암흑물질 27%, 일반물질 5%','우주는 가속 팽창 중 — 암흑에너지가 원인','우주의 나이와 크기: 빅뱅 → 급팽창 → 현재 가속팽창','허블 상수: 약 70 km/s/Mpc — 거리가 멀수록 더 빨리 멀어짐','우주 거대구조: 은하 필라멘트, 은하단, 공동으로 이루어진 우주 거미줄','인간이 관측 가능한 범위 너머에도 우주는 계속됨 (관측 불가능한 우주)'] },
+    ]
+  },
+}; // end CATALOG
+function getAllBodiesForSelect() {
+  let items = [];
+  Object.values(CATALOG).forEach(cat => {
+    cat.items.forEach(b => {
+      items.push({ key: b.key, name: b.name, type: cat.label });
+      b.moons.forEach(m => {
+        items.push({ key: b.key+'_moon_'+m.name, name: m.name + ' (위성)', type: '🌙 위성', moonData: m, parentKey: b.key });
+      });
+    });
+  });
+  return items;
+}
+
 // Populate selects
 function populateSelects() {
   const opts = Object.entries(BODIES).map(([k,v]) => `<option value="${k}">${v.name} (${v.type})</option>`).join('');
   document.getElementById('body-select').innerHTML = opts;
-  document.getElementById('body3d-select').innerHTML = opts;
+  // 3D 뷰 셀렉트: 카탈로그 전체 + 위성 포함
+  let opts3d = '';
+  Object.values(CATALOG).forEach(cat => {
+    cat.items.forEach(b => {
+      opts3d += `<option value="${b.key}">${b.name}</option>`;
+      b.moons.forEach(m => {
+        opts3d += `<option value="${b.key}_moon_${m.name}">　↳ ${m.name} (위성)</option>`;
+      });
+    });
+  });
+  document.getElementById('body3d-select').innerHTML = opts3d;
+  setTimeout(initCompareSelect, 100);
 }
 
 // ===================== TAB NAVIGATION =====================
@@ -365,11 +1101,15 @@ function showTab(id) {
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   document.getElementById('nav-' + id).classList.add('active');
-  if (id === 'view3d') load3DBody();
+  if (id === 'view3d') loadPhotoBody();
   if (id === 'distance') updateDistance();
-  if (id === 'units') convert();
+  if (id === 'units') { convert(); renderPhysicsConstants(); }
   if (id === 'size') updateSizeView();
   if (id === 'sim') resizeCanvas();
+  if (id === 'catalog') { extendCatalog(); initCatalog(); }
+  if (id === 'physics') initPhysics();
+  if (id === 'timeline') initTimeline();
+  if (id === 'blackhole') initBlackhole();
 }
 
 // ===================== SIZE COMPARISON =====================
@@ -377,7 +1117,10 @@ function updateSizeView() {
   const key = document.getElementById('body-select').value;
   const unitSel = document.getElementById('unit-select').value;
   const b = BODIES[key];
-  const earth = BODIES.earth;
+  const compareKey = (document.getElementById('body-compare-select') && document.getElementById('body-compare-select').value) || 'earth';
+  const compareCatBody = getCatalogBody(compareKey);
+  const earthRaw = compareCatBody || BODIES[compareKey] || BODIES.earth;
+  const earth = { r: earthRaw.r || earthRaw.radius || 6371, color: earthRaw.color, name: earthRaw.name };
   const sun = BODIES.sun;
 
   document.getElementById('size-name').textContent = b.name;
@@ -410,7 +1153,7 @@ function updateSizeView() {
   circE.style.height = earth_px + 'px';
   circE.style.background = earth.color;
   circE.style.boxShadow = `0 0 ${earth_px/3}px ${earth.color}88`;
-  circE.title = '지구 (비교)';
+  circE.title = (earth.name || '비교') + ' (비교)';
 
   document.getElementById('size-facts').innerHTML = b.facts.map(f =>
     `<div class="fact">${f}</div>`).join('');
@@ -808,39 +1551,64 @@ let mouseDown3d = false, lastMX = 0, lastMY = 0;
 
 function load3DBody() {
   const key = document.getElementById('body3d-select').value;
-  const b = BODIES[key];
+  if (!key) return;
+
+  // 위성 키인지 확인
+  const isMoonKey = key.includes('_moon_');
+  let b, moonData = null, parentData = null;
+
+  if (isMoonKey) {
+    // 위성 데이터 찾기
+    const parts = key.split('_moon_');
+    const parentKey = parts[0];
+    const moonName = parts[1];
+    parentData = getCatalogBody(parentKey);
+    if (parentData) moonData = parentData.moons.find(m => m.name === moonName);
+    if (!moonData) return;
+    b = { key, name: moonData.name, color: moonData.color, r: moonData.r,
+          mass: 0, density: 0, temp: 0, comp: '위성', type:'moon', facts: moonData.facts };
+  } else {
+    // 카탈로그에서 찾기
+    b = getCatalogBody(key);
+    if (!b) {
+      // 기존 BODIES에서 찾기
+      const old = BODIES[key];
+      if (old) b = { key, name:old.name, color:old.color, r:old.r, mass:old.mass, density:old.density, temp:old.temp, comp:old.comp, type:old.type, facts:old.facts, moons:[], ring: key==='saturn' };
+    }
+    if (!b) return;
+  }
+
   const container = document.getElementById('view3d-container');
   container.style.height = '480px';
 
-  // 정보 패널 업데이트
-  document.getElementById('panel-name').textContent = b.name;
-  document.getElementById('panel-type').innerHTML = `<span class="badge badge-cyan">${b.type}</span>`;
-  document.getElementById('panel-props').innerHTML = `
-    <table style="font-size:12px">
+  // 정보 패널 채우기
+  const fillPanel = () => {
+    const pname = document.getElementById('panel-name');
+    const ptype = document.getElementById('panel-type');
+    const pprops = document.getElementById('panel-props');
+    const pfacts = document.getElementById('panel-facts-list');
+    if (!pname) return;
+    pname.textContent = b.name;
+    ptype.innerHTML = `<span class="badge badge-cyan">${isMoonKey ? '위성' : (b.sub||b.type||'')}</span>${parentData ? `<span class="badge" style="margin-left:6px;background:rgba(168,85,247,.12);color:var(--purple)">${parentData.name}의 위성</span>` : ''}`;
+    pprops.innerHTML = `<table style="font-size:12px">
       <tr><td style="color:var(--muted);padding:4px 0">반지름</td><td style="font-family:'Space Mono',monospace;color:var(--cyan);text-align:right">${b.r.toLocaleString()} km</td></tr>
-      <tr><td style="color:var(--muted);padding:4px 0">질량</td><td style="font-family:'Space Mono',monospace;color:var(--purple);text-align:right">${b.mass.toExponential(2)} kg</td></tr>
-      <tr><td style="color:var(--muted);padding:4px 0">밀도</td><td style="font-family:'Space Mono',monospace;color:var(--gold);text-align:right">${b.density} g/cm³</td></tr>
-      <tr><td style="color:var(--muted);padding:4px 0">온도</td><td style="font-family:'Space Mono',monospace;color:var(--red);text-align:right">${b.temp} K</td></tr>
+      ${b.mass ? `<tr><td style="color:var(--muted);padding:4px 0">질량</td><td style="font-family:'Space Mono',monospace;color:var(--purple);text-align:right">${b.mass.toExponential(2)} kg</td></tr>` : ''}
+      ${b.density ? `<tr><td style="color:var(--muted);padding:4px 0">밀도</td><td style="font-family:'Space Mono',monospace;color:var(--gold);text-align:right">${b.density} g/cm³</td></tr>` : ''}
+      ${b.temp ? `<tr><td style="color:var(--muted);padding:4px 0">온도</td><td style="font-family:'Space Mono',monospace;color:var(--red);text-align:right">${b.temp} K</td></tr>` : ''}
       <tr><td style="color:var(--muted);padding:4px 0">구성</td><td style="font-size:11px;color:var(--text);text-align:right">${b.comp}</td></tr>
     </table>`;
-  document.getElementById('panel-facts-list').innerHTML = b.facts.map(f => `<div class="fact">${f}</div>`).join('');
+    pfacts.innerHTML = (b.facts||[]).map(f => `<div class="fact">${f}</div>`).join('');
+  };
 
-  // Three.js 초기화/재초기화
-  if (renderer3d) {
-    renderer3d.dispose();
-    container.innerHTML = '<div id="info-panel"></div>';
-    // 정보 패널 다시 채우기
-    document.getElementById('panel-name').textContent = b.name;
-  } else {
-    container.innerHTML = '<div id="info-panel"></div>';
-  }
+  // Three.js 초기화
+  if (renderer3d) { renderer3d.dispose(); }
+  container.innerHTML = '<div id="info-panel"><div id="panel-name" style="font-size:16px;font-weight:700;color:var(--cyan);margin-bottom:12px;font-family:\'Space Mono\',monospace"></div><div id="panel-type" style="margin-bottom:14px"></div><div id="panel-props"></div><div style="margin-top:14px"><div class="card-title" style="margin-bottom:8px">사실</div><div id="panel-facts-list"></div></div></div>';
 
-  const W = container.clientWidth - 260;
+  const W = Math.max(300, container.clientWidth - 260);
   const H = container.clientHeight || 480;
 
   scene3d = new THREE.Scene();
   scene3d.background = new THREE.Color(0x060818);
-
   camera3d = new THREE.PerspectiveCamera(60, W/H, 0.1, 10000);
   camera3d.position.z = 3;
 
@@ -850,110 +1618,1796 @@ function load3DBody() {
   container.insertBefore(renderer3d.domElement, container.firstChild);
 
   // 조명
-  const ambient = new THREE.AmbientLight(0xffffff, 0.4);
-  scene3d.add(ambient);
-  const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
-  dirLight.position.set(5, 3, 5);
-  scene3d.add(dirLight);
-  const backLight = new THREE.DirectionalLight(0x4488ff, 0.3);
-  backLight.position.set(-5, -3, -5);
-  scene3d.add(backLight);
+  scene3d.add(new THREE.AmbientLight(0xffffff, 0.4));
+  const dl = new THREE.DirectionalLight(0xffffff, 1.2);
+  dl.position.set(5,3,5); scene3d.add(dl);
+  const bl = new THREE.DirectionalLight(0x4488ff, 0.3);
+  bl.position.set(-5,-3,-5); scene3d.add(bl);
 
   // 별 배경
-  const starGeo = new THREE.BufferGeometry();
-  const starVerts = [];
-  for(let i=0;i<2000;i++) {
-    starVerts.push((Math.random()-0.5)*200, (Math.random()-0.5)*200, (Math.random()-0.5)*200);
-  }
-  starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starVerts, 3));
-  const starMat = new THREE.PointsMaterial({color:0xffffff, size:0.15});
-  scene3d.add(new THREE.Points(starGeo, starMat));
+  const sg = new THREE.BufferGeometry();
+  const sv = [];
+  for(let i=0;i<2000;i++) sv.push((Math.random()-.5)*200,(Math.random()-.5)*200,(Math.random()-.5)*200);
+  sg.setAttribute('position', new THREE.Float32BufferAttribute(sv,3));
+  scene3d.add(new THREE.Points(sg, new THREE.PointsMaterial({color:0xffffff,size:.15})));
 
-  // 천체 구
-  const geo = new THREE.SphereGeometry(1, 64, 64);
+  // 카테고리 판별
+  const isStar = b.type==='star' || key==='sun';
+  const isNebula = ['orion_nebula','eagle_nebula','carina_nebula','horsehead_nebula','cats_eye_nebula','ring_nebula','crab_nebula','veil_nebula','pillars_of_creation'].includes(key);
+  const isGalaxy = ['milky_way','andromeda','triangulum','large_magellanic','small_magellanic','whirlpool','sombrero','centaurus_a','antennae','bodes_galaxy'].includes(key);
+  const isCluster = ['pleiades','hyades','butterfly_cluster','omega_centauri','m13','47_tucanae'].includes(key);
+  const isCosmicStructure = ['virgo_cluster','coma_cluster','laniakea','great_wall','hercules_corona','observable_universe'].includes(key);
+
   const col = new THREE.Color(b.color);
 
-  // 자체 발광 (별인 경우)
-  const isStar = b.type === 'star';
-  const mat = new THREE.MeshPhongMaterial({
-    color: col,
-    shininess: isStar ? 5 : 40,
-    emissive: isStar ? col : new THREE.Color(0x000000),
-    emissiveIntensity: isStar ? 0.3 : 0,
-    specular: new THREE.Color(0x333333),
-  });
-  mesh3d = new THREE.Mesh(geo, mat);
-  scene3d.add(mesh3d);
+  if (isNebula || isGalaxy || isCluster || isCosmicStructure) {
+    // 성운/은하/성단: 파티클 시스템으로 표현
+    const particleCount = isGalaxy ? 8000 : isCluster ? 5000 : isCosmicStructure ? 10000 : 6000;
+    const positions = [];
+    const colors3d = [];
+    const baseColor = new THREE.Color(b.color);
 
-  // 토성 링 (토성일 때만)
-  if (key === 'saturn') {
-    const ringGeo = new THREE.RingGeometry(1.5, 2.4, 64);
-    const ringMat = new THREE.MeshBasicMaterial({
-      color: 0xc8a96a, side: THREE.DoubleSide, transparent: true, opacity: 0.6
+    for (let i = 0; i < particleCount; i++) {
+      let x, y, z;
+      if (isGalaxy) {
+        // 나선은하: 나선팔 구조
+        const arm = Math.floor(Math.random() * 2);
+        const angle = (Math.random() * Math.PI * 4) + arm * Math.PI;
+        const r = Math.random() * 2.5;
+        x = Math.cos(angle + r * 0.8) * r + (Math.random()-0.5)*0.3;
+        y = (Math.random()-0.5) * 0.15;
+        z = Math.sin(angle + r * 0.8) * r + (Math.random()-0.5)*0.3;
+        // 중심 팽대부
+        if (Math.random() < 0.3) {
+          x = (Math.random()-0.5)*0.8;
+          y = (Math.random()-0.5)*0.4;
+          z = (Math.random()-0.5)*0.8;
+        }
+      } else if (isCluster) {
+        // 구상성단: 구형 분포
+        const r = Math.pow(Math.random(), 0.5) * 2;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+        x = r * Math.sin(phi) * Math.cos(theta);
+        y = r * Math.cos(phi);
+        z = r * Math.sin(phi) * Math.sin(theta);
+      } else if (isCosmicStructure) {
+        // 우주구조: 필라멘트 패턴
+        const t = Math.random() * Math.PI * 4;
+        const noise = (Math.random()-0.5) * 0.5;
+        x = Math.cos(t) * (1.5 + noise) + (Math.random()-0.5)*2;
+        y = (Math.random()-0.5)*2;
+        z = Math.sin(t) * (1.5 + noise) + (Math.random()-0.5)*2;
+      } else {
+        // 성운: 불규칙 구름 형태
+        const r = Math.pow(Math.random(), 0.4) * 2;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+        x = r * Math.sin(phi) * Math.cos(theta) * (1 + Math.random()*0.5);
+        y = r * Math.cos(phi) * (1 + Math.random()*0.3);
+        z = r * Math.sin(phi) * Math.sin(theta) * (1 + Math.random()*0.5);
+      }
+      positions.push(x, y, z);
+      // 색상 변화
+      const hsl = {}; baseColor.getHSL(hsl);
+      const c = new THREE.Color().setHSL(
+        hsl.h + (Math.random()-0.5)*0.1,
+        hsl.s * (0.5 + Math.random()*0.5),
+        hsl.l * (0.4 + Math.random()*0.8)
+      );
+      colors3d.push(c.r, c.g, c.b);
+    }
+
+    const pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    pGeo.setAttribute('color', new THREE.Float32BufferAttribute(colors3d, 3));
+    const pMat = new THREE.PointsMaterial({
+      size: isCosmicStructure ? 0.06 : isGalaxy ? 0.04 : 0.05,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.85
     });
-    const ring = new THREE.Mesh(ringGeo, ringMat);
-    ring.rotation.x = Math.PI / 2.5;
+    mesh3d = new THREE.Points(pGeo, pMat);
+    scene3d.add(mesh3d);
+
+    // 성운 추가 글로우 구
+    if (isNebula) {
+      const glowGeo = new THREE.SphereGeometry(1.8, 32, 32);
+      const glowMat = new THREE.MeshBasicMaterial({
+        color: col, transparent: true, opacity: 0.06, side: THREE.BackSide
+      });
+      scene3d.add(new THREE.Mesh(glowGeo, glowMat));
+    }
+  } else {
+    // 일반 천체: 기존 구 렌더링
+    const geo = new THREE.SphereGeometry(1, 64, 64);
+    const mat = new THREE.MeshPhongMaterial({
+      color: col, shininess: isStar?5:40,
+      emissive: isStar?col:new THREE.Color(0), emissiveIntensity: isStar?.3:0,
+      specular: new THREE.Color(0x333333)
+    });
+    mesh3d = new THREE.Mesh(geo, mat);
+    scene3d.add(mesh3d);
+  }
+
+  // 고리 (토성, 천왕성, 해왕성, 하우메아)
+  const ringBodies = ['saturn','uranus','neptune','haumea'];
+  if (b.ring || ringBodies.includes(key)) {
+    const rGeo = new THREE.RingGeometry(1.5, key==='saturn'?2.6:1.9, 64);
+    const rMat = new THREE.MeshBasicMaterial({color: key==='saturn'?0xc8a96a:0x6688aa, side:THREE.DoubleSide, transparent:true, opacity:key==='saturn'?.6:.3});
+    const ring = new THREE.Mesh(rGeo, rMat);
+    ring.rotation.x = key==='uranus' ? Math.PI/2 : Math.PI/2.5;
     scene3d.add(ring);
   }
 
-  // 이벤트
+  // 위성들 3D 표시 (행성인 경우)
+  const moonMeshes = [];
+  if (!isMoonKey && b.moons && b.moons.length > 0) {
+    b.moons.slice(0,4).forEach((m, i) => {
+      const mR = Math.max(0.08, (m.r / b.r) * 0.8);
+      const mOrb = 1.8 + i * 0.5;
+      const mGeo = new THREE.SphereGeometry(mR, 32, 32);
+      const mMat = new THREE.MeshPhongMaterial({ color: new THREE.Color(m.color), shininess:20 });
+      const mMesh = new THREE.Mesh(mGeo, mMat);
+      // 궤도선
+      const oCurve = new THREE.EllipseCurve(0,0, mOrb, mOrb, 0, Math.PI*2, false, 0);
+      const oPoints = oCurve.getPoints(64);
+      const oGeo = new THREE.BufferGeometry().setFromPoints(oPoints);
+      const oLine = new THREE.Line(oGeo, new THREE.LineBasicMaterial({color:0xffffff, opacity:.15, transparent:true}));
+      oLine.rotation.x = Math.PI/2;
+      scene3d.add(oLine);
+      mMesh.userData = { orb: mOrb, angle: (i / b.moons.slice(0,4).length) * Math.PI * 2, speed: 0.003 + i * 0.001 };
+      scene3d.add(mMesh);
+      moonMeshes.push(mMesh);
+    });
+  }
+
+  // 마우스 이벤트
   renderer3d.domElement.addEventListener('mousedown', e => { mouseDown3d=true; lastMX=e.clientX; lastMY=e.clientY; });
   renderer3d.domElement.addEventListener('mousemove', e => {
     if (!mouseDown3d) return;
-    mesh3d.rotation.y += (e.clientX - lastMX) * 0.01;
-    mesh3d.rotation.x += (e.clientY - lastMY) * 0.01;
-    lastMX = e.clientX; lastMY = e.clientY;
+    mesh3d.rotation.y += (e.clientX-lastMX)*.01;
+    mesh3d.rotation.x += (e.clientY-lastMY)*.01;
+    lastMX=e.clientX; lastMY=e.clientY;
   });
-  window.addEventListener('mouseup', () => mouseDown3d = false);
+  window.addEventListener('mouseup', ()=>mouseDown3d=false);
   renderer3d.domElement.addEventListener('wheel', e => {
     e.preventDefault();
-    camera3d.position.z *= e.deltaY > 0 ? 1.1 : 0.9;
+    camera3d.position.z *= e.deltaY>0?1.1:.9;
     camera3d.position.z = Math.max(1.2, Math.min(10, camera3d.position.z));
-  });
-
-  // 터치 이벤트
-  let lastTouchX = 0, lastTouchY = 0;
-  renderer3d.domElement.addEventListener('touchstart', e => { lastTouchX=e.touches[0].clientX; lastTouchY=e.touches[0].clientY; });
-  renderer3d.domElement.addEventListener('touchmove', e => {
-    e.preventDefault();
-    mesh3d.rotation.y += (e.touches[0].clientX - lastTouchX) * 0.01;
-    mesh3d.rotation.x += (e.touches[0].clientY - lastTouchY) * 0.01;
-    lastTouchX=e.touches[0].clientX; lastTouchY=e.touches[0].clientY;
   }, {passive:false});
 
-  animate3D();
+  // 터치
+  let ltx=0,lty=0;
+  renderer3d.domElement.addEventListener('touchstart', e=>{ltx=e.touches[0].clientX;lty=e.touches[0].clientY;});
+  renderer3d.domElement.addEventListener('touchmove', e=>{
+    e.preventDefault();
+    mesh3d.rotation.y+=(e.touches[0].clientX-ltx)*.01;
+    mesh3d.rotation.x+=(e.touches[0].clientY-lty)*.01;
+    ltx=e.touches[0].clientX;lty=e.touches[0].clientY;
+  },{passive:false});
 
-  // 정보패널 다시 채우기 (innerHTML 초기화 후)
-  document.getElementById('panel-name').textContent = b.name;
-  document.getElementById('panel-type').innerHTML = `<span class="badge badge-cyan">${b.type}</span>`;
-  document.getElementById('panel-props').innerHTML = `
-    <table style="font-size:12px">
-      <tr><td style="color:var(--muted);padding:4px 0">반지름</td><td style="font-family:'Space Mono',monospace;color:var(--cyan);text-align:right">${b.r.toLocaleString()} km</td></tr>
-      <tr><td style="color:var(--muted);padding:4px 0">질량</td><td style="font-family:'Space Mono',monospace;color:var(--purple);text-align:right">${b.mass.toExponential(2)} kg</td></tr>
-      <tr><td style="color:var(--muted);padding:4px 0">밀도</td><td style="font-family:'Space Mono',monospace;color:var(--gold);text-align:right">${b.density} g/cm³</td></tr>
-      <tr><td style="color:var(--muted);padding:4px 0">온도</td><td style="font-family:'Space Mono',monospace;color:var(--red);text-align:right">${b.temp} K</td></tr>
-      <tr><td style="color:var(--muted);padding:4px 0">구성</td><td style="font-size:11px;color:var(--text);text-align:right">${b.comp}</td></tr>
-    </table>`;
-  document.getElementById('panel-facts-list').innerHTML = b.facts.map(f => `<div class="fact">${f}</div>`).join('');
-}
+  fillPanel();
 
-let animating3d = false;
-function animate3D() {
-  animating3d = true;
-  const loop = () => {
-    if (!document.getElementById('tab-view3d').classList.contains('active')) { animating3d=false; return; }
-    requestAnimationFrame(loop);
-    if (autoRotate3d && mesh3d) mesh3d.rotation.y += 0.005;
+  // 애니메이션
+  const loop3d = () => {
+    if (!document.getElementById('tab-view3d').classList.contains('active')) return;
+    requestAnimationFrame(loop3d);
+    if (autoRotate3d && mesh3d) mesh3d.rotation.y += .005;
+    // 위성 공전
+    moonMeshes.forEach(mm => {
+      mm.userData.angle += mm.userData.speed;
+      mm.position.x = Math.cos(mm.userData.angle) * mm.userData.orb;
+      mm.position.z = Math.sin(mm.userData.angle) * mm.userData.orb;
+    });
     if (renderer3d && scene3d && camera3d) renderer3d.render(scene3d, camera3d);
   };
-  requestAnimationFrame(loop);
+  requestAnimationFrame(loop3d);
 }
+
+// ===================== PHYSICS DATA =====================
+const PHYSICS_DATA = {
+  quarks: [
+    { symbol:'u', name:'업 쿼크', gen:1, mass:'2.3 MeV', charge:'+2/3', color:'#ff6040', spin:'1/2',
+      desc:'양성자·중성자 구성. 가장 흔한 쿼크. 양성자=uud, 중성자=udd' },
+    { symbol:'d', name:'다운 쿼크', gen:1, mass:'4.8 MeV', charge:'-1/3', color:'#ff8060', spin:'1/2',
+      desc:'양성자·중성자 구성. 두 번째로 흔한 쿼크.' },
+    { symbol:'c', name:'참 쿼크', gen:2, mass:'1.28 GeV', charge:'+2/3', color:'#ffa040', spin:'1/2',
+      desc:'1974년 발견. J/ψ 중간자 구성. 참 수 보존.' },
+    { symbol:'s', name:'기묘 쿼크', gen:2, mass:'95 MeV', charge:'-1/3', color:'#ffb060', spin:'1/2',
+      desc:'기묘 입자에서 발견. 기묘수 보존 관련.' },
+    { symbol:'t', name:'탑 쿼크', gen:3, mass:'173.1 GeV', charge:'+2/3', color:'#ffd040', spin:'1/2',
+      desc:'가장 무거운 기본 입자. 텔라트론에서 1995년 발견.' },
+    { symbol:'b', name:'바텀 쿼크', gen:3, mass:'4.18 GeV', charge:'-1/3', color:'#ffcc60', spin:'1/2',
+      desc:'바텀니움 메존 구성. B 물리학의 핵심.' },
+  ],
+  leptons: [
+    { symbol:'e⁻', name:'전자', gen:1, mass:'0.511 MeV', charge:'-1', color:'#40c0ff', spin:'1/2',
+      desc:'원자 궤도 구성. 전기력의 핵심 입자. 1897년 발견.' },
+    { symbol:'νₑ', name:'전자 뉴트리노', gen:1, mass:'<2.2 eV', charge:'0', color:'#80e0ff', spin:'1/2',
+      desc:'베타 붕괴에서 방출. 물질과 거의 반응 안 함. 1956년 발견.' },
+    { symbol:'μ⁻', name:'뮤온', gen:2, mass:'105.7 MeV', charge:'-1', color:'#40a0e0', spin:'1/2',
+      desc:'전자의 무거운 버전. 우주선에서 생성. 2.2μs 수명.' },
+    { symbol:'νμ', name:'뮤온 뉴트리노', gen:2, mass:'<0.17 MeV', charge:'0', color:'#6080c0', spin:'1/2',
+      desc:'뮤온 붕괴에서 생성. 1962년 전자 뉴트리노와 다름을 확인.' },
+    { symbol:'τ⁻', name:'타우', gen:3, mass:'1.777 GeV', charge:'-1', color:'#4060a0', spin:'1/2',
+      desc:'가장 무거운 렙톤. 290fs 수명. 1975년 발견.' },
+    { symbol:'ντ', name:'타우 뉴트리노', gen:3, mass:'<15.5 MeV', charge:'0', color:'#6040a0', spin:'1/2',
+      desc:'2000년 페르미랩에서 직접 확인. 세 종류 뉴트리노 중 마지막.' },
+  ],
+  bosons: [
+    { symbol:'γ', name:'광자', force:'전자기력', mass:'0', charge:'0', color:'#ffd700', spin:'1',
+      range:'무한대', desc:'빛의 입자. 전자기력 전달. 전하를 가진 입자 사이 작용.' },
+    { symbol:'g', name:'글루온', force:'강한 핵력', mass:'0', charge:'0', color:'#ff4040', spin:'1',
+      range:'~1fm', desc:'쿼크를 묶는 힘. 8종류 존재. 자기 자신과도 상호작용.' },
+    { symbol:'W±', name:'W 보손', force:'약한 핵력', mass:'80.4 GeV', charge:'±1', color:'#40c040', spin:'1',
+      range:'0.001fm', desc:'베타 붕괴 매개. 1983년 CERN에서 발견. 무거운 이유: 짧은 도달 거리.' },
+    { symbol:'Z⁰', name:'Z 보손', force:'약한 핵력', mass:'91.2 GeV', charge:'0', color:'#60e060', spin:'1',
+      range:'0.001fm', desc:'중성 약한 상호작용 매개. 1983년 발견. 뉴트리노 종류 수 결정.' },
+    { symbol:'H', name:'힉스 보손', force:'질량 부여', mass:'125.1 GeV', charge:'0', color:'#e040e0', spin:'0',
+      range:'극단파', desc:'질량의 근원. 2012년 LHC에서 발견. 피터 힉스·프랑수아 앙글레르 노벨상.' },
+  ],
+  forces: [
+    { name:'강한 핵력', carrier:'글루온 (g)', range:'~1 fm', strength:'1', color:'#ff4040',
+      desc:'쿼크를 묶어 양성자·중성자 형성. 원자핵을 결합. 가장 강한 힘. 색전하로 작용.' },
+    { name:'전자기력', carrier:'광자 (γ)', range:'무한대', strength:'1/137', color:'#ffd700',
+      desc:'전하를 가진 입자 사이 작용. 화학 반응, 빛, 전기·자기 현상의 근원.' },
+    { name:'약한 핵력', carrier:'W±, Z⁰', range:'0.001 fm', strength:'10⁻⁶', color:'#40c040',
+      desc:'방사성 붕괴 일으킴. 태양 핵융합에 필수. 쿼크 세대 변환. 패리티 비보존.' },
+    { name:'중력', carrier:'중력자(미발견)', range:'무한대', strength:'6×10⁻³⁹', color:'#60a0ff',
+      desc:'질량·에너지 사이 인력. 가장 약하지만 우주 규모 지배. 표준모형에 미포함.' },
+  ],
+  darkMatterEvidence: [
+    { icon:'🌀', title:'은하 회전 곡선', year:'1970년대', who:'베라 루빈',
+      desc:'은하 외곽 별들이 뉴턴 역학 예측보다 훨씬 빠르게 공전. 보이지 않는 추가 질량 필요. 루빈이 수십 개 은하에서 확인.' },
+    { icon:'🌐', title:'중력 렌즈 효과', year:'1979년~', who:'여러 연구팀',
+      desc:'암흑물질이 빛을 휘게 만드는 현상. 보이지 않는 질량이 배경 천체 빛을 굴절시킴. 총알 은하단에서 극적으로 확인.' },
+    { icon:'💥', title:'총알 은하단', year:'2006년', who:'찬드라 X선 천문대',
+      desc:'두 은하단 충돌 시 가스(일반물질)는 느려졌지만 암흑물질(중력 중심)은 통과. 암흑물질의 존재를 가장 직접적으로 보인 증거.' },
+    { icon:'🌡️', title:'우주배경복사', year:'2003년~', who:'WMAP, 플랑크 위성',
+      desc:'빅뱅 직후 우주 온도 요동 패턴 분석. 암흑물질 없이는 현재 은하 구조 형성 불가능. 전체 물질의 84%가 암흑물질임을 확인.' },
+    { icon:'🏗️', title:'우주 거대구조', year:'1990년대~', who:'SDSS 등',
+      desc:'은하 필라멘트, 거대 공동(보이드) 구조는 암흑물질 골격 없이 형성 불가능. 컴퓨터 시뮬레이션이 암흑물질 가정 시 실제와 일치.' },
+    { icon:'⚡', title:'속도 분산 이상', year:'1933년', who:'프리츠 츠비키',
+      desc:'코마 은하단 은하들의 속도가 보이는 질량으로 예측한 것보다 훨씬 빠름. 암흑물질 존재를 처음 제안한 역사적 관측.' },
+  ],
+  darkMatterCandidates: [
+    { name:'WIMP', fullname:'약하게 상호작용하는 거대 입자', prob:'높음', color:'#00e5ff',
+      mass:'1 GeV ~ 1 TeV', interaction:'약한 핵력·중력',
+      desc:'가장 유력한 후보. 빅뱅 때 열평형으로 생성. LHC, 직접 검출 실험 탐색 중. 초대칭 이론에서 자연스럽게 등장.',
+      detect:'지하 직접 검출 (LUX, XENONnT), LHC, 감마선 망원경',
+      status:'아직 미발견 — 탐색 계속 중' },
+    { name:'액시온', fullname:'강한 CP 문제 해결을 위해 제안된 입자', prob:'높음', color:'#a855f7',
+      mass:'1 μeV ~ 1 meV', interaction:'전자기력(극미)',
+      desc:'1977년 페체이-퀸이 제안. 매우 가볍고 약하게 상호작용. ADMX 실험이 탐색 중. 양자 색역학의 CP 대칭 문제 해결.',
+      detect:'ADMX (마이크로파 공동), CASPEr (NMR 기반)',
+      status:'탐색 범위 좁히는 중' },
+    { name:'스테릴 뉴트리노', fullname:'약한 핵력과도 반응 안 하는 뉴트리노', prob:'중간', color:'#10b981',
+      mass:'keV ~ MeV', interaction:'중력만',
+      desc:'표준모형 뉴트리노의 무거운 버전. 뉴트리노 질량 설명 가능. X선 관측으로 탐색. 3.5 keV X선 신호가 후보 증거로 논의 중.',
+      detect:'X선 망원경, 원자로 실험',
+      status:'3.5 keV 신호 논쟁 중' },
+    { name:'뉴트랄리노', fullname:'초대칭 이론의 최경량 초대칭 입자', prob:'중간', color:'#fbbf24',
+      mass:'100 GeV ~ 1 TeV', interaction:'약한 핵력·중력',
+      desc:'초대칭(SUSY) 이론에서 예측. WIMP의 한 종류. LHC에서 초대칭 입자 탐색했으나 미발견. 이론적 우아함으로 여전히 유력.',
+      detect:'LHC (ATLAS, CMS), 직접 검출 실험',
+      status:'LHC 미발견으로 제약 강화' },
+    { name:'원시 블랙홀', fullname:'빅뱅 초기 형성된 소형 블랙홀', prob:'중간', color:'#ef4444',
+      mass:'소행성 ~ 별 질량', interaction:'중력만',
+      desc:'빅뱅 초기 밀도 요동으로 형성 가능. LIGO의 중력파 관측이 재조명. 마이크로 렌즈 효과로 탐색. 질량 범위 일부는 배제됨.',
+      detect:'중력파 (LIGO/Virgo), 마이크로 렌즈 관측',
+      status:'일부 질량 범위 배제, 탐색 계속' },
+    { name:'KK 입자', fullname:'칼루자-클라인 암흑물질', prob:'낮음', color:'#60a0ff',
+      mass:'수백 GeV ~ TeV', interaction:'약한 핵력·중력',
+      desc:'여분 차원 이론에서 예측. 일반 입자의 고차원 들뜸 상태. WIMP와 비슷한 탐색 방법. 여분 차원 크기에 따라 질량 결정.',
+      detect:'LHC, 직접 검출 실험',
+      status:'이론적 후보, 탐색 중' },
+  ],
+  darkEnergy: {
+    intro: '1998년 초신성 관측으로 우주가 가속 팽창 중임을 발견. 이 팽창을 일으키는 원인을 암흑에너지라 부름. 솔 펄머터, 브라이언 슈밋, 애덤 리스가 2011년 노벨 물리학상 수상.',
+    evidence: [
+      { icon:'💥', title:'Ia형 초신성 관측', desc:'표준 촛불인 Ia형 초신성이 예상보다 어둡게 보임 → 우주가 예상보다 빠르게 팽창. 1998년 두 연구팀이 독립적으로 발견.' },
+      { icon:'🌡️', title:'우주배경복사 (CMB)', desc:'플랑크 위성이 측정한 CMB 요동 패턴이 평탄한 우주 기하학을 나타냄. 총 에너지-밀도 맞추려면 암흑에너지 필수.' },
+      { icon:'🌐', title:'바리온 음향 진동 (BAO)', desc:'초기 우주 음향파의 흔적이 은하 분포에 남아있음. 그 스케일이 암흑에너지가 있는 모델과 일치.' },
+      { icon:'🔭', title:'허블 상수 측정', desc:'멀리 있는 은하일수록 더 빠르게 멀어짐. 팽창 속도가 시간에 따라 증가하는 것을 다양한 방법으로 확인.' },
+    ],
+    theories: [
+      { name:'우주상수 (Λ, Lambda)', color:'#6090ff', border:'#6090ff',
+        desc:'아인슈타인이 1917년 도입했다가 철회한 개념. 진공 에너지가 일정한 반발력 제공. 현재 관측과 잘 맞지만 이론적으로 값이 왜 그렇게 작은지 설명 불가.',
+        problem:'세밀조정 문제: 이론 예측값이 관측값보다 10¹²⁰배 크다 (물리학 역사상 최대 불일치)',
+        status:'현재 표준 모델 (ΛCDM)' },
+      { name:'퀸테센스 (Quintessence)', color:'#a855f7', border:'#a855f7',
+        desc:'우주상수와 달리 시간에 따라 변화하는 스칼라 장. 암흑에너지의 방정식 상태 파라미터 w가 -1이 아닌 다른 값. 더 유연하지만 직접 증거 없음.',
+        problem:'왜 하필 지금 암흑에너지가 물질과 비슷한 크기인지 설명 필요 (우연의 일치 문제)',
+        status:'탐색 중 (DESI 실험 등)' },
+      { name:'유령 에너지 (Phantom Energy)', color:'#ef4444', border:'#ef4444',
+        desc:'방정식 상태 파라미터 w < -1인 암흑에너지. 팽창이 점점 가속되어 결국 빅 립으로 이어짐. 기본 물리 법칙 위반 가능성 내포.',
+        problem:'에너지 조건 위반, 인과율 문제. 빅 립으로 모든 구조 파괴.',
+        status:'이론적 가능성, 관측 배제 안 됨' },
+      { name:'수정 중력 이론 (f(R) 중력 등)', color:'#10b981', border:'#10b981',
+        desc:'암흑에너지 자체가 없고 일반상대성이론을 수정해 가속 팽창 설명. 스칼라-텐서 이론, DGP 모델 등 다양한 변형 존재.',
+        problem:'태양계 스케일 중력 실험과의 일치 필요. 대부분 제약 강화.',
+        status:'연구 활발, 일부 모델 배제' },
+    ]
+  },
+  cosmicFates: [
+    { name:'빅 프리즈 / 열적 죽음', emoji:'🥶', color:'#60a0ff', border:'rgba(96,160,255,.4)',
+      timeline:'10¹⁰⁰년 이후',
+      condition:'암흑에너지 = 우주상수 (w = -1)',
+      probability:'가장 유력 (현재 관측과 일치)',
+      desc:'우주가 계속 팽창하지만 점점 느려지지는 않음. 별들이 모두 타고 꺼지고, 블랙홀도 호킹 복사로 증발. 우주 전체가 최대 엔트로피 상태(열적 평형)에 도달. 아무것도 일어나지 않는 영원한 암흑.',
+      stages:['10¹⁴년: 별 형성 종료, 마지막 별 꺼짐','10⁴⁰년: 양성자 붕괴 (이론에 따라)','10⁶⁷년: 항성 질량 블랙홀 호킹 복사 소멸','10¹⁰⁰년: 초대질량 블랙홀 소멸','그 이후: 입자도 없는 완전한 공허'] },
+    { name:'빅 립', emoji:'💥', color:'#ef4444', border:'rgba(239,68,68,.4)',
+      timeline:'220억 년 후 (추정)',
+      condition:'유령 에너지 (w < -1)',
+      probability:'낮음 (현재 관측으로 배제 안 됨)',
+      desc:'암흑에너지가 점점 강해지며 팽창 속도가 무한대로 증가. 은하단 → 은하 → 태양계 → 행성 → 원자 → 아원자 입자 순으로 모든 구조가 찢겨 나감.',
+      stages:['T-20억 년: 은하단 해체','T-6천만 년: 은하 해체','T-3개월: 태양계 해체','T-30분: 지구 폭발','T-10⁻¹⁹초: 원자핵 해체'] },
+    { name:'빅 크런치', emoji:'🔥', color:'#fbbf24', border:'rgba(251,191,36,.4)',
+      timeline:'수천억 년 후',
+      condition:'중력 > 암흑에너지 (팽창 역전)',
+      probability:'매우 낮음 (현재 관측에서 거의 배제)',
+      desc:'우주의 총 에너지 밀도가 임계값 초과. 팽창이 멈추고 수축 시작. 모든 물질이 초고밀도로 붕괴. 빅뱅의 역과정. 빅 바운스(새 빅뱅)로 이어질 수도.',
+      stages:['수축 시작: 은하들이 서로 다가옴','은하 충돌: 밤하늘이 낮처럼 밝아짐','별 온도: 배경복사 온도가 별 표면 온도 초과','최종 붕괴: 모든 물질이 하나의 특이점으로'] },
+    { name:'진공 붕괴 (빅 슬럽)', emoji:'⚡', color:'#a855f7', border:'rgba(168,85,247,.4)',
+      timeline:'언제든 가능 (예측 불가)',
+      condition:'힉스장이 준안정 상태일 경우',
+      probability:'불명 (힉스 질량 125 GeV가 준안정 영역에 위치)',
+      desc:'힉스장이 현재 에너지 상태가 진정한 최저점이 아닌 준안정 상태일 경우, 어느 순간 진짜 진공으로 전이. 빛의 속도로 팽창하는 진공 거품이 물리 법칙 자체를 변경. 경고 없이 순식간에 발생.',
+      stages:['어딘가에서 진공 거품 발생','빛의 속도로 팽창 — 감지 불가능','거품 내부: 물리 상수 완전히 달라짐','거품 통과: 순식간에 모든 구조 소멸','사전 경고 없음 — 이미 일어났을 수도'] },
+  ]
+};
+
+// ===================== PHYSICS RENDER =====================
+let physicsInited = false;
+
+function initPhysics() {
+  if (physicsInited) return;
+  physicsInited = true;
+  renderStandardModel();
+  renderDarkMatter();
+  renderDarkEnergy();
+  renderCosmicFate();
+  initDebate();
+}
+
+function showPhysTab(id, btn) {
+  ['standard','darkmatter','darkenergy','fate','debate'].forEach(t => {
+    document.getElementById('phys-' + t).style.display = 'none';
+    document.getElementById('phys-btn-' + t).classList.remove('active');
+  });
+  document.getElementById('phys-' + id).style.display = 'block';
+  btn.classList.add('active');
+}
+
+function renderStandardModel() {
+  const genColors = ['rgba(255,80,40,.15)','rgba(255,160,40,.15)','rgba(255,220,40,.15)'];
+  const genBorders = ['rgba(255,80,40,.4)','rgba(255,160,40,.4)','rgba(255,220,40,.4)'];
+  const genLabels = ['1세대','2세대','3세대'];
+
+  // 쿼크
+  document.getElementById('quark-grid').innerHTML = PHYSICS_DATA.quarks.map(p => `
+    <div class="particle-card" style="border-color:${p.color}40;background:${p.color}10" onclick="showParticleDetail(this)"">
+      <div class="p-gen" style="background:${genColors[p.gen-1]};border:1px solid ${genBorders[p.gen-1]};color:${p.color}">${genLabels[p.gen-1]}</div>
+      <div class="p-symbol" style="color:${p.color}">${p.symbol}</div>
+      <div class="p-name">${p.name}</div>
+      <div class="p-mass">${p.mass}</div>
+      <div class="p-mass">전하 ${p.charge} · 스핀 ${p.spin}</div>
+      <div class="p-desc">${p.desc}</div>
+    </div>`).join('');
+
+  // 렙톤
+  document.getElementById('lepton-grid').innerHTML = PHYSICS_DATA.leptons.map(p => `
+    <div class="particle-card" style="border-color:${p.color}40;background:${p.color}10">
+      <div class="p-gen" style="background:${genColors[p.gen-1]};border:1px solid ${genBorders[p.gen-1]};color:${p.color}">${genLabels[p.gen-1]}</div>
+      <div class="p-symbol" style="color:${p.color}">${p.symbol}</div>
+      <div class="p-name">${p.name}</div>
+      <div class="p-mass">${p.mass}</div>
+      <div class="p-mass">전하 ${p.charge} · 스핀 ${p.spin}</div>
+      <div class="p-desc">${p.desc}</div>
+    </div>`).join('');
+
+  // 보손
+  document.getElementById('boson-grid').innerHTML = PHYSICS_DATA.bosons.map(p => `
+    <div class="particle-card" style="border-color:${p.color}40;background:${p.color}10">
+      <div class="p-symbol" style="color:${p.color}">${p.symbol}</div>
+      <div class="p-name">${p.name}</div>
+      <div class="p-mass">${p.mass}</div>
+      <div class="p-mass">전하 ${p.charge} · 스핀 ${p.spin}</div>
+      <div class="p-desc">${p.force} 전달</div>
+      <div class="p-desc" style="margin-top:4px">${p.desc}</div>
+    </div>`).join('');
+
+  // 기본 힘
+  document.getElementById('forces-grid').innerHTML = PHYSICS_DATA.forces.map(f => `
+    <div class="force-card" style="border-left:3px solid ${f.color}">
+      <div class="force-name" style="color:${f.color}">${f.name}</div>
+      <div class="force-carrier">전달 입자: ${f.carrier}</div>
+      <div class="force-range" style="color:var(--muted)">도달 거리: ${f.range}</div>
+      <div class="force-range" style="color:var(--muted)">상대 세기: ${f.strength}</div>
+      <div class="p-desc" style="margin-top:6px">${f.desc}</div>
+    </div>`).join('');
+}
+
+function renderDarkMatter() {
+  document.getElementById('dm-evidence').innerHTML = PHYSICS_DATA.darkMatterEvidence.map(e => `
+    <div class="evidence-item">
+      <div class="evidence-icon">${e.icon}</div>
+      <div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:2px">${e.title}
+          <span style="font-size:11px;color:var(--muted);margin-left:8px">${e.year} · ${e.who}</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5">${e.desc}</div>
+      </div>
+    </div>`).join('');
+
+  const probColors = {'높음':'#10b981','중간':'#fbbf24','낮음':'#ef4444'};
+  document.getElementById('dm-candidates').innerHTML = PHYSICS_DATA.darkMatterCandidates.map(c => `
+    <div class="dm-candidate" style="border-color:${c.color}40">
+      <div class="dm-candidate-name" style="color:${c.color}">${c.name}</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:8px">${c.fullname}</div>
+      <span class="dm-prob" style="background:${probColors[c.prob]}20;color:${probColors[c.prob]};border:1px solid ${probColors[c.prob]}40">가능성 ${c.prob}</span>
+      <div style="display:grid;gap:4px;margin-bottom:8px">
+        <div style="font-size:11px"><span style="color:var(--muted)">질량: </span><span style="font-family:'Space Mono',monospace;color:${c.color}">${c.mass}</span></div>
+        <div style="font-size:11px"><span style="color:var(--muted)">상호작용: </span><span style="font-size:11px">${c.interaction}</span></div>
+      </div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:8px">${c.desc}</div>
+      <div style="font-size:11px;padding:6px 8px;background:rgba(255,255,255,.03);border-radius:4px">
+        <span style="color:var(--muted)">탐색 방법: </span>${c.detect}
+      </div>
+      <div style="font-size:11px;margin-top:6px;padding:4px 8px;background:${probColors[c.prob]}10;border-radius:4px;color:${probColors[c.prob]}">${c.status}</div>
+    </div>`).join('');
+}
+
+function renderDarkEnergy() {
+  const de = PHYSICS_DATA.darkEnergy;
+  document.getElementById('de-content').innerHTML = `
+    <div class="card" style="margin-bottom:14px;border-color:rgba(96,144,255,.3)">
+      <div style="font-size:13px;font-weight:600;color:#6090ff;margin-bottom:10px">📡 암흑에너지 존재 증거</div>
+      ${de.evidence.map(e => `
+        <div class="evidence-item">
+          <div class="evidence-icon">${e.icon}</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;margin-bottom:3px">${e.title}</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.5">${e.desc}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+    <div class="card-title" style="margin-bottom:10px">🧪 암흑에너지 이론들</div>
+    ${de.theories.map(t => `
+      <div class="de-theory" style="border-color:${t.border};border-left-color:${t.color}">
+        <div style="font-size:14px;font-weight:700;color:${t.color};margin-bottom:6px">${t.name}</div>
+        <div style="font-size:12px;line-height:1.6;margin-bottom:8px;color:var(--text)">${t.desc}</div>
+        <div style="font-size:11px;padding:6px 10px;background:rgba(255,80,80,.08);border-radius:4px;color:#ff8080;margin-bottom:6px">
+          ⚠️ ${t.problem}
+        </div>
+        <div style="font-size:11px;padding:4px 8px;background:rgba(255,255,255,.04);border-radius:4px;color:${t.color}">${t.status}</div>
+      </div>`).join('')}`;
+}
+
+function renderCosmicFate() {
+  document.getElementById('fate-content').innerHTML = PHYSICS_DATA.cosmicFates.map(f => `
+    <div class="fate-card" style="border-color:${f.border}">
+      <div style="position:absolute;top:16px;right:16px;font-size:32px;opacity:.15">${f.emoji}</div>
+      <div class="fate-title" style="color:${f.color}">${f.emoji} ${f.name}</div>
+      <span class="fate-timeline" style="background:${f.color}18;color:${f.color}">${f.timeline}</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+        <div style="font-size:11px"><span style="color:var(--muted)">조건: </span>${f.condition}</div>
+        <div style="font-size:11px"><span style="color:var(--muted)">확률: </span><span style="color:${f.color}">${f.probability}</span></div>
+      </div>
+      <div class="timeline-bar" style="background:linear-gradient(to right,${f.color},${f.color}44)"></div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px">${f.desc}</div>
+      <div style="background:rgba(255,255,255,.03);border-radius:6px;padding:10px">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;font-family:'Space Mono',monospace">타임라인</div>
+        ${f.stages.map(s => `<div style="font-size:12px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text)">▸ ${s}</div>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+// ===================== DEBATE DATA =====================
+const DEBATE_DATA = {
+  papers: [
+    { year:'2020', journal:'The Astrophysical Journal Letters', title:'Two Populations of Type Ia Supernovae',
+      authors:'이영욱, Oh Seungjae 외', impact:'★★★★★',
+      summary:'Ia형 초신성을 낳는 별의 나이(항성 종족)에 따라 밝기가 체계적으로 다름을 처음 제안. 학계 충격.' },
+    { year:'2021', journal:'The Astrophysical Journal', title:'Stellar Population Correction for Supernova Cosmology',
+      authors:'이영욱 외 다수', impact:'★★★★☆',
+      summary:'항성 종족 보정을 실제 관측 데이터에 적용. 보정 후 우주 가속 팽창 신호가 약해짐을 정량적으로 제시.' },
+    { year:'2022', journal:'The Astrophysical Journal Letters', title:'Systematic Bias in Ia SN Cosmology',
+      authors:'이영욱, Kang Yijung 외', impact:'★★★★★',
+      summary:'체계적 오류(Systematic Bias)가 암흑에너지 검출의 통계적 유의성을 4.2σ에서 2.8σ로 감소시킴을 주장. 국제 언론 대대적 보도.' },
+    { year:'2023', journal:'The Astrophysical Journal', title:'Age-dependent Luminosity of Ia Supernovae',
+      authors:'이영욱 외', impact:'★★★★☆',
+      summary:'더 많은 샘플(Pantheon+ 카탈로그 포함)로 분석 확장. 항성 종족 효과의 보편성 강화.' },
+    { year:'2024', journal:'Astronomy & Astrophysics', title:'Implications for ΛCDM from Stellar Population Effects',
+      authors:'이영욱, 국제공동연구팀', impact:'★★★★★',
+      summary:'DESI 데이터와 연계. 항성 종족 보정이 표준 우주론(ΛCDM) 파라미터에 미치는 영향 종합 분석.' },
+  ],
+  counterArguments: [
+    { stance:'반론', color:'#ef4444',
+      who:'Pantheon+ 컨소시엄 (Brout, Scolnic 외, 2022)',
+      title:'기존 보정 방법으로도 충분하다',
+      desc:'이미 색깔 보정(Color Correction)과 형태 보정(Stretch Correction)을 통해 항성 종족 효과를 상당 부분 제거했다. 이영욱 팀의 추가 보정은 과보정(Over-correction)일 수 있다.',
+      weakness:'그러나 색깔/형태 보정이 항성 종족 효과를 완전히 제거한다는 물리적 근거는 여전히 논쟁 중.' },
+    { stance:'부분 동의', color:'#fbbf24',
+      who:'Rubin, Hayden 외 (2023)',
+      title:'효과는 존재하지만 크기가 작다',
+      desc:'항성 종족에 따른 밝기 차이 효과 자체는 인정. 그러나 그 크기가 이영욱 팀 추정보다 작아 암흑에너지 결론을 뒤집기에는 충분하지 않다고 주장.',
+      weakness:'효과 크기 측정 방법론에 대한 논쟁 계속 진행 중.' },
+    { stance:'독립 검증', color:'#10b981',
+      who:'Nicolas 외 (2021), Kim 외 (2023)',
+      title:'다른 팀도 유사한 효과 확인',
+      desc:'이영욱 팀과 독립적으로 항성 종족에 따른 Ia형 초신성 밝기 차이를 확인한 연구들 발표. 효과의 실재성에 힘 실어줌.',
+      weakness:'보정 방법과 크기 추정에는 팀마다 차이가 있음.' },
+    { stance:'우주론 측 반박', color:'#6090ff',
+      who:'Riess, Perlmutter 등 노벨상 수상팀',
+      title:'다른 독립적 증거들이 암흑에너지를 지지',
+      desc:'CMB(우주배경복사), BAO(바리온 음향 진동), 약한 중력 렌즈 등 초신성과 완전히 독립적인 방법들도 모두 암흑에너지를 지지. 초신성 하나의 오류가 전체 결론을 뒤집지 못한다.',
+      weakness:'그러나 이들 방법도 각자의 계통 오차를 가지며, 허블 텐션 등 새로운 문제를 낳고 있음.' },
+  ],
+  currentStatus: [
+    { icon:'🏆', title:'학계 주류 입장', color:'#6090ff',
+      desc:'암흑에너지의 존재는 여전히 유력하게 지지됨. 초신성 이외의 독립적 증거들(CMB, BAO 등)이 많기 때문. 그러나 항성 종족 효과 보정 필요성은 광범위하게 인정됨.' },
+    { icon:'⚠️', title:'이영욱 교수 주장의 의의', color:'#fbbf24',
+      desc:'표준촛불의 완벽성에 대한 맹목적 신뢰에 경종. 체계적 오류 분석의 중요성 재확인. 앞으로 LSST, Rubin Observatory 등의 대규모 관측에서 이 효과를 반드시 고려해야 함.' },
+    { icon:'🔭', title:'DESI 2024 결과와의 관계', color:'#10b981',
+      desc:'2024년 DESI 실험 결과 암흑에너지가 시간에 따라 변할 수 있다는 증거 발표. 이영욱 교수 주장과 독립적이지만, 표준 우주론(ΛCDM)에 함께 도전하는 흐름.' },
+    { icon:'🔬', title:'앞으로의 검증 방법', color:'#a855f7',
+      desc:'Nancy Grace Roman 우주망원경(2027년 예정), Rubin LSST(2024년 가동 시작)가 수만 개 Ia형 초신성 관측. 항성 종족 효과를 통계적으로 결론지을 충분한 데이터 제공 예정.' },
+    { icon:'🌏', title:'한국 천문학계의 위상', color:'#00e5ff',
+      desc:'이영욱 교수 연구는 한국 천문학이 세계 최고 수준의 우주론 논쟁을 주도할 수 있음을 보여준 사례. 연세대학교팀이 허블 우주망원경 관측 시간을 배정받아 수행한 연구.' },
+  ],
+  hubbleTension: {
+    intro: '허블 상수(H₀)는 우주 팽창 속도를 나타내는 값. 서로 다른 측정 방법이 서로 다른 값을 내놓아 현재 우주론의 가장 큰 미스터리 중 하나.',
+    methods: [
+      { name:'초기 우주 방법 (CMB)', value:'67.4 ± 0.5 km/s/Mpc', color:'#6090ff',
+        who:'플랑크 위성 (2018)', method:'빅뱅 직후 우주배경복사 온도 요동 분석 → 표준 우주론 모델로 현재 허블 상수 추정' },
+      { name:'현재 우주 방법 (거리 사다리)', value:'73.0 ± 1.0 km/s/Mpc', color:'#ff8060',
+        who:'Riess 팀 (SH0ES, 2022)', method:'세페이드 변광성 → Ia형 초신성 → 허블 흐름 측정하는 3단계 거리 사다리' },
+      { name:'중력파 방법', value:'68 ~ 72 km/s/Mpc', color:'#10b981',
+        who:'LIGO/Virgo (2017~)', method:'중성자별 합병에서 나오는 중력파와 전자기파 동시 관측으로 독립적 거리 측정' },
+      { name:'강한 중력 렌즈', value:'73.3 ± 1.8 km/s/Mpc', color:'#a855f7',
+        who:'H0LiCOW (2020)', method:'중력 렌즈로 휜 퀘이사 빛의 시간 지연 분석' },
+    ],
+    tension: '두 측정값의 차이: 약 5σ (통계적으로 우연의 일치일 확률 1/3,500,000)',
+    explanations: [
+      { name:'미지의 초기 우주 물리학', color:'#fbbf24', desc:'재결합 이전 초기 우주에 알려지지 않은 성분(Early Dark Energy 등)이 존재해 CMB 기반 값을 바꿀 수 있음.' },
+      { name:'거리 사다리의 계통 오차', color:'#ef4444', desc:'이영욱 교수 주장과 연결: 세페이드 변광성이나 Ia형 초신성 거리 측정에 체계적 오류가 있을 가능성. 항성 종족 효과가 이를 일부 설명할 수 있음.' },
+      { name:'국소 우주의 특이성', color:'#10b981', desc:'우리 은하 주변 국소 우주가 우주 평균보다 밀도가 낮은 공동(Void)에 위치해 팽창이 더 빠르게 측정될 수 있음.' },
+      { name:'새 물리학 필요', color:'#a855f7', desc:'암흑에너지 방정식 상태 변화, 상호작용 암흑에너지, 수정 중력 이론 등 표준 우주론 너머의 새 물리학 가능성.' },
+    ]
+  },
+  jwstShock: [
+    { title:'예상보다 너무 크고 밝은 초기 은하', year:'2022~2023', color:'#ff8060',
+      finding:'빅뱅 후 수억 년 된 우주에서 현재 우리은하 크기에 맞먹는 거대 은하들 발견. 기존 우주론 시뮬레이션으로는 이 시기에 이렇게 큰 은하 형성이 불가능.',
+      implication:'별 형성 속도, 암흑물질 분포, 초기 우주 구조 형성 이론 전면 재검토 필요. "우주론적 위기(Cosmological Crisis)"라는 표현까지 등장.',
+      status:'진행 중 — 표준 모델 수정 vs 새 물리학 논쟁' },
+    { title:'예상보다 많은 원시 블랙홀', year:'2023', color:'#a855f7',
+      finding:'초기 우주에서 태양 질량 수백만~수십억 배의 초대질량 블랙홀이 이미 존재. 기존 이론의 블랙홀 성장 속도로는 이 짧은 시간 내 형성 불가능.',
+      implication:'블랙홀 씨앗 형성 메커니즘, 빅뱅 직후 원시 블랙홀 존재 가능성 재조명.',
+      status:'원시 블랙홀 이론 주목도 상승' },
+    { title:'표준 항성 진화 이론에 도전', year:'2023~2024', color:'#fbbf24',
+      finding:'초기 우주 별들이 현재 별들과 다른 진화 경로를 거칠 가능성. 금속 함량이 극히 낮은 환경의 항성 진화가 기존 모델과 다를 수 있음.',
+      implication:'이영욱 교수의 항성 종족 연구와 연결: 초기 우주 별들의 특성이 표준촛불 보정에도 영향을 줄 수 있음.',
+      status:'항성 진화 모델 업데이트 진행 중' },
+    { title:'우주 재이온화 시기 재조정', year:'2022~2024', color:'#10b981',
+      finding:'우주 재이온화(중성 수소가 이온화되는 시기)가 기존 예상보다 더 복잡하고 오래 지속됐을 가능성. 초기 은하들이 더 강한 자외선을 방출했음을 시사.',
+      implication:'우주 구조 형성의 역사 재구성 필요.',
+      status:'CMB 관측과 병행 분석 중' },
+  ],
+  isotropyDebate: [
+    { title:'우주는 정말 등방적인가?', color:'#60a0c0',
+      desc:'우주 원리(Cosmological Principle): 우주는 충분히 큰 스케일에서 모든 방향으로 동일하게 보인다(등방성). 그러나 최근 관측들이 이에 의문을 제기.' },
+    { title:'허블 상수의 방향 의존성', year:'2020, 2022', color:'#fbbf24',
+      finding:'Ia형 초신성 데이터를 방향별로 분석하면 허블 상수 값이 방향에 따라 달라진다는 연구 결과. 우주가 완전한 등방성을 가지지 않을 가능성.',
+      who:'Migkas 외 (2020), Krishnan 외 (2022)' },
+    { title:'CMB 비정상적 패턴', year:'2003~현재', color:'#a855f7',
+      finding:'WMAP, 플랑크 위성의 CMB 관측에서 "Axis of Evil"로 불리는 비정상적 방향성 발견. 은하계 먼지 오염인지, 실제 우주론적 신호인지 논쟁.',
+      who:'Land & Magueijo (2005), 플랑크 팀 (2013)' },
+    { title:'헤르쿨레스-북왕관 장성', year:'2013~2015', color:'#ff8060',
+      finding:'100억 광년 규모의 초거대 구조물 존재. 이 크기의 구조는 우주론적 원리와 충돌. 실제 구조인지 통계적 오류인지 논쟁 진행 중.',
+      who:'Horvath 외 (2015)' },
+  ]
+};
+
+// ===================== DEBATE RENDER =====================
+let debateInited = false;
+
+function initDebate() {
+  if (debateInited) return;
+  debateInited = true;
+  renderPaperTimeline();
+  renderCounterArguments();
+  renderCurrentStatus();
+  renderHubbleTension();
+  renderJWSTShock();
+  renderIsotropy();
+}
+
+function showDebateTab(id, btn) {
+  ['candle','hubble','jwst','isotropy'].forEach(t => {
+    document.getElementById('deb-' + t).style.display = 'none';
+    const b = document.getElementById('deb-btn-' + t);
+    if(b) b.classList.remove('active');
+  });
+  document.getElementById('deb-' + id).style.display = 'block';
+  btn.classList.add('active');
+  if (id === 'candle') { renderPaperTimeline(); renderCounterArguments(); renderCurrentStatus(); }
+}
+
+function renderPaperTimeline() {
+  const el = document.getElementById('paper-timeline');
+  if (!el || el.innerHTML) return;
+  el.innerHTML = DEBATE_DATA.papers.map((p,i) => `
+    <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);position:relative">
+      <div style="width:44px;flex-shrink:0;text-align:center">
+        <div style="font-size:13px;font-weight:700;font-family:'Space Mono',monospace;color:var(--purple)">${p.year}</div>
+        ${i < DEBATE_DATA.papers.length-1 ? '<div style="width:1px;height:100%;background:rgba(168,85,247,.3);margin:4px auto 0;min-height:20px"></div>' : ''}
+      </div>
+      <div style="flex:1">
+        <div style="font-size:12px;font-weight:600;margin-bottom:3px">${p.title}</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px">${p.journal} · ${p.authors}</div>
+        <div style="font-size:11px;color:var(--gold);margin-bottom:4px">영향력: ${p.impact}</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5">${p.summary}</div>
+      </div>
+    </div>`).join('');
+}
+
+function renderCounterArguments() {
+  const el = document.getElementById('counter-arguments');
+  if (!el || el.innerHTML) return;
+  el.innerHTML = DEBATE_DATA.counterArguments.map(c => `
+    <div style="padding:12px;border-radius:8px;border-left:3px solid ${c.color};background:${c.color}08;margin-bottom:10px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span style="font-size:11px;padding:2px 8px;border-radius:8px;background:${c.color}20;color:${c.color};font-weight:600">${c.stance}</span>
+        <span style="font-size:12px;color:var(--muted)">${c.who}</span>
+      </div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:6px">${c.title}</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:6px">${c.desc}</div>
+      <div style="font-size:11px;padding:6px 8px;background:rgba(255,255,255,.03);border-radius:4px;color:var(--muted)">
+        🔍 한계: ${c.weakness}
+      </div>
+    </div>`).join('');
+}
+
+function renderCurrentStatus() {
+  const el = document.getElementById('current-status');
+  if (!el || el.innerHTML) return;
+  el.innerHTML = DEBATE_DATA.currentStatus.map(s => `
+    <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05)">
+      <div style="font-size:20px;width:28px;text-align:center;flex-shrink:0">${s.icon}</div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:${s.color};margin-bottom:4px">${s.title}</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5">${s.desc}</div>
+      </div>
+    </div>`).join('');
+}
+
+function renderHubbleTension() {
+  const el = document.getElementById('deb-hubble');
+  if (!el) return;
+  const ht = DEBATE_DATA.hubbleTension;
+  el.innerHTML = `
+    <div class="card" style="margin-bottom:14px;border-color:rgba(251,191,36,.4)">
+      <div style="font-size:15px;font-weight:700;color:var(--gold);margin-bottom:8px">📏 허블 텐션 (Hubble Tension)</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px">${ht.intro}</div>
+      <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:8px;padding:10px;text-align:center">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:4px">측정값 불일치</div>
+        <div style="font-size:16px;font-weight:700;color:#ef4444">${ht.tension}</div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:14px">
+      <div style="font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:10px">측정 방법별 허블 상수 값</div>
+      ${ht.methods.map(m => `
+        <div style="padding:10px;border-radius:8px;border-left:3px solid ${m.color};background:${m.color}08;margin-bottom:8px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+            <div style="font-size:13px;font-weight:600">${m.name}</div>
+            <div style="font-size:14px;font-weight:700;font-family:'Space Mono',monospace;color:${m.color}">${m.value}</div>
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:3px">${m.who}</div>
+          <div style="font-size:11px;color:var(--muted)">${m.method}</div>
+        </div>`).join('')}
+    </div>
+    <div class="card">
+      <div style="font-size:13px;font-weight:700;color:var(--purple);margin-bottom:10px">가능한 설명들</div>
+      ${ht.explanations.map(e => `
+        <div style="padding:10px;border-radius:6px;background:${e.color}08;border:1px solid ${e.color}20;margin-bottom:8px">
+          <div style="font-size:13px;font-weight:600;color:${e.color};margin-bottom:4px">${e.name}</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.5">${e.desc}</div>
+        </div>`).join('')}
+    </div>`;
+}
+
+function renderJWSTShock() {
+  const el = document.getElementById('deb-jwst');
+  if (!el) return;
+  el.innerHTML = `
+    <div class="card" style="margin-bottom:14px;border-color:rgba(255,128,96,.4)">
+      <div style="font-size:15px;font-weight:700;color:#ff8060;margin-bottom:8px">🔭 제임스 웹 우주망원경(JWST)의 충격</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">2022년 가동 시작 후 JWST는 기존 허블로는 불가능했던 초기 우주를 직접 관측. 여러 발견이 기존 우주론에 도전하고 있음.</div>
+    </div>
+    ${DEBATE_DATA.jwstShock.map(j => `
+      <div class="card" style="margin-bottom:12px;border-color:${j.color}40">
+        <div style="font-size:14px;font-weight:700;color:${j.color};margin-bottom:6px">${j.title}</div>
+        <span style="font-size:11px;padding:2px 8px;border-radius:4px;background:${j.color}15;color:${j.color};font-family:'Space Mono',monospace;margin-bottom:8px;display:inline-block">${j.year}</span>
+        <div style="font-size:12px;color:var(--text);line-height:1.6;margin-bottom:8px">${j.finding}</div>
+        <div style="padding:8px 10px;background:rgba(255,255,255,.04);border-radius:6px;margin-bottom:6px">
+          <div style="font-size:11px;color:var(--muted)">의미: ${j.implication}</div>
+        </div>
+        <div style="font-size:11px;padding:4px 8px;border-radius:4px;background:${j.color}10;color:${j.color}">${j.status}</div>
+      </div>`).join('')}`;
+}
+
+function renderIsotropy() {
+  const el = document.getElementById('deb-isotropy');
+  if (!el) return;
+  const items = DEBATE_DATA.isotropyDebate;
+  el.innerHTML = `
+    <div class="card" style="margin-bottom:14px;border-color:rgba(96,160,192,.4)">
+      <div style="font-size:15px;font-weight:700;color:#60a0c0;margin-bottom:8px">🌐 우주 등방성 논란</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">${items[0].desc}</div>
+    </div>
+    ${items.slice(1).map(item => `
+      <div class="card" style="margin-bottom:12px;border-color:${item.color}40">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+          <div style="font-size:14px;font-weight:700;color:${item.color}">${item.title}</div>
+          ${item.year ? `<span style="font-size:11px;padding:2px 8px;border-radius:4px;background:${item.color}15;color:${item.color};font-family:'Space Mono',monospace">${item.year}</span>` : ''}
+        </div>
+        <div style="font-size:12px;color:var(--text);line-height:1.6;margin-bottom:6px">${item.finding}</div>
+        <div style="font-size:11px;color:var(--muted)">연구자: ${item.who}</div>
+      </div>`).join('')}`;
+}
+
+// ===================== TIMELINE DATA =====================
+const TIMELINE_DATA = [
+  // 빅뱅 ~ 초기 우주
+  { era:'빅뱅', time:'0초', age:'0', color:'#ff4040', icon:'💥', category:'earlyuniverse',
+    title:'빅뱅 (Big Bang)',
+    summary:'우주의 시작. 무한히 작고 뜨거운 특이점에서 시작.',
+    detail:'약 138억 년 전, 알려진 모든 물질·에너지·시간·공간이 초고온·초고밀도의 한 점에서 시작. 온도 약 10³²K. 현재 우주론으로는 이 순간 이전을 설명할 수 없음. 빅뱅은 폭발이 아니라 공간 자체의 팽창.' },
+  { era:'빅뱅', time:'10⁻⁴³초', age:'0', color:'#ff4040', icon:'⚡', category:'earlyuniverse',
+    title:'플랑크 시대',
+    summary:'4가지 기본 힘이 하나로 통합된 시대. 현재 물리학으로 기술 불가.',
+    detail:'시간의 최소 단위(플랑크 시간). 중력·전자기력·강핵력·약핵력이 하나의 초력으로 통합. 온도 10³²K. 양자중력 이론이 필요하지만 아직 미완성. 루프 양자중력, 끈이론이 이 시대를 설명하려 함.' },
+  { era:'빅뱅', time:'10⁻³⁶초', age:'0', color:'#ff6040', icon:'🌌', category:'earlyuniverse',
+    title:'급팽창 (Cosmic Inflation)',
+    summary:'우주가 10⁻³²초 만에 10²⁶배 이상 팽창. 현재 관측 가능한 우주의 씨앗.',
+    detail:'앨런 구스가 1980년 제안. 빛보다 빠른 속도로 공간이 팽창. 우주의 평탄성 문제, 지평선 문제, 자기홀극 문제를 해결. CMB의 온도 요동 패턴이 급팽창의 흔적. BICEP2가 원시 중력파 탐색 중.' },
+  { era:'빅뱅', time:'10⁻¹²초', age:'0', color:'#ff8040', icon:'⚛', category:'earlyuniverse',
+    title:'전기약력 분리 — 쿼크 시대',
+    summary:'전자기력과 약핵력 분리. 쿼크와 렙톤이 자유롭게 존재.',
+    detail:'온도 10¹⁵K. 힉스장이 대칭성 붕괴를 일으켜 W·Z 보손이 질량을 얻음. 쿼크·반쿼크가 쌍으로 생성·소멸 반복. 물질이 반물질보다 10억 분의 1 정도 더 많아 현재 우주가 물질로 남음 (CP 대칭 붕괴).' },
+  { era:'빅뱅', time:'10⁻⁶초', age:'0', color:'#ffa040', icon:'🔴', category:'earlyuniverse',
+    title:'강입자 시대 — 양성자·중성자 탄생',
+    summary:'쿼크가 식으며 양성자와 중성자 형성. 강한 핵력으로 묶임.',
+    detail:'온도 10¹³K. 쿼크가 3개씩 묶여 양성자(uud)와 중성자(udd) 형성. 대부분의 반양성자와 반중성자가 소멸. 살아남은 양성자 : 광자 = 1 : 10⁹.' },
+  { era:'빅뱅', time:'1초', age:'0', color:'#ffb040', icon:'💫', category:'earlyuniverse',
+    title:'빅뱅 핵합성 시작',
+    summary:'중성자와 양성자가 결합해 헬륨 원자핵 형성. 수소:헬륨 = 3:1.',
+    detail:'온도 약 10¹⁰K. 양성자와 중성자가 결합해 중수소, 헬륨-3, 헬륨-4 형성. 약 3분 후 핵합성 종료. 결과: 수소 75%, 헬륨-4 25%, 소량의 중수소·리튬. 이 비율이 현재도 관측됨 — 빅뱅의 강력한 증거.' },
+  { era:'초기우주', time:'38만 년', age:'380,000년', color:'#ffc040', icon:'🌡️', category:'earlyuniverse',
+    title:'재결합 시대 — 우주 투명해짐',
+    summary:'전자와 원자핵 결합 → 중성 원자 탄생. 빛이 처음으로 자유롭게 이동.',
+    detail:'온도 약 3,000K. 전자가 양성자와 결합해 중성 수소 원자 형성. 빛이 산란 없이 우주를 이동 가능. 이때 방출된 빛이 현재 우주배경복사(CMB)로 관측됨. CMB는 우주 최초의 빛. 온도 2.725K로 식음.' },
+  { era:'암흑시대', time:'38만~1억 년', age:'1억 년', color:'#404060', icon:'🌑', category:'darkages',
+    title:'우주 암흑시대',
+    summary:'별도 없고 빛도 없는 암흑의 시대. 수소·헬륨 가스만 존재.',
+    detail:'재결합 후 첫 번째 별이 탄생하기 전까지. 우주는 중성 수소·헬륨 가스로 가득 찼지만 어떠한 광원도 없음. 암흑물질의 중력에 의해 가스가 서서히 뭉치기 시작. 이 시대는 21cm 수소선으로 탐색 중.' },
+  { era:'별의 탄생', time:'약 1억 년', age:'1억 년', color:'#6060c0', icon:'⭐', category:'starformation',
+    title:'우주 새벽 — 최초의 별 탄생 (종족 III 별)',
+    summary:'수소·헬륨만으로 이루어진 최초의 초거성 탄생. 암흑시대 종료.',
+    detail:'종족 III 별: 금속(수소·헬륨 이외 원소)이 전혀 없는 최초의 별. 태양질량의 수백~수천 배. 수명 수백만 년. 내부 핵융합으로 탄소·산소·철까지 무거운 원소 합성. 초신성으로 폭발해 우주를 금속으로 오염. 아직 직접 관측 미성공 (JWST 탐색 중).' },
+  { era:'별의 탄생', time:'약 2억~10억 년', age:'2~10억 년', color:'#8060d0', icon:'🌌', category:'starformation',
+    title:'최초의 은하 형성',
+    summary:'별들이 중력으로 모여 최초의 원시 은하 형성. 암흑물질이 골격.',
+    detail:'암흑물질이 먼저 뭉쳐 중력 우물 형성. 일반 물질이 그 안으로 떨어져 별 형성 폭발. 초기 은하는 현재보다 훨씬 작고 불규칙. 은하 합병과 충돌을 반복하며 성장. JWST가 빅뱅 후 3억 년 된 은하 관측 성공.' },
+  { era:'별의 탄생', time:'약 5억~20억 년', age:'5~20억 년', color:'#a055f7', icon:'✨', category:'starformation',
+    title:'우주 재이온화',
+    summary:'최초의 별과 퀘이사가 방출한 자외선이 중성 수소를 다시 이온화.',
+    detail:'초기 은하와 퀘이사의 강한 자외선이 주변 수소를 이온화. 우주가 다시 투명해짐 (두 번째 투명화). 재이온화 과정이 어떤 천체들에 의해 이루어졌는지 현재도 논쟁 중. JWST가 이 시대를 직접 관측 중.' },
+  { era:'은하시대', time:'약 30억 년', age:'30억 년', color:'#c040c0', icon:'🔥', category:'galaxyage',
+    title:'별 형성 최절정기 (Cosmic Noon)',
+    summary:'우주 역사상 별이 가장 왕성하게 탄생하던 시기. 은하들이 폭발적 성장.',
+    detail:'현재보다 10배 이상 빠른 속도로 별 형성. 은하 충돌과 합병이 빈번. 퀘이사가 가장 활발히 활동. 이 시기에 형성된 별들이 현재 은하의 노령 항성 종족을 구성. 이영욱 교수 연구의 핵심이 되는 시기.' },
+  { era:'태양계', time:'92억 년 후', age:'46억 년 전', color:'#e0a000', icon:'☀️', category:'solarsystem',
+    title:'태양계 형성',
+    summary:'거대분자구름 붕괴로 태양과 행성들 탄생. 46억 년 전.',
+    detail:'초신성 충격파가 가스·먼지 구름을 수축시킴. 원시태양 형성 후 남은 원반에서 행성 형성. 원시지구는 수많은 소천체 충돌로 가열. 약 45억 년 전 화성 크기 천체 충돌로 달 형성 (대충돌 가설).' },
+  { era:'지구·생명', time:'93억 년 후', age:'45억 년 전', color:'#40c040', icon:'🌍', category:'earthlife',
+    title:'지구 형성 & 달 탄생',
+    summary:'원시지구 형성. 테이아(화성 크기 천체)와 충돌로 달 탄생.',
+    detail:'원시지구 형성 후 5천만 년 내에 테이아와 대충돌. 충돌로 튕겨나간 물질이 달 형성. 달의 형성은 지구 자전축 안정, 조석 현상, 생명 발생에 큰 역할. 초기 지구는 마그마 바다 상태.' },
+  { era:'지구·생명', time:'약 95억 년 후', age:'43억 년 전', color:'#40e060', icon:'💧', category:'earthlife',
+    title:'지구 최초의 생명체',
+    summary:'원시 바다에서 화학진화 → 최초의 단세포 생명체.',
+    detail:'약 38~40억 년 전 최초의 생명체 출현 증거. 열수 분출구 또는 얕은 바다에서 RNA 세계로 시작. 약 27억 년 전 남세균(시아노박테리아)이 광합성으로 산소 방출 시작 → 대산화사건 → 진핵생물 진화.' },
+  { era:'현재', time:'약 91억 년 후', age:'46억 년 전 ~ 현재', color:'#00e5ff', icon:'🌌', category:'present',
+    title:'현재 우주 (137~138억 년)',
+    summary:'우주가 가속 팽창 중. 암흑에너지가 지배. 은하들이 서로 멀어지는 중.',
+    detail:'현재 우주 나이 약 138억 년. 암흑에너지가 우주 팽창 가속. 가까운 은하군은 중력으로 결합 유지, 멀리 있는 은하는 점점 빠르게 멀어짐. 우리 은하는 약 37억 년 후 안드로메다 은하와 충돌 예정.' },
+  // 미래
+  { era:'가까운 미래', time:'+37억 년', age:'미래', color:'#ff8080', icon:'💥', category:'future',
+    title:'안드로메다-은하수 충돌',
+    summary:'우리은하와 안드로메다 은하가 충돌. 새 은하 밀코메다 형성.',
+    detail:'두 은하가 충돌하지만 별과 별 사이 거리가 너무 멀어 실제 별끼리 충돌할 확률은 매우 낮음. 수십억 년에 걸쳐 합병. 두 초대질량 블랙홀이 합병해 중력파 방출. 새 은하 밀코메다 형성. 태양계는 외곽으로 튕겨날 가능성.' },
+  { era:'먼 미래', time:'+50억 년', age:'미래', color:'#ff6060', icon:'🔴', category:'future',
+    title:'태양, 적색거성으로 진화',
+    summary:'태양이 수소 고갈 후 팽창해 지구 궤도까지 부풀어 오름.',
+    detail:'태양 핵의 수소 소진 → 껍질부 수소 핵융합 → 반지름 100~200배 팽창. 지구는 태양에 흡수되거나 대기·해양이 완전 소실. 그 후 외피층 방출해 행성상 성운 형성 → 백색왜성으로 수축. 우리 태양의 최후.' },
+  { era:'먼 미래', time:'+10¹⁴년', age:'미래', color:'#c04040', icon:'🌑', category:'future',
+    title:'마지막 별의 소멸',
+    summary:'우주의 모든 별이 타고 꺼짐. 적색왜성이 마지막으로 소멸.',
+    detail:'가장 오래 사는 적색왜성도 약 10¹⁴년 후 연료 고갈. 우주는 백색왜성, 중성자별, 블랙홀, 갈색왜성만 남음. 새로운 별 형성 없음. 별빛 없는 우주 시작.' },
+  { era:'극 미래', time:'+10⁴⁰년', age:'미래', color:'#803030', icon:'⚛', category:'future',
+    title:'양성자 붕괴 (이론)',
+    summary:'양성자가 불안정해 붕괴. 모든 일반 물질 소멸.',
+    detail:'대통일이론(GUT)에 따르면 양성자 수명 약 10³⁴~10⁴⁰년. 아직 실험으로 관측 미성공. 만약 붕괴한다면 중성자별, 백색왜성 등 모든 일반 물질 구조 붕괴. 우주에는 전자, 광자, 뉴트리노, 블랙홀만 남음.' },
+  { era:'극 미래', time:'+10⁶⁷년', age:'미래', color:'#602020', icon:'⚫', category:'future',
+    title:'블랙홀 증발 (호킹 복사)',
+    summary:'모든 블랙홀이 호킹 복사로 천천히 증발. 항성 질량 블랙홀부터 소멸.',
+    detail:'스티븐 호킹이 1974년 예측. 블랙홀 사건 지평선 근처에서 양자 효과로 입자 쌍 생성 → 한 입자 탈출 → 블랙홀 에너지 감소. 항성 질량 블랙홀: 10⁶⁷년. 초대질량 블랙홀: 10⁹⁹년. 마지막 순간 감마선 폭발과 함께 소멸.' },
+  { era:'열적죽음', time:'+10¹⁰⁰년', age:'미래', color:'#401010', icon:'❄️', category:'future',
+    title:'열적 죽음 — 우주의 최후',
+    summary:'모든 에너지가 균등하게 분배. 어떤 일도 일어나지 않는 영원한 평형.',
+    detail:'최대 엔트로피 상태. 아무런 에너지 차이가 없어 어떤 물리적 과정도 불가능. 온도 절대영도에 수렴. 광자와 렙톤만 남은 암흑의 우주. 다만 양자 요동으로 볼츠만 뇌, 새 우주 탄생 가능성이 극히 낮은 확률로 이론상 존재.' },
+];
+
+const TL_CATEGORIES = {
+  earlyuniverse: { label:'초기 우주', color:'#ff6040' },
+  darkages: { label:'암흑시대', color:'#404080' },
+  starformation: { label:'별·은하 탄생', color:'#8060d0' },
+  galaxyage: { label:'은하시대', color:'#c040c0' },
+  solarsystem: { label:'태양계', color:'#e0a000' },
+  earthlife: { label:'지구·생명', color:'#40c040' },
+  present: { label:'현재', color:'#00e5ff' },
+  future: { label:'미래', color:'#ff8080' },
+};
+
+// ===================== BLACKHOLE DATA =====================
+const BH_DATA = {
+  types: [
+    { name:'항성 질량 블랙홀', mass:'태양의 3~100배', color:'#a855f7', icon:'⭐',
+      formation:'대질량별(태양의 20배 이상)이 초신성 폭발 후 핵이 붕괴',
+      size:'슈바르츠실트 반지름 9~300km',
+      count:'우리은하에만 수억 개 추정',
+      example:'Cygnus X-1 (최초 발견), LB-1 (태양의 70배)',
+      facts:['우리은하에 수억 개 존재 추정','X선 이중성에서 발견됨','LIGO가 합병에서 중력파 검출','가장 흔한 블랙홀 종류','중성자별과의 경계선 불명확'] },
+    { name:'중간 질량 블랙홀', mass:'태양의 100~10만 배', color:'#6090ff', icon:'🌀',
+      formation:'조밀한 성단 중심, 또는 초기 우주 거대 별들의 잔해',
+      size:'슈바르츠실트 반지름 300km~3억km',
+      count:'소수 확인, 존재 자체가 최근까지 논쟁',
+      example:'HLX-1 (ESO 243-49 은하), NGC 1600',
+      facts:['존재 자체가 수십 년간 논쟁','2020년 LIGO가 중력파로 최초 명확 확인','구상성단 중심에 있을 가능성','항성 질량→초대질량 성장의 중간 단계','IXO 망원경으로 연구 예정'] },
+    { name:'초대질량 블랙홀', mass:'태양의 100만~수백억 배', color:'#ff8040', icon:'🌌',
+      formation:'초기 우주 거대 가스 구름 직접 붕괴, 또는 합병으로 성장',
+      size:'슈바르츠실트 반지름 수백만~수백억 km',
+      count:'대부분의 대형 은하 중심에 1개씩',
+      example:'궁수자리 A* (우리은하, 태양의 400만 배), M87* (태양의 65억 배)',
+      facts:['거의 모든 대형 은하 중심에 존재','은하 형성과 공동 진화','2019년 M87* 첫 사진 촬영 (EHT)','2022년 궁수자리 A* 사진 공개','활동 시 퀘이사·AGN으로 보임'] },
+    { name:'원시 블랙홀', mass:'소행성 질량~태양 질량', color:'#10b981', icon:'🎯',
+      formation:'빅뱅 직후 초기 우주의 밀도 요동으로 형성 가능',
+      size:'머리카락 굵기 ~ 태양계 크기',
+      count:'미확인. 암흑물질의 일부일 가능성 연구 중',
+      example:'아직 직접 관측 없음 (2020년 LIGO 신호가 후보)',
+      facts:['아직 직접 관측 없음','암흑물질 후보로 주목','LIGO의 일부 신호가 후보','매우 작은 것은 이미 호킹 복사로 증발','JWST로 탐색 중'] },
+  ],
+  concepts: [
+    { name:'사건 지평선 (Event Horizon)', color:'#a855f7',
+      desc:'빛조차 탈출할 수 없는 경계면. 이 안으로 들어가면 어떤 것도 되돌아올 수 없음. 슈바르츠실트 반지름: R = 2GM/c². 지구를 블랙홀로 만들면 지름 약 18mm.',
+      formula:'R_s = 2GM/c²',
+      fact:'지구의 사건 지평선 반지름: 약 9mm (구슬 크기)' },
+    { name:'특이점 (Singularity)', color:'#ef4444',
+      desc:'블랙홀 중심의 밀도 무한대, 곡률 무한대 지점. 현재 물리학(일반상대성이론)이 붕괴하는 지점. 실제로 무한대가 존재하는지, 아니면 양자중력 효과로 해소되는지 미지수.',
+      formula:'ρ → ∞, R → 0',
+      fact:'특이점은 물리학의 한계 — 새 이론 필요' },
+    { name:'호킹 복사 (Hawking Radiation)', color:'#fbbf24',
+      desc:'스티븐 호킹이 1974년 예측. 사건 지평선 근처에서 양자 요동으로 입자-반입자 쌍이 생성. 하나가 탈출하면 블랙홀 에너지 감소 → 블랙홀이 천천히 증발. 아직 직접 관측 미성공.',
+      formula:'T = ℏc³/(8πGMk_B)',
+      fact:'태양 질량 블랙홀 온도: 6×10⁻⁸ K (우주배경복사보다 훨씬 낮아 관측 불가)' },
+    { name:'시간 팽창 (Time Dilation)', color:'#00e5ff',
+      desc:'블랙홀 근처에서 시간이 느리게 흐름 (중력 시간 팽창). 사건 지평선에서 외부 관측자가 보면 물체가 무한히 느려져 결코 지평선에 닿지 않는 것처럼 보임.',
+      formula:'t = t₀/√(1-2GM/rc²)',
+      fact:'인터스텔라의 밀러 행성: 1시간 = 지구 7년 (블랙홀 근처 시간팽창)' },
+    { name:'스파게티화 (Spaghettification)', color:'#ff6040',
+      desc:'블랙홀에 접근하면 조석력으로 인해 물체가 세로로 늘어나고 가로로 압축. 항성 질량 블랙홀은 가까이서 강하지만, 초대질량 블랙홀은 사건 지평선에서 조석력이 약할 수 있음.',
+      formula:'F_tidal ∝ GM/r³',
+      fact:'초대질량 블랙홀 근처에선 사건 지평선 통과 전까지 스파게티화 없을 수도' },
+    { name:'정보 역설 (Information Paradox)', color:'#c0c0ff',
+      desc:'호킹 복사는 열복사라 정보를 담지 않음 → 블랙홀이 증발하면 정보가 사라짐. 양자역학은 정보 보존을 요구 → 모순. 스티븐 호킹, 킵 손, 레너드 서스킨드 30년 논쟁. 2016년 호킹이 일부 해결책 제안.',
+      formula:'S = A/4 (호킹-베켄슈타인 엔트로피)',
+      fact:'호킹이 2004년 "정보는 결국 보존된다"고 입장 변경' },
+    { name:'블랙홀 열역학', color:'#80ff80',
+      desc:'블랙홀은 온도, 엔트로피, 표면적이 있는 열역학적 물체. 베켄슈타인-호킹 엔트로피: S = kA/4ℓₚ² (사건 지평선 면적에 비례). 이 발견이 양자중력·홀로그래픽 원리의 단서.',
+      formula:'S_BH = k_B A / (4 l_P²)',
+      fact:'블랙홀은 같은 질량의 어떤 물체보다 엔트로피가 높음' },
+  ],
+  realworld: [
+    { name:'궁수자리 A* (Sgr A*)', location:'우리은하 중심', mass:'태양의 약 400만 배', color:'#ffd700',
+      distance:'지구에서 26,000광년',
+      discovery:'1974년 전파 관측, 2022년 EHT가 사진 촬영 성공',
+      detail:'우리은하 중심의 초대질량 블랙홀. 별 S2가 그 주위를 15.9년 주기로 공전 — 블랙홀 질량 측정의 근거. 2022년 사건 지평선 망원경(EHT) 첫 사진 공개. 현재 활동성이 낮음 (조용한 상태). 가끔 X선 폭발 일어남.' },
+    { name:'M87* (처녀자리 A)', location:'M87 은하 중심', mass:'태양의 약 65억 배', color:'#ff8040',
+      distance:'지구에서 5,500만 광년',
+      discovery:'2019년 EHT 최초 블랙홀 사진 촬영',
+      detail:'2019년 4월 10일, 인류 최초의 블랙홀 직접 사진. 200여 명 과학자, 전 세계 8개 전파망원경 연결한 지구 크기 가상 망원경. 도넛 모양 빛 고리와 어두운 그림자 확인. 한쪽이 밝은 이유: 상대론적 제트의 도플러 이동. 길이 5,000광년의 상대론적 제트 분출.' },
+    { name:'Cygnus X-1', location:'백조자리', mass:'태양의 약 21배', color:'#a855f7',
+      distance:'지구에서 약 6,100광년',
+      discovery:'1964년 X선 발견, 1974년 블랙홀로 확인',
+      detail:'최초로 발견된 블랙홀 후보. 초거성 HDE 226868과 이중성 시스템. 동반성에서 물질 흡수해 강력한 X선 방출. 스티븐 호킹이 1974년 블랙홀 아니라고 내기했다가 1990년 패배 인정. 상대론적 제트도 관측됨.' },
+    { name:'GW150914', location:'약 13억 광년 거리', mass:'합산 태양의 62배', color:'#10b981',
+      distance:'약 13억 광년',
+      discovery:'2015년 9월 14일, LIGO 최초 중력파 검출',
+      detail:'두 블랙홀(태양의 29배 + 36배)이 합병해 태양의 62배 블랙홀 생성. 합병 시 태양의 3배 질량이 순수 중력파로 방출 — 0.2초 동안 우주 전체 별빛보다 강한 에너지. 2016년 2월 11일 LIGO 팀이 발표. 킵 손, 레이너 와이스, 배리 배리시 2017년 노벨 물리학상.' },
+    { name:'TON 618', location:'머리털자리 방향', mass:'태양의 약 660억 배', color:'#ff4060',
+      distance:'지구에서 약 105억 광년',
+      discovery:'1957년 발견, 2004년 블랙홀 질량 측정',
+      detail:'현재까지 알려진 가장 무거운 블랙홀 중 하나. 사건 지평선 반지름이 태양계 크기(약 1,300 AU). 퀘이사로 보일 때 광도가 태양의 40조 배. 매우 먼 거리의 초기 우주 천체.' },
+  ],
+  gravitywaves: {
+    intro: '아인슈타인이 1916년 일반상대성이론으로 예측. 질량이 가속할 때 시공간이 파동처럼 휘어지며 전파. 2015년 LIGO가 첫 검출. 천문학의 새 창문.',
+    events: [
+      { name:'GW150914', date:'2015.09.14', type:'블랙홀+블랙홀', color:'#a855f7',
+        masses:'29M☉ + 36M☉ → 62M☉', energy:'3M☉ → 중력파',
+        significance:'인류 최초 중력파 검출. 블랙홀 합병 직접 확인. LIGO 팀 노벨상.' },
+      { name:'GW170817', date:'2017.08.17', type:'중성자별+중성자별', color:'#ffd700',
+        masses:'1.17M☉ + 1.60M☉', energy:'전자기파 동시 관측',
+        significance:'최초 다중신호 천문학. 킬로노바 관측. 무거운 원소(금, 백금) 합성 현장 포착.' },
+      { name:'GW190521', date:'2019.05.21', type:'블랙홀+블랙홀', color:'#10b981',
+        masses:'85M☉ + 66M☉ → 142M☉', energy:'8M☉ → 중력파',
+        significance:'최초 중간 질량 블랙홀 생성 확인. 쌍불안정 초신성 간격에서 발생.' },
+      { name:'GW200105/200115', date:'2020.01', type:'블랙홀+중성자별', color:'#ff8040',
+        masses:'~8M☉ + ~1.9M☉', energy:'블랙홀-중성자별 합병',
+        significance:'최초 블랙홀-중성자별 합병 확인. 세 가지 유형 중력파 모두 검출.' },
+    ],
+    detectors: [
+      { name:'LIGO (미국)', location:'루이지애나·워싱턴', arm:'4km 팔 2개', color:'#6090ff',
+        sensitivity:'10⁻²¹ 스트레인 — 양성자 지름의 1/1000 변형 감지' },
+      { name:'Virgo (유럽)', location:'이탈리아 피사', arm:'3km 팔 2개', color:'#10b981',
+        sensitivity:'LIGO와 유사, 방향 결정에 필수' },
+      { name:'KAGRA (일본)', location:'기후현 지하', arm:'3km 팔 2개', color:'#ffd700',
+        sensitivity:'극저온 거울 사용, 저주파 민감도 향상' },
+      { name:'LISA (우주, 2037 예정)', location:'태양 주위 궤도', arm:'250만 km', color:'#a855f7',
+        sensitivity:'초대질량 블랙홀 합병, 우주 배경 중력파 탐색 가능' },
+    ]
+  },
+  exoticStars: [
+    { name:'중성자별', icon:'💫', color:'#00e5ff',
+      mass:'태양의 1.4~2.5배', size:'반지름 약 10~12km', density:'1cm³당 약 4억 톤',
+      formation:'중간 질량 별(태양의 8~20배)의 초신성 폭발 후 핵 붕괴',
+      desc:'양성자와 전자가 합쳐져 중성자만으로 이루어진 초고밀도 천체. 주로 중성자로 구성. 각운동량 보존으로 빠르게 자전.',
+      facts:['표면 중력이 지구의 2×10¹¹배','자기장이 지구의 10¹²배','표면 온도 수백만 K','1cm³의 밀도가 원자핵과 유사','지각 지진(스타퀘이크) 발생'] },
+    { name:'펄사', icon:'📡', color:'#a855f7',
+      mass:'태양의 1.4배 내외', size:'반지름 약 10km', density:'중성자별과 동일',
+      formation:'자전하며 전자기 빔을 방출하는 중성자별',
+      desc:'강한 자기장을 가진 중성자별이 자전하며 전파 빔을 방사. 지구를 향할 때마다 신호 수신 — 마치 등대처럼. 원자시계보다 정확한 시간 측정 기준.',
+      facts:['자전 주기 1.4ms~8.5s','밀리초 펄사: 초당 수백 회 자전','중성자별 연구의 핵심 도구','1967년 조슬린 벨 버넬 발견 — 처음엔 LGM-1로 불림','중력파 탐지의 또 다른 방법 (펄사 타이밍 배열)'] },
+    { name:'마그네타', icon:'⚡', color:'#ff6040',
+      mass:'태양의 1.4~2배', size:'반지름 약 10km', density:'중성자별과 동일',
+      formation:'극도로 강한 자기장을 가진 특수한 중성자별',
+      desc:'우주에서 가장 강한 자기장(지구의 10¹⁵배)을 가진 중성자별의 일종. 주기적으로 강력한 X선·감마선 폭발. 자기장 재배열 시 지각 변형으로 엄청난 에너지 방출.',
+      facts:['태양계 내에 있었다면 지구에서 달까지 거리에서도 신용카드 자기 파괴','SGR 1806-20: 2004년 역대 가장 강력한 마그네타 폭발','약 10~30개만 알려져 있음','수명이 짧음 (약 1만 년)','중성자별 중 일부가 마그네타로 진화'] },
+    { name:'쿼크별 (이론)', icon:'🔴', color:'#ff4040',
+      mass:'태양의 1~3배', size:'반지름 5~10km', density:'중성자별보다 높음',
+      formation:'중성자별 내부에서 중성자가 쿼크로 해리 (이론)',
+      desc:'아직 확인되지 않은 가설적 천체. 중성자별보다 더 극한의 압력에서 중성자가 쿼크로 분해된 상태. 기묘 쿼크 별(Strange Star)이라고도 함. 일부 관측이 후보를 제시하지만 확인 미완.',
+      facts:['아직 직접 관측 확인 없음','중성자별과 구별하기 매우 어려움','일부 X선 펄사가 후보','기묘 쿼크 물질로 구성 가능성','LHC가 쿼크-글루온 플라즈마로 간접 연구'] },
+    { name:'퀘이사 (QSO)', icon:'🌟', color:'#ffd700',
+      mass:'초대질량 블랙홀 수십억 배', size:'은하 크기', density:'블랙홀 주변 강착원반',
+      formation:'초기 우주 초대질량 블랙홀이 왕성하게 물질 흡수',
+      desc:'우주에서 가장 밝은 천체. 초대질량 블랙홀이 주변 물질을 왕성하게 흡수하며 방출하는 에너지. 전체 은하보다 수백~수천 배 밝은 핵. 대부분 초기 우주에서 활동.',
+      facts:['3C 273: 지구에서 24억 광년, 육안 한계 밝기','J0313-1806: 빅뱅 후 6.7억 년, 가장 오래된 퀘이사','블레이자: 제트가 지구를 직접 향하는 퀘이사','퀘이사 자체가 은하의 핵 (AGN의 가장 강력한 형태)','현재는 대부분 소멸 — 초기 우주의 현상'] },
+    { name:'활동 은하핵 (AGN)', icon:'🌀', color:'#a855f7',
+      mass:'블랙홀 질량 포함', size:'은하 규모', density:'블랙홀 주변',
+      formation:'초대질량 블랙홀이 활발히 물질을 흡수 중인 은하 중심',
+      desc:'퀘이사(강), 세이퍼트 은하(중간), 저광도 AGN(약)을 통틀어 AGN이라 함. 블랙홀 강착원반에서 X선, 자외선, 전파 등 다파장 방출. 상대론적 제트가 수천 광년 분출.',
+      facts:['우리은하 중심 Sgr A*도 과거엔 AGN이었을 것','켄타우루스 A: 지구에서 가장 가까운 강력한 AGN','AGN 피드백이 은하 별 형성을 억제','세이퍼트 은하: 은하 구조가 보이는 활동 은하','블레이자, 퀘이사, 세이퍼트는 같은 천체의 다른 관측 각도'] },
+    { name:'감마선 폭발 (GRB)', icon:'💥', color:'#ff4040',
+      mass:'중성자별 또는 블랙홀', size:'수 밀리초~수백 초 지속', density:'극한',
+      formation:'극대질량 별의 붕괴 또는 중성자별 합병',
+      desc:'우주에서 가장 강력한 폭발. 0.01초~수백 초 만에 태양이 100억 년간 방출할 에너지를 방출. 단주기 GRB: 중성자별 합병. 장주기 GRB: 초대질량 별 붕괴(하이퍼노바).',
+      facts:['빅뱅 다음으로 강력한 폭발','1초 미만 지속 GRB: 중성자별 합병','수십 초 이상: 극대질량 별 붕괴','GW170817: GRB와 중력파 동시 관측 성공','우주 전역에서 매일 몇 개씩 발생'] },
+    { name:'쌍성계', icon:'🌐', color:'#60c0ff',
+      mass:'항성 2개 합산', size:'다양', density:'항성 밀도',
+      formation:'성운에서 두 별이 함께 탄생하거나 포획',
+      desc:'두 별이 공통 질량 중심을 공전하는 시스템. 우리 은하 별의 약 절반이 쌍성. 분광 쌍성, 식쌍성 등 다양한 종류. Ia형 초신성 형성의 핵심 경로 (이영욱 교수 연구 관련).',
+      facts:['우리은하 별의 약 50%가 쌍성','가장 가까운 항성계 알파 켄타우리도 삼중성','Ia형 초신성의 한 형성 경로','질량 전달로 새로운 현상 발생','쌍성 주기가 매우 정확 — 시간 측정에 활용'] },
+  ]
+};
+
+// ===================== TIMELINE RENDER =====================
+let timelineInited = false;
+function initTimeline() {
+  if (timelineInited) return;
+  timelineInited = true;
+
+  // 필터 버튼
+  const filterEl = document.getElementById('tl-filter');
+  filterEl.innerHTML = '<button class="btn active" style="font-size:11px;padding:4px 10px" onclick="filterTimeline(\'all\',this)">전체</button>' +
+    Object.entries(TL_CATEGORIES).map(([k,v]) =>
+      `<button class="btn" style="font-size:11px;padding:4px 10px;border-color:${v.color}60;color:${v.color}" onclick="filterTimeline('${k}',this)">${v.label}</button>`
+    ).join('');
+
+  renderTimeline('all');
+}
+
+function filterTimeline(cat, btn) {
+  document.querySelectorAll('#tl-filter .btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTimeline(cat);
+}
+
+function renderTimeline(cat) {
+  const container = document.getElementById('tl-container');
+  const items = cat === 'all' ? TIMELINE_DATA : TIMELINE_DATA.filter(i => i.category === cat);
+  container.innerHTML = items.map((item, idx) => `
+    <div class="tl-item">
+      <div class="tl-dot" style="background:${item.color};border-color:${item.color}"></div>
+      <div class="tl-card" id="tl-card-${idx}" onclick="toggleTL(${idx})">
+        <div class="tl-era" style="color:${item.color}">${item.era} · ${item.time}</div>
+        <div class="tl-title">${item.icon} ${item.title}</div>
+        <div style="font-size:12px;color:var(--muted)">${item.summary}</div>
+        <div class="tl-detail">${item.detail}</div>
+      </div>
+    </div>`).join('');
+}
+
+function toggleTL(idx) {
+  const card = document.getElementById('tl-card-' + idx);
+  card.classList.toggle('expanded');
+}
+
+// ===================== BLACKHOLE RENDER =====================
+let blackholeInited = false;
+function initBlackhole() {
+  if (blackholeInited) return;
+  blackholeInited = true;
+  renderBHTypes();
+  renderBHConcepts();
+  renderBHRealworld();
+  renderBHGravity();
+  renderBHExotic();
+}
+
+function showBHTab(id, btn) {
+  ['types','concepts','realworld','gravity','exotic'].forEach(t => {
+    document.getElementById('bh-' + t).style.display = 'none';
+    const b = document.getElementById('bh-btn-' + t);
+    if(b) b.classList.remove('active');
+  });
+  document.getElementById('bh-' + id).style.display = 'block';
+  btn.classList.add('active');
+}
+
+function renderBHTypes() {
+  const el = document.getElementById('bh-types');
+  el.innerHTML = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">` +
+    BH_DATA.types.map(t => `
+      <div class="bh-type-card" style="border-color:${t.color}40">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span style="font-size:24px">${t.icon}</span>
+          <div style="font-size:14px;font-weight:700;color:${t.color}">${t.name}</div>
+        </div>
+        <div class="bh-mass">질량: ${t.mass}</div>
+        <div style="font-size:11px;color:var(--muted);margin:6px 0">${t.size}</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">형성: ${t.formation}</div>
+        <div style="font-size:11px;padding:6px 8px;background:${t.color}10;border-radius:4px;margin-bottom:6px">예시: ${t.example}</div>
+        <ul style="list-style:none;padding:0;margin:0">${t.facts.map(f=>`<li style="font-size:11px;color:var(--muted);padding:2px 0;border-bottom:1px solid rgba(255,255,255,.03)">▸ ${f}</li>`).join('')}</ul>
+      </div>`).join('') + '</div>';
+}
+
+function renderBHConcepts() {
+  const el = document.getElementById('bh-concepts');
+  el.innerHTML = BH_DATA.concepts.map(c => `
+    <div class="concept-card" style="border-left-color:${c.color}">
+      <div style="font-size:14px;font-weight:700;color:${c.color};margin-bottom:8px">${c.name}</div>
+      <div style="font-size:13px;color:var(--text);line-height:1.6;margin-bottom:8px">${c.desc}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div style="font-family:'Space Mono',monospace;font-size:13px;color:${c.color};background:${c.color}12;padding:4px 10px;border-radius:4px">${c.formula}</div>
+        <div style="font-size:11px;color:var(--muted);padding:4px 8px;background:rgba(255,255,255,.03);border-radius:4px;flex:1;min-width:200px">💡 ${c.fact}</div>
+      </div>
+    </div>`).join('');
+}
+
+function renderBHRealworld() {
+  const el = document.getElementById('bh-realworld');
+  el.innerHTML = BH_DATA.realworld.map(r => `
+    <div class="card" style="margin-bottom:12px;border-color:${r.color}40">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;flex-wrap:wrap;gap:8px">
+        <div style="font-size:15px;font-weight:700;color:${r.color}">${r.name}</div>
+        <span style="font-size:11px;padding:2px 10px;background:${r.color}18;color:${r.color};border-radius:8px;font-family:'Space Mono',monospace">${r.mass}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+        <div style="font-size:11px"><span style="color:var(--muted)">위치: </span>${r.location}</div>
+        <div style="font-size:11px"><span style="color:var(--muted)">거리: </span>${r.distance}</div>
+      </div>
+      <div style="font-size:11px;padding:6px 10px;background:rgba(255,255,255,.03);border-radius:4px;margin-bottom:8px;color:var(--muted)">발견: ${r.discovery}</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6">${r.detail}</div>
+    </div>`).join('');
+}
+
+function renderBHGravity() {
+  const el = document.getElementById('bh-gravity');
+  const gw = BH_DATA.gravitywaves;
+  el.innerHTML = `
+    <div class="card" style="margin-bottom:14px;border-color:rgba(168,85,247,.3)">
+      <div style="font-size:14px;font-weight:700;color:var(--purple);margin-bottom:8px">🌊 중력파란?</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">${gw.intro}</div>
+    </div>
+    <div class="card" style="margin-bottom:14px">
+      <div style="font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:12px">주요 검출 사건</div>
+      ${gw.events.map(e => `
+        <div style="padding:12px;border-radius:8px;background:${e.color}08;border:1px solid ${e.color}30;margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px;flex-wrap:wrap;gap:4px">
+            <div style="font-size:14px;font-weight:700;color:${e.color}">${e.name}</div>
+            <span style="font-size:11px;color:var(--muted);font-family:'Space Mono',monospace">${e.date}</span>
+          </div>
+          <span style="font-size:11px;padding:2px 8px;background:${e.color}18;color:${e.color};border-radius:4px">${e.type}</span>
+          <div style="font-size:12px;margin-top:8px;color:var(--text)">질량: ${e.masses}</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:4px">에너지: ${e.energy}</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:6px;padding:6px 8px;background:rgba(255,255,255,.03);border-radius:4px">${e.significance}</div>
+        </div>`).join('')}
+    </div>
+    <div class="card">
+      <div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:12px">🔬 중력파 검출기</div>
+      ${gw.detectors.map(d => `
+        <div style="padding:10px;border-left:3px solid ${d.color};margin-bottom:8px;background:${d.color}06;border-radius:0 6px 6px 0">
+          <div style="font-size:13px;font-weight:600;color:${d.color};margin-bottom:4px">${d.name}</div>
+          <div style="font-size:11px;color:var(--muted)">위치: ${d.location} · 팔 길이: ${d.arm}</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:3px">${d.sensitivity}</div>
+        </div>`).join('')}
+    </div>`;
+}
+
+function renderBHExotic() {
+  const el = document.getElementById('bh-exotic');
+  el.innerHTML = `<div style="display:grid;gap:12px">` +
+    BH_DATA.exoticStars.map(s => `
+      <div class="card" style="border-color:${s.color}40">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <span style="font-size:24px">${s.icon}</span>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:${s.color}">${s.name}</div>
+            <div style="font-size:11px;color:var(--muted)">${s.formation}</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px">
+          <div style="background:var(--bg3);border-radius:6px;padding:6px">
+            <div style="font-size:10px;color:var(--muted)">질량</div>
+            <div style="font-size:11px;font-family:'Space Mono',monospace;color:${s.color}">${s.mass}</div>
+          </div>
+          <div style="background:var(--bg3);border-radius:6px;padding:6px">
+            <div style="font-size:10px;color:var(--muted)">크기</div>
+            <div style="font-size:11px;font-family:'Space Mono',monospace;color:${s.color}">${s.size}</div>
+          </div>
+          <div style="background:var(--bg3);border-radius:6px;padding:6px">
+            <div style="font-size:10px;color:var(--muted)">밀도</div>
+            <div style="font-size:11px;font-family:'Space Mono',monospace;color:${s.color}">${s.density}</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">${s.desc}</div>
+        <ul style="list-style:none;padding:0;margin:0">${s.facts.map(f=>`<li style="font-size:11px;color:var(--muted);padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)">◆ ${f}</li>`).join('')}</ul>
+      </div>`).join('') + '</div>';
+}
+
+// 천체 목록 - 물리 상수 모음 (단위 탭에 추가)
+
+// ===================== 물리 상수 데이터 =====================
+const PHYSICS_CONSTANTS = [
+  { symbol:'c', name:'빛의 속도', value:'299,792,458', unit:'m/s', color:'#ffd700',
+    desc:'진공에서 빛(전자기파)의 속도. 특수상대성이론의 핵심 상수. 어떤 물체도 이 속도에 도달·초과 불가.',
+    example:'1초에 지구 7.5바퀴 / 달까지 1.3초 / 태양까지 8.3분' },
+  { symbol:'G', name:'중력 상수', value:'6.674×10⁻¹¹', unit:'m³kg⁻¹s⁻²', color:'#60a0ff',
+    desc:'뉴턴의 만유인력 법칙 F=GMm/r²의 비례상수. 중력의 세기를 결정. 4가지 기본 힘 중 가장 약함.',
+    example:'지구 표면 중력가속도 g = 9.8 m/s² 계산에 사용' },
+  { symbol:'h', name:'플랑크 상수', value:'6.626×10⁻³⁴', unit:'J·s', color:'#a855f7',
+    desc:'에너지 양자화의 핵심 상수. E=hν. 빛의 에너지는 진동수에 비례. 양자역학의 가장 기본적인 상수.',
+    example:'광자 1개의 에너지 = hν / 청색광(450nm) 광자 에너지 = 4.4×10⁻¹⁹ J' },
+  { symbol:'ℏ', name:'환산 플랑크 상수', value:'1.055×10⁻³⁴', unit:'J·s', color:'#c090ff',
+    desc:'h/(2π). 각운동량 양자화, 불확정성 원리에 등장. ℏ = h/2π.',
+    example:'하이젠베르크 불확정성: ΔxΔp ≥ ℏ/2' },
+  { symbol:'kB', name:'볼츠만 상수', value:'1.380×10⁻²³', unit:'J/K', color:'#ff8040',
+    desc:'온도와 에너지를 연결하는 상수. 기체 분자 평균 운동에너지 = (3/2)kBT. 열역학의 핵심.',
+    example:'실온(300K)에서 분자 평균 에너지 = 0.026 eV' },
+  { symbol:'σ', name:'슈테판-볼츠만 상수', value:'5.670×10⁻⁸', unit:'W·m⁻²·K⁻⁴', color:'#ff6040',
+    desc:'흑체복사 총 에너지 밀도 상수. P = σAT⁴. 별의 광도 계산에 필수.',
+    example:'태양 표면 온도 5778K → 광도 3.83×10²⁶ W' },
+  { symbol:'e', name:'기본 전하', value:'1.602×10⁻¹⁹', unit:'C (쿨롱)', color:'#10b981',
+    desc:'전자(또는 양성자) 1개의 전하량. 모든 전하는 이 값의 정수배.',
+    example:'1쿨롱 = 약 6.24×10¹⁸개 전자의 전하' },
+  { symbol:'mₑ', name:'전자 질량', value:'9.109×10⁻³¹', unit:'kg', color:'#40c0ff',
+    desc:'전자 1개의 정지 질량. 원자 질량의 약 1/1836. 수소 원자 질량의 약 0.054%.',
+    example:'양성자 질량 = 1836 × 전자 질량' },
+  { symbol:'mp', name:'양성자 질량', value:'1.673×10⁻²⁷', unit:'kg', color:'#ff9040',
+    desc:'양성자 1개의 정지 질량. 수소 원자핵. 전자보다 1836배 무거움.',
+    example:'원자 질량 단위(u) ≈ 양성자 질량' },
+  { symbol:'NA', name:'아보가드로 상수', value:'6.022×10²³', unit:'mol⁻¹', color:'#ffd700',
+    desc:'1몰(mol)에 포함된 입자 수. 원자·분자 등 미시 세계와 거시 세계 연결.',
+    example:'물 18g (1몰) 안에 물 분자 6.022×10²³개' },
+  { symbol:'ε₀', name:'진공 유전율', value:'8.854×10⁻¹²', unit:'F/m', color:'#80ff80',
+    desc:'쿨롱 법칙의 상수. 진공에서 전기장 형성 능력. c = 1/√(ε₀μ₀)으로 빛의 속도와 연결.',
+    example:'쿨롱 법칙: F = q₁q₂/(4πε₀r²)' },
+  { symbol:'μ₀', name:'진공 투자율', value:'1.257×10⁻⁶', unit:'H/m', color:'#60d080',
+    desc:'진공에서 자기장 형성 상수. ε₀와 함께 빛의 속도 결정. c = 1/√(ε₀μ₀).',
+    example:'전선 주위 자기장 계산에 사용' },
+  { symbol:'H₀', name:'허블 상수', value:'67~73', unit:'km/s/Mpc', color:'#ff80ff',
+    desc:'우주 팽창 속도. 1메가파섹(326만 광년) 거리마다 초속 67~73km씩 후퇴. 허블 텐션: 측정 방법마다 값이 다름.',
+    example:'1Mpc 떨어진 은하는 67~73km/s로 멀어짐' },
+  { symbol:'Λ', name:'우주상수', value:'1.1×10⁻⁵²', unit:'m⁻²', color:'#c060c0',
+    desc:'아인슈타인이 도입한 진공 에너지 밀도. 암흑에너지의 수학적 표현. 우주 가속 팽창의 원인.',
+    example:'우주 에너지 밀도의 68%가 우주상수에 해당' },
+  { symbol:'lP', name:'플랑크 길이', value:'1.616×10⁻³⁵', unit:'m', color:'#ffaaaa',
+    desc:'물리학에서 의미 있는 가장 작은 길이. 이보다 작은 구조는 현재 물리학으로 기술 불가. 양자중력 필요.',
+    example:'양성자 지름(10⁻¹⁵m)의 10²⁰분의 1' },
+  { symbol:'tP', name:'플랑크 시간', value:'5.391×10⁻⁴⁴', unit:'s', color:'#ffcc88',
+    desc:'물리학에서 의미 있는 가장 짧은 시간. 빅뱅 직후 이 시간 이전은 현재 물리학으로 기술 불가.',
+    example:'우주 나이(138억 년)의 10⁶¹분의 1' },
+];
+
+// ===================== 단위 탭에 물리 상수 섹션 추가 =====================
+function renderPhysicsConstants() {
+  const el = document.getElementById('physics-constants-section');
+  if (!el || el.innerHTML) return;
+  el.innerHTML = `
+    <div class="card-title" style="margin-bottom:12px;font-size:13px">⚛ 주요 물리 상수</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      ${PHYSICS_CONSTANTS.map(c => `
+        <div style="background:var(--bg3);border-radius:8px;padding:12px;border:1px solid ${c.color}30">
+          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px">
+            <span style="font-size:18px;font-weight:700;font-family:'Space Mono',monospace;color:${c.color}">${c.symbol}</span>
+            <span style="font-size:12px;font-weight:600">${c.name}</span>
+          </div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:${c.color};margin-bottom:4px">${c.value} <span style="font-size:10px;color:var(--muted)">${c.unit}</span></div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:4px">${c.desc}</div>
+          <div style="font-size:10px;padding:4px 6px;background:rgba(255,255,255,.03);border-radius:4px;color:var(--muted)">예: ${c.example}</div>
+        </div>`).join('')}
+    </div>`;
+}
+
+// ===================== 천체 목록 특수 천체 카탈로그 보강 =====================
+// 기존 CATALOG exoticStars 데이터를 catalog의 special 카테고리로 추가
+const SPECIAL_CATALOG = {
+  label:'🌟 특수 천체', icon:'🌟',
+  items:[
+    { key:'neutron_star', name:'중성자별', sub:'초신성 잔해', color:'#00e5ff', r:11, mass:2.8e30, density:4e14, temp:1000000, dist:0, comp:'중성자 (핵밀도)', ring:false, moons:[],
+      facts:['반지름 10km, 질량 태양의 1.4~2.5배','1cm³당 약 4억 톤 — 각설탕 한 개가 에베레스트산 무게','표면 중력이 지구의 2×10¹¹배','강한 자기장: 지구의 약 10¹²배','초신성 폭발 후 핵이 붕괴해 형성','빠른 자전: 일부는 초당 수백 회','표면 온도 100만 K 이상','중성자 별 합병이 금·백금 등 중원소 생성','LIGO가 중성자별 합병 중력파 검출(GW170817)','스타퀘이크: 중성자별 지각 지진'] },
+    { key:'pulsar', name:'펄사', sub:'자전 중성자별', color:'#a855f7', r:11, mass:2.8e30, density:4e14, temp:1000000, dist:0, comp:'중성자, 강한 자기장', ring:false, moons:[],
+      facts:['자전하며 전파 빔을 방사하는 중성자별','1967년 조슬린 벨 버넬이 발견 (처음엔 외계인 신호로 의심)','밀리초 펄사: 초당 700회 이상 자전','원자시계보다 정확한 주기','자전 주기 1.4밀리초 ~ 수 초','중력파 탐지에 활용 (펄사 타이밍 배열)','쌍성 펄사: 일반상대성이론 검증에 활용','2023년 펄사 타이밍으로 나노헤르츠 중력파 배경 발견','펄사 분류: 라디오·X선·감마선 펄사','B1919+21: 최초 발견 펄사'] },
+    { key:'magnetar', name:'마그네타', sub:'극강 자기장 중성자별', color:'#ff6040', r:11, mass:2.8e30, density:4e14, temp:5000000, dist:0, comp:'중성자, 극강 자기장', ring:false, moons:[],
+      facts:['우주 최강 자기장: 지구의 10¹⁵배','자기장 에너지가 회전 에너지보다 훨씬 큼','주기적 X선·감마선 거대 폭발','SGR 1806-20: 0.2초간 태양이 10만 년 방출할 에너지 방출 (2004)','태양계 내에 있었다면 지구와 달 사이에서도 신용카드 자기 파괴','약 30개만 알려져 있음','수명 약 1만 년 — 매우 짧음','소프트감마선 반복원(SGR)과 비정상 X선 펄사(AXP)로 분류','자기장 재배열로 엄청난 에너지 방출','중성자별 중 일부(약 10%)가 마그네타'] },
+    { key:'quasar', name:'퀘이사', sub:'활동 은하핵 (초기 우주)', color:'#ffd700', r:1e9, mass:1e39, density:0, temp:50000, dist:2.4e10*9.461e12, comp:'초대질량 블랙홀+강착원반', ring:false, moons:[],
+      facts:['우주에서 가장 밝은 천체류','초대질량 블랙홀이 물질 흡수 시 방출하는 에너지','전체 은하보다 수백~수천 배 밝은 핵','대부분 초기 우주(고적색편이)에서 관측','3C 273: 최초 확인 퀘이사, 지구에서 24억 광년','J0313-1806: 빅뱅 후 6.7억 년 만에 형성된 퀘이사','블레이자: 제트가 지구를 직접 향하는 퀘이사','현재 우주에서는 드묾 — 가스 공급 감소','퀘이사 = QSO (Quasi-Stellar Object)','허블이 퀘이사의 은하 본체 직접 촬영'] },
+    { key:'agn', name:'활동 은하핵 (AGN)', sub:'활동 중인 은하 중심부', color:'#a855f7', r:1e8, mass:1e38, density:0, temp:10000, dist:1.3e7*9.461e12, comp:'초대질량 블랙홀+제트+강착원반', ring:false, moons:[],
+      facts:['Active Galactic Nucleus — 활발히 물질 흡수 중인 은하 중심','퀘이사(강), 세이퍼트 은하(중간), 저광도 AGN(약)으로 분류','블레이자: 제트가 지구 방향 — 가장 강렬한 감마선 방출','켄타우루스 A: 가장 가까운 강력 AGN (1,300만 광년)','제트 길이 수천~수만 광년','AGN 피드백: 별 형성을 억제하는 역할','통일 모형: 관측 각도에 따라 다르게 보이는 같은 천체','사건 지평선 망원경이 M87 AGN 블랙홀 촬영','우리은하 중심 Sgr A*도 과거에 AGN이었을 것','X선, 전파, 감마선 등 다파장으로 관측'] },
+    { key:'grb', name:'감마선 폭발 (GRB)', sub:'우주 최강 폭발', color:'#ff4040', r:0, mass:0, density:0, temp:1e10, dist:5e9*9.461e12, comp:'중성자별 합병 또는 하이퍼노바', ring:false, moons:[],
+      facts:['빅뱅을 제외한 우주 최강 폭발','0.01초~수백 초 만에 태양이 100억 년간 방출할 에너지 방출','단주기 GRB(<2초): 중성자별 합병','장주기 GRB(>2초): 극대질량 별 붕괴(하이퍼노바)','GW170817: GRB와 중력파 동시 관측 성공 (다중신호 천문학 시작)','우주 전역에서 매일 1~2회 관측','1969년 군사위성 Vela가 최초 발견','잔광(Afterglow): 폭발 후 X선·가시광·전파 여운','킬로노바: 단주기 GRB에서 금·백금 등 중원소 생성','가장 먼 GRB: 빅뱅 후 6억 년 시대의 폭발 관측'] },
+    { key:'variable_star', name:'변광성', sub:'밝기가 변하는 별', color:'#ffaa40', r:100000, mass:4e30, density:0.02, temp:6000, dist:10000*9.461e12, comp:'수소, 헬륨', ring:false, moons:[],
+      facts:['밝기가 주기적 또는 불규칙하게 변하는 별','세페이드 변광성: 맥동하는 거성 — 표준촛불로 사용','RR 리라에형: 구상성단에서 발견, 거리 측정 기준','신성(Nova): 쌍성에서 물질 전달로 폭발','미라형: 장주기 적색거성 변광성','헨리에타 레빗이 세페이드 주기-광도 관계 발견 (1908)','허블이 세페이드로 안드로메다 거리 측정 — 우주 규모 확장','에타 카리나: 불안정한 초거성 변광성','폭발 변광성: 갑작스러운 밝기 증가','이영욱 교수 연구: 세페이드 항성 종족 효과도 연구 대상'] },
+    { key:'white_dwarf', name:'백색왜성', sub:'별의 최후', color:'#e0e0ff', r:7000, mass:1.4e30, density:1e9, temp:100000, dist:0, comp:'탄소, 산소 (전자축퇴)', ring:false, moons:[],
+      facts:['태양 같은 별의 최후 — 외피층 방출 후 남은 핵','지름은 지구와 비슷하지만 질량은 태양과 유사','전자 축퇴압으로 지탱 — 핵융합 없음','찬드라세카르 한계: 태양 질량 1.4배 초과 시 붕괴','Ia형 초신성의 핵심 천체 (이영욱 교수 연구 대상)','수십억 년에 걸쳐 서서히 식어 흑색왜성이 될 것','흑색왜성: 아직 우주 나이가 짧아 존재하지 않음','시리우스 B: 가장 유명한 백색왜성 (8.6광년)','가장 뜨거운 백색왜성: 표면 온도 20만 K','탄소·산소 이외 산소-네온, 헬륨 백색왜성도 존재'] },
+  ]
+};
+
+// CATALOG에 special 카테고리 동적 추가
+function extendCatalog() {
+  if (CATALOG.special) return;
+  CATALOG.special = SPECIAL_CATALOG;
+  // 카탈로그 이미 초기화됐으면 재빌드
+  if (catalogInited) {
+    catalogInited = false;
+    document.getElementById('catalog-groups').innerHTML = '';
+    initCatalog();
+  }
+}
+
+// ===================== 캔버스 클릭으로 천체 추가 =====================
+function addBodyAtClick(event) {
+  const canvas = document.getElementById('sim-canvas');
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const mx = (event.clientX - rect.left) * scaleX;
+  const my = (event.clientY - rect.top) * scaleY;
+
+  // 캔버스 중심 기준 시뮬레이션 좌표로 변환
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+
+  // 현재 스케일 역산
+  let maxDist = 1;
+  simBodies.forEach(b => { maxDist = Math.max(maxDist, Math.abs(b.x), Math.abs(b.y)); });
+  const zoom = Math.min(cx, cy) * 0.85 / (maxDist + 1);
+
+  const simX = (mx - cx) / zoom;
+  const simY = (my - cy) / zoom;
+
+  // 랜덤 속도 (현재 시스템 규모에 맞게)
+  const speed = 0.002 + Math.random() * 0.003;
+  const angle = Math.random() * Math.PI * 2;
+
+  const colors = ['#ff6b6b','#ffd700','#00e5ff','#a855f7','#10b981','#ff8040','#80ff80','#ff80ff'];
+  const randColor = colors[Math.floor(Math.random() * colors.length)];
+  const randMass = 1e28 + Math.random() * 1e29;
+  const randR = 4 + Math.random() * 8;
+
+  const newBody = new SimBody(
+    '새 천체',
+    simX, simY,
+    Math.cos(angle) * speed,
+    Math.sin(angle) * speed,
+    randMass,
+    randR,
+    randColor
+  );
+  simBodies.push(newBody);
+
+  // 플래시 효과
+  const flash = document.createElement('div');
+  flash.style.cssText = `position:fixed;left:${event.clientX-20}px;top:${event.clientY-20}px;width:40px;height:40px;border-radius:50%;background:${randColor};opacity:0.8;pointer-events:none;z-index:9999;transition:all 0.4s`;
+  document.body.appendChild(flash);
+  setTimeout(() => { flash.style.opacity='0'; flash.style.transform='scale(3)'; }, 10);
+  setTimeout(() => flash.remove(), 500);
+}
+
+// ===================== 크기 비교 다중 선택 초기화 =====================
+function initCompareSelect() {
+  const sel = document.getElementById('body-compare-select');
+  if (!sel) return;
+  // 카탈로그 전체 천체 옵션 추가
+  const allBodies = [];
+  Object.values(CATALOG).forEach(cat => {
+    cat.items.forEach(b => allBodies.push({ key: b.key, name: b.name }));
+  });
+  sel.innerHTML = allBodies.map(b =>
+    `<option value="${b.key}"${b.key==='earth'?' selected':''}>${b.name}</option>`
+  ).join('');
+}
+
+
+// ===================== 실제 천체 사진 데이터 =====================
+const CELESTIAL_PHOTOS = {
+  // 태양계
+  sun:      { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg/1280px-The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg', credit:'NASA SDO', desc:'NASA 태양 역학 관측위성(SDO) 촬영' },
+  mercury:  { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Mercury_in_true_color.jpg/1024px-Mercury_in_true_color.jpg', credit:'NASA/Johns Hopkins MESSENGER', desc:'MESSENGER 탐사선 촬영 (2008~2015)' },
+  venus:    { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Venus-real_color.jpg/1024px-Venus-real_color.jpg', credit:'NASA/JPL Mariner 10', desc:'매리너 10호 촬영 (1974)' },
+  earth:    { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/1024px-The_Earth_seen_from_Apollo_17.jpg', credit:'NASA Apollo 17', desc:'아폴로 17호 촬영 블루마블 (1972)' },
+  moon:     { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/1024px-FullMoon2010.jpg', credit:'NASA', desc:'지구에서 촬영한 보름달' },
+  mars:     { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/1024px-OSIRIS_Mars_true_color.jpg', credit:'ESA/OSIRIS', desc:'ESA 로제타 탐사선 촬영 (2007)' },
+  jupiter:  { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg/1024px-Jupiter_and_its_shrunken_Great_Red_Spot.jpg', credit:'NASA/ESA Hubble', desc:'허블 우주망원경 촬영 — 대적반 선명' },
+  saturn:   { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/1280px-Saturn_during_Equinox.jpg', credit:'NASA/JPL Cassini', desc:'카시니 탐사선 촬영 — 고리 역광' },
+  uranus:   { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/1024px-Uranus2.jpg', credit:'NASA/JPL Voyager 2', desc:'보이저 2호 촬영 (1986)' },
+  neptune:  { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Neptune_-_Voyager_2_%2829347980845%29_flatten_crop.jpg/1024px-Neptune_-_Voyager_2_%2829347980845%29_flatten_crop.jpg', credit:'NASA/JPL Voyager 2', desc:'보이저 2호 촬영 (1989)' },
+  // 위성
+  'earth_moon_달': { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/1024px-FullMoon2010.jpg', credit:'NASA', desc:'달 표면' },
+  'mars_moon_포보스': { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Phobos_colour_2008.jpg/1024px-Phobos_colour_2008.jpg', credit:'NASA/JPL MRO', desc:'화성 정찰 궤도선 촬영 (2008)' },
+  'mars_moon_데이모스': { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Deimos-MRO.jpg/1024px-Deimos-MRO.jpg', credit:'NASA/JPL MRO', desc:'화성 정찰 궤도선 촬영' },
+  'jupiter_moon_이오': { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Io_highest_resolution_true_color.jpg/1024px-Io_highest_resolution_true_color.jpg', credit:'NASA/JPL Galileo', desc:'갈릴레오 탐사선 촬영 — 활화산 표면' },
+  'jupiter_moon_유로파': { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Europa-moon-with-margins.jpg/1024px-Europa-moon-with-margins.jpg', credit:'NASA/JPL Galileo', desc:'갈릴레오 탐사선 촬영 — 얼음 표면 균열' },
+  'jupiter_moon_가니메데': { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Ganymede_-_Perijove_34_Composite.png/1024px-Ganymede_-_Perijove_34_Composite.png', credit:'NASA/JPL Juno', desc:'주노 탐사선 촬영 (2021)' },
+  'jupiter_moon_칼리스토': { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Callisto.jpg/1024px-Callisto.jpg', credit:'NASA/JPL Galileo', desc:'갈릴레오 탐사선 촬영' },
+  'saturn_moon_타이탄': { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Titan_in_true_color.jpg/800px-Titan_in_true_color.jpg', credit:'NASA/JPL Cassini', desc:'카시니 탐사선 — 두꺼운 대기 확인' },
+  'saturn_moon_엔켈라두스': { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/PIA17202_-_Approaching_Enceladus.jpg/1024px-PIA17202_-_Approaching_Enceladus.jpg', credit:'NASA/JPL Cassini', desc:'카시니 탐사선 — 간헐천 분출 확인' },
+  // 왜행성
+  pluto:    { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Pluto_by_LORRI_and_Ralph%2C_13_July_2015.jpg/1024px-Pluto_by_LORRI_and_Ralph%2C_13_July_2015.jpg', credit:'NASA/Johns Hopkins New Horizons', desc:'뉴허라이즌스 탐사선 촬영 (2015) — 하트 모양 톰보 지역' },
+  ceres:    { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Ceres_-_RC3_-_Haulani_Crater_%2822381131691%29.jpg/1024px-Ceres_-_RC3_-_Haulani_Crater_%2822381131691%29.jpg', credit:'NASA/JPL Dawn', desc:'새벽 탐사선 촬영 (2015) — 오케이터 밝은 점' },
+  // 소행성
+  itokawa: { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Itokawa8_hayabusa.jpg/1280px-Itokawa8_hayabusa.jpg', credit:'JAXA Hayabusa', desc:'하야부사 탐사선 촬영 (2005) — 땅콩 모양' },
+  ryugu:   { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Ryugu_20180718.png/1024px-Ryugu_20180718.png', credit:'JAXA Hayabusa2', desc:'하야부사2 촬영 (2018) — 팽이 모양' },
+  bennu:   { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/101955_Bennu_mosaic_OSIRIS-REx.jpg/1024px-101955_Bennu_mosaic_OSIRIS-REx.jpg', credit:'NASA OSIRIS-REx', desc:'OSIRIS-REx 촬영 (2018~2021)' },
+  // 혜성
+  halley:      { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Halley%27s_Comet_-_March_8_1986.jpg/1280px-Halley%27s_Comet_-_March_8_1986.jpg', credit:'ESA Giotto / W. Liller', desc:'1986년 접근 시 촬영' },
+  churyumov:   { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/67P_on_19_September_2014_NavCam_mosaic.jpg/1280px-67P_on_19_September_2014_NavCam_mosaic.jpg', credit:'ESA/Rosetta', desc:'로제타 탐사선 촬영 (2014) — 오리 모양' },
+  neowise:     { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Comet_NEOWISE_from_ISS_%28cross-processed%29.jpg/1280px-Comet_NEOWISE_from_ISS_%28cross-processed%29.jpg', credit:'NASA ISS', desc:'국제우주정거장에서 촬영 (2020)' },
+  // 성운
+  orion_nebula:      { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Orion_Nebula_-_Hubble_2006_mosaic_18000.jpg/1280px-Orion_Nebula_-_Hubble_2006_mosaic_18000.jpg', credit:'NASA/ESA Hubble', desc:'허블 우주망원경 모자이크 촬영 (2006)' },
+  eagle_nebula:      { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg/1024px-Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg', credit:'NASA/ESA Hubble', desc:'창조의 기둥 — 허블 2014년 재촬영' },
+  carina_nebula:     { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/ESO-Carina_Nebula-phot-exap-a.jpg/1280px-ESO-Carina_Nebula-phot-exap-a.jpg', credit:'ESO', desc:'유럽남방천문대 촬영' },
+  horsehead_nebula:  { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Hubble_Horsehead_Nebula_%28cropped%29.jpg/1024px-Hubble_Horsehead_Nebula_%28cropped%29.jpg', credit:'NASA/ESA Hubble', desc:'허블 우주망원경 적외선 촬영 (2013)' },
+  cats_eye_nebula:   { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Catseye-big.jpg/1024px-Catseye-big.jpg', credit:'NASA/ESA Hubble', desc:'허블 촬영 — 복잡한 동심원 구조' },
+  ring_nebula:       { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Messier_57_The_Ring_Nebula.JPG/1024px-Messier_57_The_Ring_Nebula.JPG', credit:'NASA/ESA Hubble', desc:'허블 우주망원경 촬영 (M57)' },
+  crab_nebula:       { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Crab_Nebula.jpg/1024px-Crab_Nebula.jpg', credit:'NASA/ESA Hubble', desc:'허블 촬영 — 1054년 초신성 잔해' },
+  veil_nebula:       { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Veil_Nebula_-_NGC_6960.jpg/1024px-Veil_Nebula_-_NGC_6960.jpg', credit:'NASA/ESA Hubble', desc:'허블 촬영 — 초신성 충격파 필라멘트' },
+  pillars_of_creation:{ url:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg/800px-Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg', credit:'NASA/ESA Hubble', desc:'창조의 기둥 — 허블 2014' },
+  // 성단
+  pleiades:        { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Pleiades_large.jpg/1280px-Pleiades_large.jpg', credit:'NASA/ESA/AURA/Caltech', desc:'플레이아데스 성단 — 파란 반사 성운' },
+  omega_centauri:  { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Omega_Centauri_by_ESO.jpg/1280px-Omega_Centauri_by_ESO.jpg', credit:'ESO', desc:'유럽남방천문대 — 우리은하 최대 구상성단' },
+  m13:             { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/M13_Hubble_WikiSky.jpg/1024px-M13_Hubble_WikiSky.jpg', credit:'NASA/ESA Hubble', desc:'헤라클레스 구상성단 — 허블 촬영' },
+  butterfly_cluster:{ url:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Butterfly_cluster.jpg/1024px-Butterfly_cluster.jpg', credit:'ESO', desc:'나비 성단 (M6) — 유럽남방천문대' },
+  '47_tucanae':    { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/47tuc_and_smc.jpg/1280px-47tuc_and_smc.jpg', credit:'ESO', desc:'47 투카나에 — 소마젤란 성운과 함께' },
+  // 은하
+  milky_way:       { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/ESO-VLT-Laser-phot-33a.jpg/1280px-ESO-VLT-Laser-phot-33a.jpg', credit:'ESO/Y.Beletsky', desc:'VLT 레이저 가이드 별 — 은하수 배경' },
+  andromeda:       { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/1280px-Andromeda_Galaxy_%28with_h-alpha%29.jpg', credit:'NASA/JPL-Caltech', desc:'안드로메다 은하 — 적외선+가시광 합성' },
+  triangulum:      { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/VST_images_the_Triangulum_Galaxy_%28Messier_33%29.jpg/1280px-VST_images_the_Triangulum_Galaxy_%28Messier_33%29.jpg', credit:'ESO/VST', desc:'삼각형 은하 (M33)' },
+  large_magellanic:{ url:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Large.Magellanic.Cloud.jpg/1280px-Large.Magellanic.Cloud.jpg', credit:'ESO/S.Brunier', desc:'대마젤란 성운 — 타란툴라 성운 포함' },
+  small_magellanic:{ url:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Small_Magellanic_Cloud_%28Digitized_Sky_Survey_2%29.jpg/1280px-Small_Magellanic_Cloud_%28Digitized_Sky_Survey_2%29.jpg', credit:'ESO/Digitized Sky Survey', desc:'소마젤란 성운' },
+  whirlpool:       { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Messier51_sRGB.jpg/1024px-Messier51_sRGB.jpg', credit:'NASA/ESA Hubble', desc:'소용돌이 은하 (M51) — 허블 촬영' },
+  sombrero:        { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/M104_ngc4594_sombrero_galaxy_hi-res.jpg/1280px-M104_ngc4594_sombrero_galaxy_hi-res.jpg', credit:'NASA/ESA Hubble', desc:'솜브레로 은하 (M104) — 허블 촬영' },
+  centaurus_a:     { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Cen_A_Hubble.jpg/1024px-Cen_A_Hubble.jpg', credit:'NASA/ESA Hubble', desc:'켄타우루스 A — 먼지 띠와 활동 은하핵' },
+  antennae:        { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Antennae_galaxies_xl.jpg/1280px-Antennae_galaxies_xl.jpg', credit:'NASA/ESA Hubble', desc:'안테나 은하 — 두 은하 충돌 중' },
+  bodes_galaxy:    { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Messier_81_HST.jpg/1024px-Messier_81_HST.jpg', credit:'NASA/ESA Hubble', desc:'보데 은하 (M81) — 허블 촬영' },
+  // 블랙홀 관련
+  milky_way_bh:    { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Galactic_centre_orbits.svg/1024px-Galactic_centre_orbits.svg', credit:'ESO/MPE', desc:'궁수자리 A* 주변 별 궤도' },
+  // 특수 천체
+  crab_pulsar:     { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Crab_Nebula.jpg/1024px-Crab_Nebula.jpg', credit:'NASA/ESA Hubble', desc:'게 성운 중심의 펄사' },
+  quasar:          { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Quasar_viewed_by_hubble.jpg/1024px-Quasar_viewed_by_hubble.jpg', credit:'NASA/ESA Hubble', desc:'퀘이사 허블 촬영' },
+  // 기본 폴백
+  default:         { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Hubble_ultra_deep_field.jpg/1024px-Hubble_ultra_deep_field.jpg', credit:'NASA/ESA Hubble', desc:'허블 울트라 딥 필드 — 수천 개 은하' },
+};
+
+function getPhotoUrl(key) {
+  // 위성 키 변환 (예: earth_moon_달 → 달)
+  if (key.includes('_moon_')) {
+    const parts = key.split('_moon_');
+    const parentKey = parts[0];
+    const moonName = parts[1];
+    const moonKey = parentKey + '_moon_' + moonName;
+    if (CELESTIAL_PHOTOS[moonKey]) return CELESTIAL_PHOTOS[moonKey];
+  }
+  return CELESTIAL_PHOTOS[key] || CELESTIAL_PHOTOS.default;
+}
+
+// ===================== 사진 뷰어 함수 =====================
+function loadPhotoBody() {
+  const key = document.getElementById('body3d-select').value;
+  if (!key) return;
+
+  // 정보 패널 업데이트 (기존 getCatalogBody 활용)
+  const isMoonKey = key.includes('_moon_');
+  let b, moonData = null, parentData = null;
+
+  if (isMoonKey) {
+    const parts = key.split('_moon_');
+    parentData = getCatalogBody(parts[0]);
+    if (parentData) moonData = parentData.moons.find(m => m.name === parts[1]);
+    if (!moonData) return;
+    b = { name: moonData.name, type: 'moon', r: moonData.r, mass: 0, density: 0, temp: 0, comp: '위성', facts: moonData.facts, sub: parentData ? parentData.name + '의 위성' : '위성' };
+  } else {
+    b = getCatalogBody(key);
+    if (!b) { const old = BODIES[key]; if (old) b = { name:old.name, type:old.type, r:old.r, mass:old.mass, density:old.density, temp:old.temp, comp:old.comp, facts:old.facts, sub:old.type }; }
+    if (!b) return;
+  }
+
+  // 사진 로드
+  const photo = getPhotoUrl(key);
+  showCelestialPhoto(photo.url, photo.credit, photo.desc);
+
+  // 정보 패널
+  const pname = document.getElementById('panel-name');
+  const ptype = document.getElementById('panel-type');
+  const pprops = document.getElementById('panel-props');
+  const pfacts = document.getElementById('panel-facts-list');
+
+  if (pname) pname.textContent = b.name;
+  if (ptype) ptype.innerHTML = `<span class="badge badge-cyan">${b.sub || b.type || ''}</span>`;
+  if (pprops) pprops.innerHTML = `
+    <table style="font-size:12px;width:100%">
+      ${b.r ? `<tr><td style="color:var(--muted);padding:4px 0">반지름</td><td style="font-family:'Space Mono',monospace;color:var(--cyan);text-align:right">${b.r.toLocaleString()} km</td></tr>` : ''}
+      ${b.mass ? `<tr><td style="color:var(--muted);padding:4px 0">질량</td><td style="font-family:'Space Mono',monospace;color:var(--purple);text-align:right">${b.mass.toExponential(2)} kg</td></tr>` : ''}
+      ${b.density ? `<tr><td style="color:var(--muted);padding:4px 0">밀도</td><td style="font-family:'Space Mono',monospace;color:var(--gold);text-align:right">${b.density} g/cm³</td></tr>` : ''}
+      ${b.temp ? `<tr><td style="color:var(--muted);padding:4px 0">온도</td><td style="font-family:'Space Mono',monospace;color:var(--red);text-align:right">${b.temp} K</td></tr>` : ''}
+      ${b.comp ? `<tr><td style="color:var(--muted);padding:4px 0">구성</td><td style="font-size:11px;color:var(--text);text-align:right">${b.comp}</td></tr>` : ''}
+      ${photo.desc ? `<tr><td colspan="2" style="font-size:11px;color:var(--muted);padding:8px 0 0 0;border-top:1px solid rgba(255,255,255,.06);margin-top:6px">📷 ${photo.desc}</td></tr>` : ''}
+    </table>`;
+  if (pfacts) pfacts.innerHTML = (b.facts || []).map(f => `<div class="fact">${f}</div>`).join('');
+}
+
+function showCelestialPhoto(url, credit, desc) {
+  const img = document.getElementById('celestial-photo');
+  const loading = document.getElementById('photo-loading');
+  const spinner = document.getElementById('photo-spinner');
+  const creditEl = document.getElementById('photo-credit');
+  const fsBtn = document.getElementById('fullscreen-btn');
+
+  // 로딩 시작
+  img.style.display = 'none';
+  loading.style.display = 'none';
+  spinner.style.display = 'block';
+  creditEl.style.display = 'none';
+  fsBtn.style.display = 'none';
+
+  img.src = url;
+  if (creditEl) creditEl.textContent = '📷 ' + credit;
+}
+
+function handlePhotoLoad() {
+  const img = document.getElementById('celestial-photo');
+  const spinner = document.getElementById('photo-spinner');
+  const creditEl = document.getElementById('photo-credit');
+  const fsBtn = document.getElementById('fullscreen-btn');
+
+  spinner.style.display = 'none';
+  img.style.display = 'block';
+  if (creditEl) creditEl.style.display = 'block';
+  if (fsBtn) fsBtn.style.display = 'block';
+}
+
+function handlePhotoError() {
+  const img = document.getElementById('celestial-photo');
+  const spinner = document.getElementById('photo-spinner');
+  const loading = document.getElementById('photo-loading');
+
+  spinner.style.display = 'none';
+  img.style.display = 'none';
+  loading.style.display = 'block';
+  loading.innerHTML = `
+    <div style="font-size:36px;margin-bottom:12px">🔭</div>
+    <div style="font-size:13px;color:var(--muted)">사진을 불러올 수 없습니다</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:6px">네트워크 연결을 확인해주세요</div>
+  `;
+  // 폴백: 허블 울트라 딥 필드
+  const fallbackUrl = CELESTIAL_PHOTOS.default.url;
+  if (img.src !== fallbackUrl) {
+    img.src = fallbackUrl;
+  }
+}
+
+function toggleFullscreen() {
+  const container = document.getElementById('photo-container');
+  const btn = document.getElementById('fullscreen-btn');
+  const isFS = container.classList.contains('fullscreen-mode');
+
+  if (!isFS) {
+    container.classList.add('fullscreen-mode');
+    btn.textContent = '✕ 닫기';
+    // ESC 힌트
+    const hint = document.createElement('div');
+    hint.className = 'esc-hint';
+    hint.id = 'esc-hint';
+    hint.textContent = 'ESC 또는 닫기 버튼으로 종료';
+    document.body.appendChild(hint);
+    setTimeout(() => { if(hint.parentNode) hint.parentNode.removeChild(hint); }, 2500);
+  } else {
+    container.classList.remove('fullscreen-mode');
+    btn.textContent = '⛶ 전체화면';
+    const hint = document.getElementById('esc-hint');
+    if (hint) hint.parentNode.removeChild(hint);
+  }
+}
+
+// ESC 키로 전체화면 종료
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const container = document.getElementById('photo-container');
+    if (container && container.classList.contains('fullscreen-mode')) {
+      toggleFullscreen();
+    }
+  }
+});
+
+// 사진 검색 필터
+function filterPhotoSelect(val) {
+  const sel = document.getElementById('body3d-select');
+  const fl = val.toLowerCase();
+  Array.from(sel.options).forEach(opt => {
+    opt.style.display = (!fl || opt.text.toLowerCase().includes(fl)) ? '' : 'none';
+  });
+  // 첫 번째 보이는 옵션 선택
+  if (fl) {
+    const first = Array.from(sel.options).find(o => o.style.display !== 'none');
+    if (first) { sel.value = first.value; loadPhotoBody(); }
+  }
+}
+
+// load3DBody를 loadPhotoBody로 리디렉트 (기존 코드 호환)
+function load3DBody() { loadPhotoBody(); }
+
+// goTo3D, openBodyIn3D, openMoonIn3D도 사진 탭으로
+function goTo3D() {
+  const key = document.getElementById('body-select').value;
+  document.getElementById('body3d-select').value = key;
+  showTab('view3d');
+}
+function openBodyIn3D(key) {
+  document.getElementById('body3d-select').value = key;
+  showTab('view3d');
+}
+function openMoonIn3D(key) {
+  document.getElementById('body3d-select').value = key;
+  showTab('view3d');
+}
+
+function toggleAutoRot2(){}
 
 function toggleAutoRot() {
   autoRotate3d = !autoRotate3d;
   const btn = document.getElementById('auto-rot-btn');
   btn.textContent = autoRotate3d ? '⟳ 자동회전 ON' : '⟳ 자동회전 OFF';
   btn.className = autoRotate3d ? 'btn active' : 'btn';
+}
+
+// ===================== CATALOG =====================
+let catalogInited = false;
+let selectedCatalogKey = null;
+
+function initCatalog() {
+  if (catalogInited) return;
+  catalogInited = true;
+  buildCatalogGroups();
+}
+
+function buildCatalogGroups(filter='') {
+  const container = document.getElementById('catalog-groups');
+  container.innerHTML = '';
+  const fl = filter.toLowerCase();
+
+  Object.entries(CATALOG).forEach(([catKey, cat]) => {
+    const filtered = fl ? cat.items.filter(b =>
+      b.name.toLowerCase().includes(fl) ||
+      b.moons.some(m => m.name.toLowerCase().includes(fl))
+    ) : cat.items;
+    if (filtered.length === 0) return;
+
+    const group = document.createElement('div');
+    group.className = 'cat-group cat-' + catKey;
+
+    const header = document.createElement('div');
+    header.className = 'cat-header open';
+    header.innerHTML = `<span>${cat.label}</span><span class="cat-count">${filtered.length}</span><span class="cat-arrow">▶</span>`;
+    header.onclick = () => {
+      header.classList.toggle('open');
+      body.classList.toggle('open');
+    };
+
+    const body = document.createElement('div');
+    body.className = 'cat-body open';
+
+    filtered.forEach(b => {
+      // 행성 아이템
+      const item = document.createElement('div');
+      item.className = 'cat-item' + (selectedCatalogKey === b.key ? ' selected' : '');
+      item.id = 'cat-item-' + b.key;
+      item.innerHTML = `
+        <div class="cat-dot" style="background:${b.color};box-shadow:0 0 6px ${b.color}88"></div>
+        <div style="flex:1">
+          <div class="cat-item-name">${b.name}</div>
+          <div class="cat-item-sub">${b.sub}${b.moons.length ? ` · 위성 ${b.moons.length}개` : ''}${b.ring ? ' · 고리 있음' : ''}</div>
+        </div>`;
+      item.onclick = () => selectCatalogBody(b.key, b);
+      body.appendChild(item);
+
+      // 위성 아이템 (들여쓰기)
+      b.moons.forEach(m => {
+        const mItem = document.createElement('div');
+        mItem.className = 'cat-item' + (selectedCatalogKey === b.key+'_moon_'+m.name ? ' selected' : '');
+        mItem.id = 'cat-item-' + b.key + '_moon_' + m.name;
+        mItem.style.paddingLeft = '32px';
+        mItem.innerHTML = `
+          <div class="cat-dot" style="background:${m.color};width:8px;height:8px;box-shadow:0 0 4px ${m.color}88"></div>
+          <div style="flex:1">
+            <div class="cat-item-name" style="font-size:12px">${m.name}</div>
+            <div class="cat-item-sub">위성 · r=${m.r.toLocaleString()} km</div>
+          </div>`;
+        mItem.onclick = () => selectCatalogMoon(b.key+'_moon_'+m.name, m, b);
+        body.appendChild(mItem);
+      });
+    });
+
+    group.appendChild(header);
+    group.appendChild(body);
+    container.appendChild(group);
+  });
+}
+
+function selectCatalogBody(key, b) {
+  selectedCatalogKey = key;
+  document.querySelectorAll('.cat-item').forEach(el => el.classList.remove('selected'));
+  const el = document.getElementById('cat-item-' + key);
+  if (el) el.classList.add('selected');
+
+  const detail = document.getElementById('catalog-detail');
+  const distStr = b.dist > 0 ? formatOrbDist(b.dist) : '중심천체';
+  const ringBadge = b.ring ? `<span class="badge badge-gold" style="margin-left:6px">고리</span>` : '';
+  const moonsBadge = b.moons.length ? `<span class="badge badge-cyan" style="margin-left:6px">위성 ${b.moons.length}개</span>` : '';
+
+  detail.innerHTML = `
+    <div class="detail-hero">
+      <div style="width:70px;height:70px;border-radius:50%;background:${b.color};box-shadow:0 0 24px ${b.color}88;flex-shrink:0"></div>
+      <div>
+        <div style="font-size:22px;font-weight:700;margin-bottom:4px">${b.name}</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:8px">${b.sub}</div>
+        ${ringBadge}${moonsBadge}
+      </div>
+      <button class="btn primary" style="margin-left:auto" onclick="openBodyIn3D('${key}')">◈ 3D 보기</button>
+    </div>
+
+    <div class="grid2" style="margin-bottom:16px">
+      <div class="stat"><div class="stat-val" style="color:var(--cyan);font-size:16px">${b.r.toLocaleString()} km</div><div class="stat-lbl">반지름</div></div>
+      <div class="stat"><div class="stat-val" style="color:var(--purple);font-size:14px">${b.mass.toExponential(2)} kg</div><div class="stat-lbl">질량</div></div>
+      <div class="stat"><div class="stat-val" style="color:var(--gold)">${b.density}</div><div class="stat-lbl">밀도 g/cm³</div></div>
+      <div class="stat"><div class="stat-val" style="color:var(--red)">${b.temp} K</div><div class="stat-lbl">표면 온도</div></div>
+    </div>
+
+    <div class="card" style="margin-bottom:14px">
+      <div class="card-title">궤도 정보</div>
+      <div class="grid2">
+        <div><span class="lbl">태양까지 거리</span><div style="font-family:'Space Mono',monospace;font-size:13px;color:var(--cyan);margin-top:3px">${distStr}</div></div>
+        <div><span class="lbl">구성</span><div style="font-size:13px;margin-top:3px">${b.comp}</div></div>
+      </div>
+    </div>
+
+    ${b.moons.length ? `
+    <div class="card" style="margin-bottom:14px">
+      <div class="card-title">🌙 위성 목록 (${b.moons.length}개)</div>
+      <div class="moon-list">
+        ${b.moons.map(m => `
+          <span class="moon-badge" onclick="selectCatalogMoon('${key}_moon_${m.name}',${JSON.stringify(m).replace(/"/g,"'")},${JSON.stringify({key,name:b.name,color:b.color}).replace(/"/g,"'")})" style="border-color:${m.color}40">
+            <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${m.color};margin-right:5px"></span>${m.name}
+          </span>`).join('')}
+      </div>
+    </div>` : ''}
+
+    <div class="card">
+      <div class="card-title">🌟 흥미로운 사실</div>
+      ${b.facts.map(f => `<div class="fact">${f}</div>`).join('')}
+    </div>`;
+}
+
+function selectCatalogMoon(key, m, parent) {
+  selectedCatalogKey = key;
+  document.querySelectorAll('.cat-item').forEach(el => el.classList.remove('selected'));
+  const el = document.getElementById('cat-item-' + key);
+  if (el) { el.classList.add('selected'); el.scrollIntoView({block:'nearest'}); }
+
+  const detail = document.getElementById('catalog-detail');
+  detail.innerHTML = `
+    <div class="detail-hero">
+      <div style="width:60px;height:60px;border-radius:50%;background:${m.color};box-shadow:0 0 18px ${m.color}88;flex-shrink:0"></div>
+      <div>
+        <div style="font-size:20px;font-weight:700;margin-bottom:4px">${m.name}</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:6px">${parent.name}의 위성</div>
+        <span class="badge badge-cyan">moon</span>
+      </div>
+      <button class="btn primary" style="margin-left:auto" onclick="openMoonIn3D('${key}')">◈ 3D 보기</button>
+    </div>
+
+    <div class="grid2" style="margin-bottom:16px">
+      <div class="stat"><div class="stat-val" style="color:var(--cyan);font-size:16px">${m.r.toLocaleString()} km</div><div class="stat-lbl">반지름</div></div>
+      <div class="stat"><div class="stat-val" style="color:var(--gold);font-size:14px">${m.dist.toLocaleString()} km</div><div class="stat-lbl">모행성까지 거리</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🌟 흥미로운 사실</div>
+      ${m.facts.map(f => `<div class="fact">${f}</div>`).join('')}
+    </div>
+
+    <div style="margin-top:14px">
+      <button class="btn" onclick="selectCatalogBody('${parent.key}',getCatalogBody('${parent.key}'))">← ${parent.name}으로 돌아가기</button>
+    </div>`;
+}
+
+function getCatalogBody(key) {
+  for (const cat of Object.values(CATALOG)) {
+    const found = cat.items.find(b => b.key === key);
+    if (found) return found;
+  }
+  return null;
+}
+
+function openBodyIn3D(key) {
+  document.getElementById('body3d-select').value = key;
+  showTab('view3d');
+}
+
+function openMoonIn3D(key) {
+  document.getElementById('body3d-select').value = key;
+  showTab('view3d');
+}
+
+function formatOrbDist(km) {
+  if (km < 1e6) return km.toLocaleString() + ' km';
+  if (km < 1.496e8) return (km / 1e6).toFixed(1) + ' 백만 km';
+  const au = km / 1.496e8;
+  if (au < 100) return au.toFixed(2) + ' AU';
+  return (km / 9.461e12).toFixed(2) + ' 광년';
+}
+
+function filterCatalog(val) {
+  const sr = document.getElementById('catalog-search-results');
+  if (!val) {
+    sr.style.display = 'none';
+    buildCatalogGroups('');
+    return;
+  }
+  buildCatalogGroups(val);
 }
 
 // ===================== INIT =====================
