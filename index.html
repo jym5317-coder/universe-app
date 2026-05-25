@@ -515,61 +515,86 @@ const CATALOG = {
 
 
 
-// ===================== 실물 사진 URL (CORS 허용) =====================
-const REAL_PHOTOS = {
-  // 행성 — NASA/ESA 공식 (CORS 허용)
-  sun:      'https://apod.nasa.gov/apod/image/2209/Sun_SolarOrbiter_960.jpg',
-  mercury:  'https://apod.nasa.gov/apod/image/1501/mercury_messenger_960.jpg',
-  venus:    'https://apod.nasa.gov/apod/image/2010/Venus_Akatsuki_960.jpg',
-  earth:    'https://apod.nasa.gov/apod/image/1311/BlueMarble2012_NASA_960.jpg',
-  moon:     'https://apod.nasa.gov/apod/image/2307/FullMoon_Biczysko_960.jpg',
-  mars:     'https://apod.nasa.gov/apod/image/2112/PIA24543_1024.jpg',
-  jupiter:  'https://apod.nasa.gov/apod/image/2301/JupiterJwst_NASA_960.jpg',
-  saturn:   'https://apod.nasa.gov/apod/image/2301/saturn_cassini_960.jpg',
-  uranus:   'https://apod.nasa.gov/apod/image/2210/Uranus_Webb960.jpg',
-  neptune:  'https://apod.nasa.gov/apod/image/2209/NeptuneRings_Webb960.jpg',
-  // 왜행성·소행성·혜성
-  pluto:    'https://apod.nasa.gov/apod/image/1507/PlutoTrueColor_NewHorizons_960.jpg',
-  ceres:    'https://apod.nasa.gov/apod/image/1603/CeresOccatorDawn_NASA_960.jpg',
-  ryugu:    'https://apod.nasa.gov/apod/image/1807/Ryugu_Hayabusa2_960.jpg',
-  bennu:    'https://apod.nasa.gov/apod/image/1912/Bennu_OsirisRex_960.jpg',
-  halley:   'https://apod.nasa.gov/apod/image/0003/halley_giotto_960.jpg',
-  churyumov:'https://apod.nasa.gov/apod/image/1411/67P_Rosetta_960.jpg',
-  // 위성
-  'earth_moon_달':           'https://apod.nasa.gov/apod/image/2307/FullMoon_Biczysko_960.jpg',
-  'mars_moon_포보스':         'https://apod.nasa.gov/apod/image/0806/PhobosFromMRO_960.jpg',
-  'jupiter_moon_이오':        'https://apod.nasa.gov/apod/image/2307/IoFull_JunoGill_960.jpg',
-  'jupiter_moon_유로파':      'https://apod.nasa.gov/apod/image/2309/Europa_JunoGill_960.jpg',
-  'jupiter_moon_가니메데':    'https://apod.nasa.gov/apod/image/2106/Ganymede_JunoSwRI_960.jpg',
-  'saturn_moon_타이탄':       'https://apod.nasa.gov/apod/image/0501/titan_cassini_960.jpg',
-  'saturn_moon_엔켈라두스':   'https://apod.nasa.gov/apod/image/0603/enceladus_cassini_960.jpg',
-  'neptune_moon_트리톤':      'https://apod.nasa.gov/apod/image/0206/triton_voyager2_960.jpg',
-  // 성운
-  orion_nebula:        'https://apod.nasa.gov/apod/image/2211/OrionNebula_HubbleSerrano_960.jpg',
-  pillars_of_creation: 'https://apod.nasa.gov/apod/image/2211/PillarsCreation_Webb960.jpg',
-  crab_nebula:         'https://apod.nasa.gov/apod/image/2310/CrabNebula_Webb960.jpg',
-  ring_nebula:         'https://apod.nasa.gov/apod/image/2308/M57Ring_Webb960.jpg',
-  eagle_nebula:        'https://apod.nasa.gov/apod/image/2301/M16Pillar_WebbOzsarac_960.jpg',
-  carina_nebula:       'https://apod.nasa.gov/apod/image/2207/CarinaNebulaWebb_NASA_960.jpg',
-  horsehead_nebula:    'https://apod.nasa.gov/apod/image/2404/HorseheadNebula_Webb960.jpg',
-  veil_nebula:         'https://apod.nasa.gov/apod/image/2309/VeilNebula_Webb960.jpg',
-  // 성단
-  pleiades:        'https://apod.nasa.gov/apod/image/2012/M45Pleiades_Nogueras_960.jpg',
-  omega_centauri:  'https://apod.nasa.gov/apod/image/2312/OmegaCen_Smithson_960.jpg',
-  m13:             'https://apod.nasa.gov/apod/image/2306/M13_Hubble_960.jpg',
-  // 은하
-  milky_way:       'https://apod.nasa.gov/apod/image/2212/GalacticCenter_Adari_960.jpg',
-  andromeda:       'https://apod.nasa.gov/apod/image/2310/M31_HubbleSpitzer_960.jpg',
-  whirlpool:       'https://apod.nasa.gov/apod/image/2302/M51_HubbleWebb_960.jpg',
-  sombrero:        'https://apod.nasa.gov/apod/image/2208/Sombrero_HubbleSpitzer_960.jpg',
-  centaurus_a:     'https://apod.nasa.gov/apod/image/2205/CenA_CSIRO_960.jpg',
-  antennae:        'https://apod.nasa.gov/apod/image/2106/Antennae_HubblePathak_960.jpg',
-  bodes_galaxy:    'https://apod.nasa.gov/apod/image/2305/M81_Hubble_960.jpg',
-  // 특수 천체
-  neutron_star:    'https://apod.nasa.gov/apod/image/2102/CrabNebulaPulsar_Chandra_960.jpg',
-  quasar:          'https://apod.nasa.gov/apod/image/2212/QuasarLens_Hubble_960.jpg',
-  virgo_cluster:   'https://apod.nasa.gov/apod/image/2104/M87Jet_Hubble_960.jpg',
+
+// ===================== NASA Images API 검색어 매핑 =====================
+// NASA Images API (https://images-api.nasa.gov) 는 CORS 공식 허용
+const NASA_SEARCH = {
+  sun:       'sun solar surface SDO',
+  mercury:   'mercury planet messenger',
+  venus:     'venus planet surface',
+  earth:     'earth blue marble apollo',
+  moon:      'moon lunar surface',
+  mars:      'mars planet surface',
+  jupiter:   'jupiter planet juno',
+  saturn:    'saturn rings cassini',
+  uranus:    'uranus planet voyager',
+  neptune:   'neptune planet voyager rings',
+  pluto:     'pluto new horizons heart',
+  ceres:     'ceres dawn bright spots',
+  ryugu:     'ryugu asteroid hayabusa',
+  bennu:     'bennu asteroid osiris',
+  halley:    'halley comet giotto',
+  churyumov: '67P rosetta comet',
+  'earth_moon_달':         'moon full lunar',
+  'mars_moon_포보스':       'phobos moon mars',
+  'jupiter_moon_이오':      'io moon jupiter volcano',
+  'jupiter_moon_유로파':    'europa moon jupiter ice',
+  'jupiter_moon_가니메데':  'ganymede moon jupiter',
+  'jupiter_moon_칼리스토':  'callisto moon jupiter',
+  'saturn_moon_타이탄':     'titan moon saturn cassini',
+  'saturn_moon_엔켈라두스': 'enceladus moon saturn geyser',
+  'neptune_moon_트리톤':    'triton moon neptune voyager',
+  orion_nebula:        'orion nebula hubble',
+  pillars_of_creation: 'pillars creation eagle nebula webb',
+  crab_nebula:         'crab nebula pulsar webb',
+  ring_nebula:         'ring nebula m57 hubble',
+  eagle_nebula:        'eagle nebula m16',
+  carina_nebula:       'carina nebula webb',
+  horsehead_nebula:    'horsehead nebula infrared',
+  veil_nebula:         'veil nebula supernova hubble',
+  pleiades:            'pleiades star cluster',
+  omega_centauri:      'omega centauri globular cluster',
+  m13:                 'm13 globular cluster hercules',
+  milky_way:           'milky way galaxy center',
+  andromeda:           'andromeda galaxy m31',
+  whirlpool:           'whirlpool galaxy m51',
+  sombrero:            'sombrero galaxy m104',
+  centaurus_a:         'centaurus galaxy active',
+  antennae:            'antennae galaxies colliding',
+  bodes_galaxy:        'm81 bode galaxy hubble',
+  neutron_star:        'crab nebula pulsar neutron star',
+  quasar:              'quasar hubble space telescope',
+  virgo_cluster:       'm87 black hole jet',
 };
+
+// NASA Images API 캐시 (한 번 검색하면 저장)
+const nasaCache = {};
+
+async function fetchNASAPhoto(key) {
+  var query = NASA_SEARCH[key];
+  if (!query) return null;
+  if (nasaCache[key]) return nasaCache[key];
+  try {
+    var url = 'https://images-api.nasa.gov/search?q=' + encodeURIComponent(query) + '&media_type=image&page_size=5';
+    var resp = await fetch(url);
+    if (!resp.ok) return null;
+    var data = await resp.json();
+    var items = data.collection && data.collection.items;
+    if (!items || !items.length) return null;
+    // 첫 번째 아이템의 링크에서 이미지 URL 가져오기
+    for (var i = 0; i < Math.min(items.length, 3); i++) {
+      var links = items[i].links;
+      if (links && links[0] && links[0].href) {
+        var imgUrl = links[0].href;
+        // ~thumb 대신 ~orig 시도
+        var origUrl = imgUrl.replace('~thumb.jpg','~orig.jpg').replace('~large.jpg','~orig.jpg');
+        nasaCache[key] = { url: origUrl, credit: 'NASA Images', desc: items[i].data[0] ? items[i].data[0].title : query };
+        return nasaCache[key];
+      }
+    }
+  } catch(e) { /* 네트워크 오류 무시 */ }
+  return null;
+}
 
 // ===================== SVG 아트워크 =====================
 function enc(s){ return 'data:image/svg+xml,'+encodeURIComponent(s.trim()); }
@@ -698,43 +723,43 @@ function loadPhotoBody() {
   }
 }
 
-function showPhoto(key) {
-  var img = document.getElementById('photo-img');
-  var ph  = document.getElementById('photo-placeholder');
-  var crd = document.getElementById('photo-credit');
-  var fsb = document.getElementById('fs-btn');
+async function showPhoto(key) {
+  var img     = document.getElementById('photo-img');
+  var ph      = document.getElementById('photo-placeholder');
+  var crd     = document.getElementById('photo-credit');
+  var fsb     = document.getElementById('fs-btn');
   var spinner = document.getElementById('photo-spinner');
   if (!img) return;
 
-  // 실물 사진 URL 있으면 우선 시도
-  var realUrl = REAL_PHOTOS[key];
-  if (realUrl) {
-    // 로딩 스피너 표시
-    if (ph)  ph.style.display  = 'none';
-    if (spinner) spinner.style.display = 'flex';
-    img.style.display = 'none';
+  // 스피너 표시
+  if (ph)      ph.style.display      = 'none';
+  if (spinner) spinner.style.display = 'flex';
+  img.style.display = 'none';
+
+  // 1. NASA Images API로 실물 사진 검색
+  var photo = await fetchNASAPhoto(key);
+  if (photo && photo.url) {
     img.onerror = function() {
-      // 실물 사진 실패 → SVG 폴백
-      if (spinner) spinner.style.display = 'none';
+      // NASA 이미지 로드 실패 → SVG
       img.onerror = null;
+      if (spinner) spinner.style.display = 'none';
       img.src = getBodySVG(key);
       img.style.display = 'block';
-      if (crd) { crd.textContent = '📷 SVG 아트워크 (사진 로드 실패)'; crd.style.display = 'block'; }
+      if (crd) { crd.textContent = '📷 SVG 아트워크'; crd.style.display = 'block'; }
       if (fsb) fsb.style.display = 'block';
     };
     img.onload = function() {
       if (spinner) spinner.style.display = 'none';
       img.style.display = 'block';
-      if (crd) { crd.textContent = '📷 NASA/ESA 실물 사진'; crd.style.display = 'block'; }
+      if (crd) { crd.textContent = '📷 ' + photo.credit + ' — ' + photo.desc; crd.style.display = 'block'; }
       if (fsb) fsb.style.display = 'block';
     };
-    img.src = realUrl;
+    img.src = photo.url;
   } else {
-    // SVG 직접 표시
-    if (ph)  ph.style.display  = 'none';
+    // NASA API 실패 → SVG 즉시 표시
     if (spinner) spinner.style.display = 'none';
     img.onerror = null;
-    img.onload = null;
+    img.onload  = null;
     img.src = getBodySVG(key);
     img.style.display = 'block';
     if (crd) { crd.textContent = '📷 SVG 아트워크'; crd.style.display = 'block'; }
